@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>第一章 函数、极限、连续 · 工科数学分析自学站</title>
+  <link rel="stylesheet" href="assets/css/style.css">
+  <link rel="stylesheet" href="assets/katex/katex.min.css">
+  <script defer src="assets/katex/katex.min.js"></script>
+  <script defer src="assets/katex/auto-render.min.js"></script>
+  <script defer src="assets/js/app.js"></script>
+</head>
+<body>
+  <header class="site-header">
+    <div class="wrap header-inner">
+      <a class="brand" href="index.html">📘 工科数学分析 · 自学站
+        <small>第三版 · 上册 · 一元函数微积分</small>
+      </a>
+      <nav class="main-nav">
+        <a href="index.html">首页</a>
+        <a href="ch1.html" class="active">第一章</a>
+        <a href="ch2.html">第二章</a>
+        <a href="ch3.html">第三章</a>
+        <a href="ch4.html">第四章</a>
+      </nav>
+    </div>
+  </header>
+
+  <div class="page-head">
+    <div class="wrap">
+      <p class="crumbs"><a href="index.html">首页</a> / 第一章</p>
+      <h1>第一章 函数、极限、连续</h1>
+      <p class="lead">
+        这是全书的“地基章”：先学会用集合与映射的语言描述函数，再认真理解极限——导数、连续、
+        积分全都建立在极限之上。本章共五节，约需 3–4 周配合课堂进度学习。
+      </p>
+      <div class="btn-row">
+        <a class="btn" href="lessons/ch1-1.html">开始第一节</a>
+        <a class="btn secondary" href="exercises/ch1-exercises.html">✏️ 章末练习（16 题）</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="content">
+    <div class="wrap">
+      <div class="goal-box">
+        <b>学完本章你应该能做到：</b>
+        会求常见函数的定义域与反函数；能用 $\varepsilon\text{-}N$、$\varepsilon\text{-}\delta$ 语言理解并叙述极限；
+        熟练用四则运算、夹逼准则、两个重要极限与等价无穷小求极限；会判断间断点类型；
+        能用零点定理等闭区间连续函数性质证明“存在性”结论。
+      </div>
+
+      <div class="sec-head">
+        <h2>章节路线图</h2>
+        <p>五节 + 章末练习，按顺序学下去。</p>
+      </div>
+      <div class="lesson-cards">
+        <a class="lesson-row" href="lessons/ch1-1.html">
+          <span class="l-no">1.1</span>
+          <span><b>集合、映射与函数</b><br><span style="font-size:.9rem;color:var(--muted);">集合运算 · 确界 · 函数概念与基本属性 · 复合与反函数 · 初等函数与双曲函数</span></span>
+          <span class="l-q">开场问题：怎样严谨地描述“变量”与“对应关系”？</span>
+        </a>
+        <a class="lesson-row" href="lessons/ch1-2.html">
+          <span class="l-no">1.2</span>
+          <span><b>数列的极限</b><br><span style="font-size:.9rem;color:var(--muted);">ε–N 定义 · 收敛数列性质 · 夹逼与单调有界准则</span></span>
+          <span class="l-q">开场问题：“无限接近”到底是什么意思？</span>
+        </a>
+        <a class="lesson-row" href="lessons/ch1-3.html">
+          <span class="l-no">1.3</span>
+          <span><b>函数的极限</b><br><span style="font-size:.9rem;color:var(--muted);">函数极限概念与性质 · 归结原则 · 两个重要极限 · 存在准则</span></span>
+          <span class="l-q">开场问题：自变量连续变化时，怎么定义极限？</span>
+        </a>
+        <a class="lesson-row" href="lessons/ch1-4.html">
+          <span class="l-no">1.4</span>
+          <span><b>无穷小量与无穷大量</b><br><span style="font-size:.9rem;color:var(--muted);">无穷小性质 · 无穷小的比较 · 等价代换 · 无穷大量</span></span>
+          <span class="l-q">开场问题：怎么比较“趋零的快慢”来化简极限？</span>
+        </a>
+        <a class="lesson-row" href="lessons/ch1-5.html">
+          <span class="l-no">1.5</span>
+          <span><b>连续函数</b><br><span style="font-size:.9rem;color:var(--muted);">连续性 · 间断点分类 · 初等函数连续性 · 闭区间性质 · 一致连续 · 压缩映射原理（选学）</span></span>
+          <span class="l-q">开场问题：连续能保证哪些“必然存在”的结论？</span>
+        </a>
+      </div>
+
+      <div style="margin-top:26px;">
+        <a class="ch-card" href="exercises/ch1-exercises.html" style="background:var(--green-soft);border-color:#b9e3ca;">
+          <div class="ch-title"><h3>✏️ 第 1 章 · 章末练习</h3><span class="badge ok">可作答</span></div>
+          <p class="ch-desc">16 题（选择题 8 + 填空题 8），覆盖全部五节。选择题点击即判对错，填空题点“显示答案”，每道题下方紧跟答案与解析。</p>
+        </a>
+      </div>
+
+      <div class="box warn" style="margin-top:24px;">
+        <span class="box-tag">学习建议</span>
+        <p style="margin-bottom:0;">极限是微积分的语言。第一章里概念题比计算题更重要：每个定义都值得“翻译”成自己的话讲一遍，再对照课本例题验证。千万不要跳过 $\varepsilon\text{-}N$ 语言直接刷题。</p>
+      </div>
+    </div>
+  </div>
+
+  <footer class="site-footer">
+    <div class="wrap footer-inner">
+      <div>
+        <b>工科数学分析基础（上册）自学站</b><br>
+        第一章：函数、极限、连续（本期精讲）
+      </div>
+      <div>
+        <a href="index.html">首页</a> · <a href="ch1.html">第一章</a> ·
+        <a href="exercises/ch1-exercises.html">章末练习</a>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>

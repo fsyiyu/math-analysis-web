@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>1.2 数列的极限 · 工科数学分析自学站</title>
+  <link rel="stylesheet" href="../assets/css/style.css">
+  <link rel="stylesheet" href="../assets/katex/katex.min.css">
+  <script defer src="../assets/katex/katex.min.js"></script>
+  <script defer src="../assets/katex/auto-render.min.js"></script>
+  <script defer src="../assets/js/app.js"></script>
+</head>
+<body>
+  <header class="site-header">
+    <div class="wrap header-inner">
+      <a class="brand" href="../index.html">📘 工科数学分析 · 自学站
+        <small>第三版 · 上册 · 一元函数微积分</small>
+      </a>
+      <nav class="main-nav">
+        <a href="../index.html">首页</a>
+        <a href="../ch1.html">第一章</a>
+        <a href="../ch2.html">第二章</a>
+        <a href="../ch3.html">第三章</a>
+        <a href="../ch4.html">第四章</a>
+      </nav>
+    </div>
+  </header>
+
+  <div class="page-head">
+    <div class="wrap">
+      <p class="crumbs"><a href="../index.html">首页</a> / <a href="../ch1.html">第一章</a> / 第二节</p>
+      <h1>1.2 数列的极限</h1>
+      <p class="lead">“无限接近”不是感觉，而是一个可以检验的精确陈述——$\varepsilon\text{-}N$ 语言。这一节是全书严谨性的起点。</p>
+    </div>
+  </div>
+
+  <div class="content">
+    <div class="wrap">
+      <div class="goal-box">
+        <b>本节要解决的问题：</b>怎么证明“第 $n$ 项越来越靠近某个数”？收敛的数列有哪些必然的性质？不靠猜测，怎样判断一个数列是否收敛？
+      </div>
+
+      <div class="lesson-body">
+        <h2 class="subhead">2.1 数列极限的概念</h2>
+        <p>数列是按正整数编号的一串数：$a_1,a_2,a_3,\ldots,a_n,\ldots$，记 $\{a_n\}$。所谓“$a_n$ 趋于 $a$”，是指：<b>不管你给一个多小的正数 $\varepsilon$，从某项之后开始，所有 $a_n$ 与 $a$ 的距离都小于 $\varepsilon$</b>。</p>
+        <div class="box thm">
+          <span class="box-tag">定义 · 数列极限（ε–N 语言）</span>
+          <p>设 $\{a_n\}$ 是数列，$a$ 为常数。若对任意 $\varepsilon>0$，总存在正整数 $N$，当 $n>N$ 时恒有 $|a_n-a|<\varepsilon$，则称数列 $\{a_n\}$ <b>收敛于 $a$</b>，记 $\lim\limits_{n\to\infty}a_n=a$，或称 $a$ 为数列的极限。</p>
+        </div>
+        <p>几何意义：给定任意小的邻域 $(a-\varepsilon,a+\varepsilon)$，总存在“一条分界线”$N$，使第 $N$ 项以后的所有项都落在邻域内，至多前面有限项在邻域外。</p>
+        <div class="box idea">
+          <span class="box-tag">想一想</span>
+          <p>$N$ 一定要是“最小的”那个吗？<b>不必。</b>只要存在一个即可；$\varepsilon$ 越小，$N$ 通常要取得越大。证明时习惯直接构造一个“够用”的 $N$。</p>
+        </div>
+        <p>不收敛的数列称为<b>发散</b>。注意区分两类发散：有界但来回振荡（如 $(-1)^n$），以及真正跑到无穷（如 $n^2$）——后者只是“$\to\infty$”，并不算收敛到某个实数。</p>
+
+        <h2 class="subhead">2.2 收敛数列的性质</h2>
+        <ul>
+          <li><b>唯一性</b>：收敛数列的极限唯一。</li>
+          <li><b>有界性</b>：收敛数列必有界（反之不成立，$(-1)^n$ 有界但发散）。</li>
+          <li><b>保号性</b>：若 $\lim a_n=a>0$，则从某项起恒有 $a_n>0$（对 $a<0$ 同理）。</li>
+          <li><b>四则运算法则</b>：若 $\lim a_n=A$，$\lim b_n=B$，则
+            $$\lim(a_n\pm b_n)=A\pm B,\quad \lim(a_n b_n)=AB,\quad \lim\frac{a_n}{b_n}=\frac{A}{B}\ (B\ne0).$$</li>
+          <li><b>子列</b>：若数列收敛于 $a$，则它的任何子列都收敛于 $a$。逆否命题常用来<b>证明发散</b>：找到两个趋于不同极限的子列即可。</li>
+        </ul>
+
+        <h2 class="subhead">2.3 数列收敛性的判别准则</h2>
+        <div class="box thm">
+          <span class="box-tag">准则一 · 夹逼定理</span>
+          <p>若从某项起 $a_n\le c_n\le b_n$，且 $\lim a_n=\lim b_n=A$，则 $\lim c_n=A$。</p>
+        </div>
+        <div class="box thm">
+          <span class="box-tag">准则二 · 单调有界定理</span>
+          <p>单调增加（减少）且有上（下）界的数列必收敛。特别地，极限就是它的上确界（下确界）。</p>
+        </div>
+        <p>更深刻的是 <b>Cauchy 收敛准则</b>：数列收敛的充要条件是“基本列”——对任意 $\varepsilon>0$，存在 $N$，当 $m,n>N$ 时 $|a_m-a_n|<\varepsilon$。它不依赖事先知道极限是多少，理论价值很大（本课程要求了解其思想即可）。</p>
+
+        <div class="example">
+          <div class="ex-head"><h3>例 1　用 ε–N 定义证明基本极限</h3></div>
+          <p>用定义证明 $\lim\limits_{n\to\infty}\dfrac1n=0$。</p>
+          <details class="solution">
+            <summary>先想再看解答</summary>
+            <div class="sol-body">
+              <p>对任意 $\varepsilon>0$，要找 $N$ 使 $n>N$ 时 $\left|\dfrac1n-0\right|=\dfrac1n<\varepsilon$，即 $n>\dfrac1\varepsilon$。</p>
+              <p>取正整数 $N>\dfrac1\varepsilon$ 即可。于是按定义 $\lim\limits_{n\to\infty}\dfrac1n=0$。证毕。</p>
+              <p style="margin-bottom:0;"><b>套路：</b>先把 $|a_n-a|$ 化简，解出关于 $n$ 的不等式，再回头取 $N$。</p>
+            </div>
+          </details>
+        </div>
+
+        <div class="example">
+          <div class="ex-head"><h3>例 2　分子有理化求极限</h3></div>
+          <p>求 $\lim\limits_{n\to\infty}\left(n+2-\sqrt{n^2-n}\right)$。</p>
+          <details class="solution">
+            <summary>先想再看解答</summary>
+            <div class="sol-body">
+              <p>这是 $\infty-\infty$ 型，先有理化：</p>
+              <p class="formula-line">$$n+2-\sqrt{n^2-n}=\frac{(n+2)^2-(n^2-n)}{n+2+\sqrt{n^2-n}}=\frac{5n+4}{n+2+\sqrt{n^2-n}}.$$</p>
+              <p>分子分母同除以 $n$：</p>
+              <p class="formula-line">$$\frac{5+\frac4n}{1+\frac2n+\sqrt{1-\frac1n}}\longrightarrow\frac{5}{1+1}=\frac52.$$</p>
+              <p style="margin-bottom:0;"><b>关键：</b>“$\infty-\infty$”不能直接抵消，改造出分母才可比较阶。</p>
+            </div>
+          </details>
+        </div>
+
+        <div class="example">
+          <div class="ex-head"><h3>例 3　夹逼定理</h3></div>
+          <p>证明 $\lim\limits_{n\to\infty}\dfrac{n!}{n^n}=0$。</p>
+          <details class="solution">
+            <summary>先想再看解答</summary>
+            <div class="sol-body">
+              <p>显然 $\dfrac{n!}{n^n}>0$。又</p>
+              <p class="formula-line">$$\frac{n!}{n^n}=\frac1n\cdot\frac2n\cdots\frac nn\le\frac1n.$$</p>
+              <p>故 $0\le\dfrac{n!}{n^n}\le\dfrac1n$，而 $\lim\dfrac1n=0$，由夹逼定理得极限为 $0$。证毕。</p>
+              <p style="margin-bottom:0;"><b>关键：</b>放缩要有目的——把难算的量夹在两个“都好算”的量之间。</p>
+            </div>
+          </details>
+        </div>
+
+        <div class="example">
+          <div class="ex-head"><h3>例 4　单调有界 + 递归数列</h3></div>
+          <p>设 $x_1=\sqrt2$，$x_{n+1}=\sqrt{2+x_n}$。证明 $\{x_n\}$ 收敛并求其极限。</p>
+          <details class="solution">
+            <summary>先想再看解答</summary>
+            <div class="sol-body">
+              <p><b>第一步（有界）：</b>归纳证 $x_n<2$。$x_1=\sqrt2<2$；若 $x_n<2$，则 $x_{n+1}=\sqrt{2+x_n}<\sqrt4=2$。</p>
+              <p><b>第二步（单调）：</b>$x_{n+1}>x_n\iff 2+x_n>x_n^2\iff (x_n-2)(x_n+1)<0$，由 $0<x_n<2$ 成立。故单调增加有上界，收敛。</p>
+              <p><b>第三步（求极限）：</b>设 $x_n\to a$，对递推式两边取极限得 $a=\sqrt{2+a}$，解得 $a=2$（$a=-1$ 舍去）。</p>
+              <p style="margin-bottom:0;"><b>体会：</b>“两边取极限”利用了极限的四则运算与 $x_{n+1}$ 与 $x_n$ 同极限——收敛性必须先证出来，才能这样用。</p>
+            </div>
+          </details>
+        </div>
+
+        <div class="example">
+          <div class="ex-head"><h3>例 5　用子列判断发散</h3></div>
+          <p>证明数列 $x_n=\sin\dfrac{n\pi}{2}$ 发散。</p>
+          <details class="solution">
+            <summary>先想再看解答</summary>
+            <div class="sol-body">
+              <p>该数列为 $1,0,-1,0,1,0,-1,\ldots$。</p>
+              <p>取偶下标子列 $x_{4k+1}=1\to1$，取另一子列 $x_{4k+3}=-1\to-1$。两个子列极限不同，故原数列发散。</p>
+              <p style="margin-bottom:0;"><b>关键：</b>只要找到一个“坏”子列（不收敛），或两个子列极限不同，就能否定收敛。</p>
+            </div>
+          </details>
+        </div>
+
+        <div class="box warn">
+          <span class="box-tag">易错提醒</span>
+          <p style="margin-bottom:0;">① 极限号只能对“整个表达式”取，不能把 $n$ 在括号内局部替换成 $\infty$。② 四则运算法则要求参与的数列都收敛，$0\cdot\infty$、$\infty-\infty$、$\dfrac00$ 都不能直接套。③ 单调<b>有界</b>才收敛：$\{n\}$ 单调但无界，照样发散。④ 保号性只保证“从某项起”，前面有限项可以为负。</p>
+        </div>
+      </div>
+
+      <div class="pager">
+        <a href="ch1-1.html"><small>上一节</small>← 1.1 集合、映射与函数</a>
+        <a class="next" href="ch1-3.html"><small>下一节</small>1.3 函数的极限 →</a>
+      </div>
+    </div>
+  </div>
+
+  <footer class="site-footer">
+    <div class="wrap footer-inner">
+      <div><b>工科数学分析基础（上册）自学站</b><br>1.2 数列的极限</div>
+      <div><a href="../index.html">首页</a> · <a href="../ch1.html">第一章</a> · <a href="../exercises/ch1-exercises.html">章末练习</a></div>
+    </div>
+  </footer>
+</body>
+</html>

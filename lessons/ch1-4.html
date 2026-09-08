@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>1.4 无穷小量与无穷大量 · 工科数学分析自学站</title>
+  <link rel="stylesheet" href="../assets/css/style.css">
+  <link rel="stylesheet" href="../assets/katex/katex.min.css">
+  <script defer src="../assets/katex/katex.min.js"></script>
+  <script defer src="../assets/katex/auto-render.min.js"></script>
+  <script defer src="../assets/js/app.js"></script>
+</head>
+<body>
+  <header class="site-header">
+    <div class="wrap header-inner">
+      <a class="brand" href="../index.html">📘 工科数学分析 · 自学站
+        <small>第三版 · 上册 · 一元函数微积分</small>
+      </a>
+      <nav class="main-nav">
+        <a href="../index.html">首页</a>
+        <a href="../ch1.html">第一章</a>
+        <a href="../ch2.html">第二章</a>
+        <a href="../ch3.html">第三章</a>
+        <a href="../ch4.html">第四章</a>
+      </nav>
+    </div>
+  </header>
+
+  <div class="page-head">
+    <div class="wrap">
+      <p class="crumbs"><a href="../index.html">首页</a> / <a href="../ch1.html">第一章</a> / 第四节</p>
+      <h1>1.4 无穷小量与无穷大量</h1>
+      <p class="lead">极限计算里 90% 的“高级技巧”，本质是给无穷小排队、比较谁“归零归得更快”，然后用等价替换偷懒。</p>
+    </div>
+  </div>
+
+  <div class="content">
+    <div class="wrap">
+      <div class="goal-box">
+        <b>本节要解决的问题：</b>“无穷小”到底是什么？两个无穷小怎么比快慢？为什么分子分母都能用等价无穷小替换，做题却能稳拿答案？
+      </div>
+
+      <div class="lesson-body">
+        <h2 class="subhead">4.1 无穷小量的概念与性质</h2>
+        <div class="box">
+          <span class="box-tag">定义 · 无穷小量</span>
+          <p>在某个极限过程中以 0 为极限的<b>变量</b>称为无穷小量。例如 $x\to0$ 时，$x,\ x^2,\ \sin x,\ 1-\cos x$ 都是无穷小。</p>
+          <p style="margin-bottom:0;">注意：无穷小是“过程量”，不是一个固定的小数；“0”是唯一可作为常数的无穷小。</p>
+        </div>
+        <p>极限与无穷小之间有漂亮的桥梁：</p>
+        <div class="box thm">
+          <span class="box-tag">定理 · 极限的无穷小刻画</span>
+          <p>$\lim\limits_{x\to x_0}f(x)=A$ 成立的充要条件是 $f(x)=A+\alpha(x)$，其中 $\alpha(x)$ 是 $x\to x_0$ 时的无穷小。</p>
+        </div>
+        <p>无穷小的运算性质：<b>有限个</b>无穷小之和、差、积仍是无穷小；<b>有界函数与无穷小的乘积仍是无穷小</b>（这是上一节“$x\sin\dfrac1x\to0$”的一般原理）。</p>
+
+        <h2 class="subhead">4.2 无穷小的比较</h2>
+        <p>设 $\alpha,\beta$ 是 $x\to x_0$ 时的无穷小，$\alpha\ne0$：</p>
+        <ul>
+          <li>若 $\lim\dfrac{\beta}{\alpha}=0$，称 $\beta$ 是 $\alpha$ 的<b>高阶无穷小</b>，记 $\beta=o(\alpha)$（$\beta$ 归零更快）；</li>
+          <li>若 $\lim\dfrac{\beta}{\alpha}=C\ne0$，称 $\beta$ 与 $\alpha$ <b>同阶</b>无穷小；</li>
+          <li>若 $C=1$，称 $\beta$ 与 $\alpha$ <b>等价</b>，记 $\beta\sim\alpha$；</li>
+          <li>若 $\beta$ 与 $(\alpha)^k$ 同阶（$k>0$），称 $\beta$ 是 $\alpha$ 的 <b>$k$ 阶无穷小</b>。</li>
+        </ul>
+        <p>直觉：无穷小不是“都能忽略”，要看它相对谁、快多少。$x^2$ 相对 $x$ 是二阶——所以“丢掉高阶项”才有依据。</p>
+
+        <h2 class="subhead">4.3 无穷小的等价代换</h2>
+        <div class="box thm">
+          <span class="box-tag">定理 · 等价代换</span>
+          <p>若 $\alpha\sim\alpha_1$，$\beta\sim\beta_1$，则 $\lim\dfrac{\beta}{\alpha}=\lim\dfrac{\beta_1}{\alpha_1}$，即<b>乘除因子</b>可以放心替换。</p>
+        </div>
+        <p>常用等价无穷小（$x\to0$ 时）：</p>
+        <p class="formula-line">$$\sin x\sim x,\quad \tan x\sim x,\quad \arcsin x\sim x,\quad \arctan x\sim x,$$</p>
+        <p class="formula-line">$$\ln(1+x)\sim x,\quad e^x-1\sim x,\quad a^x-1\sim x\ln a,$$</p>
+        <p class="formula-line">$$1-\cos x\sim\frac{x^2}{2},\quad (1+x)^\mu-1\sim\mu x.$$</p>
+        <div class="box warn">
+          <span class="box-tag">易错 · 加减不能随便换</span>
+          <p>等价代换只对<b>乘除因子</b>保证正确。<b>加减中的替换可能丢掉真正起决定作用的高阶项。</b>例如 $\tan x-\sin x$ 不能换成 $x-x=0$——它实际是 $\dfrac{x^3}{2}$ 量级（见例 5）。</p>
+        </div>
+
+        <h2 class="subhead">4.4 无穷大量</h2>
+        <div class="box">
+          <span class="box-tag">定义 · 无穷大量</span>
+          <p>在某个极限过程中 $|f(x)|$ 无限增大（对任意 $M>0$，总存在邻域使 $|f(x)|>M$），称 $f$ 为无穷大量，记 $f(x)\to\infty$；按符号还可分 $+\infty$ 与 $-\infty$。</p>
+          <p style="margin-bottom:0;">无穷大不是数，极限<b>不存在</b>（但可“发散到无穷”）。</p>
+        </div>
+        <div class="box thm">
+          <span class="box-tag">定理 · 无穷小与无穷大的倒数关系</span>
+          <p>同一过程中：$f(x)$ 是非零无穷大 $\iff\dfrac1{f(x)}$ 是无穷小；$f(x)$ 是非零无穷小 $\iff\dfrac1{f(x)}$ 是无穷大。</p>
+        </div>
+
+        <div class="example">
+          <div class="ex-head"><h3>例 1　等价替换求极限</h3></div>
+          <p>求 $\lim\limits_{x\to0}\dfrac{\tan 2x}{\sin 3x}$。</p>
+          <details class="solution">
+            <summary>先想再看解答</summary>
+            <div class="sol-body">
+              <p>$x\to0$ 时 $\tan2x\sim2x$，$\sin3x\sim3x$（乘除因子可换），故</p>
+              <p class="formula-line">$$\lim_{x\to0}\frac{\tan2x}{\sin3x}=\lim_{x\to0}\frac{2x}{3x}=\frac23.$$</p>
+            </div>
+          </details>
+        </div>
+
+        <div class="example">
+          <div class="ex-head"><h3>例 2　复合小量的替换</h3></div>
+          <p>求 $\lim\limits_{x\to0}\dfrac{e^{x^2}-1}{x\arctan x}$。</p>
+          <details class="solution">
+            <summary>先想再看解答</summary>
+            <div class="sol-body">
+              <p>$x\to0$ 时 $e^{x^2}-1\sim x^2$，$\arctan x\sim x$，所以</p>
+              <p class="formula-line">$$\lim_{x\to0}\frac{e^{x^2}-1}{x\arctan x}=\lim_{x\to0}\frac{x^2}{x\cdot x}=1.$$</p>
+              <p style="margin-bottom:0;"><b>关键：</b>替换时“小量”可以整体是 $x^2$——把 $x^2$ 看成新的变量即可。</p>
+            </div>
+          </details>
+        </div>
+
+        <div class="example">
+          <div class="ex-head"><h3>例 3　$(1+x)^\mu-1$ 的替换</h3></div>
+          <p>求 $\lim\limits_{x\to0}\dfrac{\sqrt{1+x}-1}{x}$。</p>
+          <details class="solution">
+            <summary>先想再看解答</summary>
+            <div class="sol-body">
+              <p>$\sqrt{1+x}-1=(1+x)^{\frac12}-1\sim\dfrac12x$，故</p>
+              <p class="formula-line">$$\lim_{x\to0}\frac{\sqrt{1+x}-1}{x}=\frac{\frac12x}{x}=\frac12.$$</p>
+              <p style="margin-bottom:0;"><b>等价来源：</b>它就是下一章导数公式 $(x^\mu)'=\mu x^{\mu-1}$ 在 $x=1$ 处的雏形。</p>
+            </div>
+          </details>
+        </div>
+
+        <div class="example">
+          <div class="ex-head"><h3>例 4　判断无穷小的阶</h3></div>
+          <p>当 $x\to0$ 时，$1-\cos x$ 是 $x$ 的几阶无穷小？</p>
+          <details class="solution">
+            <summary>先想再看解答</summary>
+            <div class="sol-body">
+              <p>因 $1-\cos x\sim\dfrac{x^2}{2}$，它与 $x^2$ 同阶，所以是 $x$ 的<b>二阶</b>无穷小。</p>
+              <p style="margin-bottom:0;"><b>直觉：</b>在 $x=0$ 附近，$y=1-\cos x$ 的图像像抛物线一样贴着 $x$ 轴“快速归零”。</p>
+            </div>
+          </details>
+        </div>
+
+        <div class="example">
+          <div class="ex-head"><h3>例 5　加减中替换出错怎么办</h3></div>
+          <p>求 $\lim\limits_{x\to0}\dfrac{\tan x-\sin x}{x^3}$。</p>
+          <details class="solution">
+            <summary>先想再看解答</summary>
+            <div class="sol-body">
+              <p>若直接把 $\tan x\sim x$、$\sin x\sim x$ 代入分子会得到 0，但答案是 $\dfrac12$——分子是 $x^3$ 量级，不能被“同阶相消”糊弄过去。</p>
+              <p>正确做法：先提公因式，再替换。</p>
+              <p class="formula-line">$$\frac{\tan x-\sin x}{x^3}=\frac{\sin x\left(\dfrac1{\cos x}-1\right)}{x^3}
+                =\frac{\sin x(1-\cos x)}{x^3\cos x}.$$</p>
+              <p>用 $\sin x\sim x$、$1-\cos x\sim\dfrac{x^2}{2}$、$\cos x\to1$：</p>
+              <p class="formula-line">$$\lim_{x\to0}\frac{x\cdot\frac{x^2}{2}}{x^3\cdot1}=\frac12.$$</p>
+              <p style="margin-bottom:0;"><b>经验：</b>遇到加减先想“能不能提公因式变成乘除”，不要硬换。</p>
+            </div>
+          </details>
+        </div>
+
+        <div class="example">
+          <div class="ex-head"><h3>例 6　无穷大与无穷小互化</h3></div>
+          <p>判断极限 $\lim\limits_{x\to\infty}\dfrac{x^2+1}{x-1}$ 与 $\lim\limits_{x\to1}\dfrac{x^2+1}{x-1}$。</p>
+          <details class="solution">
+            <summary>先想再看解答</summary>
+            <div class="sol-body">
+              <p>$x\to\infty$ 时，分子分母同除 $x$：$\dfrac{x+\frac1x}{1-\frac1x}\to+\infty$，即 $x\to\infty$ 时为无穷大。</p>
+              <p>$x\to1$ 时，分子 $\to2\ne0$，分母 $x-1\to0$，故 $\dfrac{x^2+1}{x-1}$ 是无穷大；从右侧趋于 $+\infty$，从左侧趋于 $-\infty$。</p>
+              <p style="margin-bottom:0;"><b>要点：</b>“非零常数 ÷ 无穷小 = 无穷大”可直接判断，比死算快得多。</p>
+            </div>
+          </details>
+        </div>
+
+        <div class="box warn">
+          <span class="box-tag">易错提醒</span>
+          <p style="margin-bottom:0;">① 等价替换仅在<b>乘除因子</b>中安全，加减中的替换要慎之又慎。② 无穷小比较必须指明“在什么极限过程中”。③ 无穷大不是极限值，不能说“极限等于无穷大”就是收敛。④ 记住“1−cos x ~ x²/2”与“(1+x)^μ−1 ~ μx”，考试中的高阶题型几乎都从这两个变出来。</p>
+        </div>
+      </div>
+
+      <div class="pager">
+        <a href="ch1-3.html"><small>上一节</small>← 1.3 函数的极限</a>
+        <a class="next" href="ch1-5.html"><small>下一节</small>1.5 连续函数 →</a>
+      </div>
+    </div>
+  </div>
+
+  <footer class="site-footer">
+    <div class="wrap footer-inner">
+      <div><b>工科数学分析基础（上册）自学站</b><br>1.4 无穷小量与无穷大量</div>
+      <div><a href="../index.html">首页</a> · <a href="../ch1.html">第一章</a> · <a href="../exercises/ch1-exercises.html">章末练习</a></div>
+    </div>
+  </footer>
+</body>
+</html>

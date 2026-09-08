@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>1.3 函数的极限 · 工科数学分析自学站</title>
+  <link rel="stylesheet" href="../assets/css/style.css">
+  <link rel="stylesheet" href="../assets/katex/katex.min.css">
+  <script defer src="../assets/katex/katex.min.js"></script>
+  <script defer src="../assets/katex/auto-render.min.js"></script>
+  <script defer src="../assets/js/app.js"></script>
+</head>
+<body>
+  <header class="site-header">
+    <div class="wrap header-inner">
+      <a class="brand" href="../index.html">📘 工科数学分析 · 自学站
+        <small>第三版 · 上册 · 一元函数微积分</small>
+      </a>
+      <nav class="main-nav">
+        <a href="../index.html">首页</a>
+        <a href="../ch1.html">第一章</a>
+        <a href="../ch2.html">第二章</a>
+        <a href="../ch3.html">第三章</a>
+        <a href="../ch4.html">第四章</a>
+      </nav>
+    </div>
+  </header>
+
+  <div class="page-head">
+    <div class="wrap">
+      <p class="crumbs"><a href="../index.html">首页</a> / <a href="../ch1.html">第一章</a> / 第三节</p>
+      <h1>1.3 函数的极限</h1>
+      <p class="lead">自变量从两边连续逼近 $x_0$ 时函数值向哪里去？两个“著名极限”从这里诞生，也是后面一切求导公式的原料。</p>
+    </div>
+  </div>
+
+  <div class="content">
+    <div class="wrap">
+      <div class="goal-box">
+        <b>本节要解决的问题：</b>怎样严格定义 $x\to x_0$、$x\to\infty$ 时的函数极限？判断“极限不存在”有哪些工具？$\dfrac{\sin x}{x}$ 与 $\left(1+\dfrac1x\right)^x$ 为什么重要？
+      </div>
+
+      <div class="lesson-body">
+        <h2 class="subhead">3.1 函数极限的概念</h2>
+        <div class="box">
+          <span class="box-tag">定义 · $x\to x_0$ 时函数的极限</span>
+          <p>设函数 $f$ 在 $x_0$ 的某去心邻域内有定义。若对任意 $\varepsilon>0$，存在 $\delta>0$，当 $0<|x-x_0|<\delta$ 时恒有 $|f(x)-A|<\varepsilon$，则称 $x\to x_0$ 时 $f(x)$ 以 $A$ 为极限，记 $\lim\limits_{x\to x_0}f(x)=A$。</p>
+        </div>
+        <p>注意两点：</p>
+        <ul>
+          <li>条件 $0<|x-x_0|$ 说明我们<b>只看 $x_0$ 附近而不看 $x_0$ 本身</b>——极限与函数在 $x_0$ 是否有定义、取什么值完全无关。</li>
+          <li>$x$ 从左侧或右侧趋近时，可分别定义<b>左极限</b> $f(x_0-0)$ 与<b>右极限</b> $f(x_0+0)$。极限存在的充要条件是左右极限都存在且相等。</li>
+        </ul>
+        <p>自变量趋于无穷时，定义改为：对任意 $\varepsilon>0$，存在 $X>0$，当 $|x|>X$ 时 $|f(x)-A|<\varepsilon$，记 $\lim\limits_{x\to\infty}f(x)=A$。单侧无穷（$x\to+\infty$ 或 $x\to-\infty$）同理。</p>
+
+        <h2 class="subhead">3.2 函数极限的性质</h2>
+        <ul>
+          <li><b>唯一性、局部有界性、局部保号性</b>：与数列极限的性质一一对应，只是“某项之后”换成“某去心邻域内”。</li>
+          <li><b>四则运算法则</b>：两个函数极限都存在时，和差积商（分母极限非零）的极限等于极限的运算。</li>
+          <li><b>夹逼准则</b>：在 $x_0$ 的去心邻域内 $g(x)\le f(x)\le h(x)$，且 $g,h$ 同趋于 $A$，则 $f$ 也趋于 $A$。</li>
+        </ul>
+
+        <h2 class="subhead">3.3 两个重要极限</h2>
+        <div class="box thm">
+          <span class="box-tag">重要极限（一）</span>
+          <p class="formula-line">$$\lim_{x\to0}\frac{\sin x}{x}=1.$$</p>
+          <p>它是求三角函数极限的“汇率表”：凡 $\sin(\text{小量})\sim$ 该小量的极限都靠它换算。</p>
+        </div>
+        <div class="box thm">
+          <span class="box-tag">重要极限（二）· 自然常数 e</span>
+          <p class="formula-line">$$\lim_{x\to\infty}\left(1+\frac1x\right)^x=e,\qquad \lim_{t\to0}(1+t)^{1/t}=e.$$</p>
+          <p>$e\approx2.71828$ 就是“利滚利”“复利增长”在无限细分时的极限值，也是指数函数与对数的天然底数。</p>
+        </div>
+
+        <h2 class="subhead">3.4 函数极限的存在准则：归结原则</h2>
+        <div class="box thm">
+          <span class="box-tag">定理 · 归结原则（Heine 定理）</span>
+          <p>$\lim\limits_{x\to x_0}f(x)=A$ 成立的充要条件是：对任意满足 $x_n\ne x_0$ 且 $x_n\to x_0$ 的数列 $\{x_n\}$，都有 $\lim\limits_{n\to\infty}f(x_n)=A$。</p>
+        </div>
+        <p>它在“函数极限”与“数列极限”之间架了桥。实用上最常用它的逆否命题：<b>若能找到两条趋近路线使函数值趋于不同极限，则函数极限不存在</b>。</p>
+
+        <div class="example">
+          <div class="ex-head"><h3>例 1　$\dfrac{\sin x}{x}$ 的直接应用</h3></div>
+          <p>求 $\lim\limits_{x\to0}\dfrac{\sin 3x}{\sin 5x}$。</p>
+          <details class="solution">
+            <summary>先想再看解答</summary>
+            <div class="sol-body">
+              <p>变形凑重要极限：</p>
+              <p class="formula-line">$$\lim_{x\to0}\frac{\sin3x}{\sin5x}
+                =\lim_{x\to0}\frac{\dfrac{\sin3x}{3x}\cdot3}{\dfrac{\sin5x}{5x}\cdot5}
+                =\frac{1\cdot3}{1\cdot5}=\frac35.$$</p>
+              <p style="margin-bottom:0;"><b>关键：</b>小量 $\to0$ 时，“$\sin(\text{小量})/\text{小量}\to1$”可以当公式用。</p>
+            </div>
+          </details>
+        </div>
+
+        <div class="example">
+          <div class="ex-head"><h3>例 2　利用恒等式凑重要极限</h3></div>
+          <p>求 $\lim\limits_{x\to0}\dfrac{1-\cos x}{x^2}$。</p>
+          <details class="solution">
+            <summary>先想再看解答</summary>
+            <div class="sol-body">
+              <p>用半角公式 $1-\cos x=2\sin^2\dfrac x2$：</p>
+              <p class="formula-line">$$\lim_{x\to0}\frac{1-\cos x}{x^2}
+                =\lim_{x\to0}\frac{2\sin^2\frac x2}{x^2}
+                =\frac12\lim_{x\to0}\left(\frac{\sin\frac x2}{\frac x2}\right)^2
+                =\frac12.$$</p>
+              <p style="margin-bottom:0;"><b>结论要记住：</b>$1-\cos x\sim\dfrac{x^2}{2}$（$x\to0$），下一节会放进等价无穷小表。</p>
+            </div>
+          </details>
+        </div>
+
+        <div class="example">
+          <div class="ex-head"><h3>例 3　$1^\infty$ 型：第二重要极限</h3></div>
+          <p>求 $\lim\limits_{x\to\infty}\left(\dfrac{x+2}{x-1}\right)^{2x}$。</p>
+          <details class="solution">
+            <summary>先想再看解答</summary>
+            <div class="sol-body">
+              <p>先看底数：$\dfrac{x+2}{x-1}=1+\dfrac3{x-1}$，于是</p>
+              <p class="formula-line">$$\left(\frac{x+2}{x-1}\right)^{2x}
+                =\left[\left(1+\frac{3}{x-1}\right)^{\frac{x-1}{3}}\right]^{\frac{3\cdot2x}{x-1}}.$$</p>
+              <p>方括号内 $\to e$，指数 $\dfrac{6x}{x-1}\to6$，故原极限 $=e^6$。</p>
+              <p style="margin-bottom:0;"><b>套路：</b>把底数写成 $1+\text{小量}$，把指数凑成“小量的倒数 × 剩余部分”。</p>
+            </div>
+          </details>
+        </div>
+
+        <div class="example">
+          <div class="ex-head"><h3>例 4　归结原则证明极限不存在</h3></div>
+          <p>证明 $\lim\limits_{x\to0}\sin\dfrac1x$ 不存在。</p>
+          <details class="solution">
+            <summary>先想再看解答</summary>
+            <div class="sol-body">
+              <p>取数列 $x_n=\dfrac1{n\pi}$（$n\to\infty$ 时 $x_n\to0$，且 $x_n\ne0$），则 $\sin\dfrac1{x_n}=\sin n\pi=0\to0$。</p>
+              <p>另取 $y_n=\dfrac{1}{\frac\pi2+2n\pi}$，则 $y_n\to0$，但 $\sin\dfrac1{y_n}=\sin\left(\frac\pi2+2n\pi\right)=1\to1$。</p>
+              <p>两条路线得到不同极限，由归结原则知 $\lim\limits_{x\to0}\sin\dfrac1x$ 不存在（它是振荡间断的典型例子）。</p>
+            </div>
+          </details>
+        </div>
+
+        <div class="example">
+          <div class="ex-head"><h3>例 5　有界函数 × 无穷小</h3></div>
+          <p>求 $\lim\limits_{x\to0}x\sin\dfrac1x$。</p>
+          <details class="solution">
+            <summary>先想再看解答</summary>
+            <div class="sol-body">
+              <p>注意：这里乘的是 $x\to0$，而不是 $\sin\dfrac1x\to$ 某值。$\left|\sin\dfrac1x\right|\le1$ 有界，而 $x$ 是无穷小，故</p>
+              <p class="formula-line">$$0\le\left|x\sin\frac1x\right|\le|x|\to0.$$</p>
+              <p>由夹逼定理，原极限为 0。</p>
+              <p style="margin-bottom:0;"><b>对比记忆：</b>$\sin\dfrac1x$ 无极限（例 4），但 $x\cdot\sin\dfrac1x$ 极限为 0——差一个“趋于 0 的因子”，结果完全不同。</p>
+            </div>
+          </details>
+        </div>
+
+        <div class="box warn">
+          <span class="box-tag">易错提醒</span>
+          <p style="margin-bottom:0;">① 极限存在不要求 $f(x_0)$ 有定义（如 $\dfrac{\sin x}{x}$ 在 $x=0$）。② 分段函数必须检查左右极限。③ $1^\infty$ 不是“1 的任何次方”，而是底数从两边逼近 1、指数趋于无穷的较量。④ 用归结原则否定极限时，两条路线都要满足“$x_n\to x_0$ 且 $x_n\ne x_0$”。</p>
+        </div>
+      </div>
+
+      <div class="pager">
+        <a href="ch1-2.html"><small>上一节</small>← 1.2 数列的极限</a>
+        <a class="next" href="ch1-4.html"><small>下一节</small>1.4 无穷小量与无穷大量 →</a>
+      </div>
+    </div>
+  </div>
+
+  <footer class="site-footer">
+    <div class="wrap footer-inner">
+      <div><b>工科数学分析基础（上册）自学站</b><br>1.3 函数的极限</div>
+      <div><a href="../index.html">首页</a> · <a href="../ch1.html">第一章</a> · <a href="../exercises/ch1-exercises.html">章末练习</a></div>
+    </div>
+  </footer>
+</body>
+</html>

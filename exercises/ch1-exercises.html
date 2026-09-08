@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>第 1 章 · 章末练习 · 工科数学分析自学站</title>
+  <link rel="stylesheet" href="../assets/css/style.css">
+  <link rel="stylesheet" href="../assets/katex/katex.min.css">
+  <script defer src="../assets/katex/katex.min.js"></script>
+  <script defer src="../assets/katex/auto-render.min.js"></script>
+  <script defer src="../assets/js/app.js"></script>
+  <script defer src="../assets/js/quiz.js"></script>
+</head>
+<body>
+  <header class="site-header">
+    <div class="wrap header-inner">
+      <a class="brand" href="../index.html">📘 工科数学分析 · 自学站
+        <small>第三版 · 上册 · 一元函数微积分</small>
+      </a>
+      <nav class="main-nav">
+        <a href="../index.html">首页</a>
+        <a href="../ch1.html" class="active">第一章</a>
+        <a href="../ch2.html">第二章</a>
+        <a href="../ch3.html">第三章</a>
+        <a href="../ch4.html">第四章</a>
+      </nav>
+    </div>
+  </header>
+
+  <div class="page-head">
+    <div class="wrap">
+      <p class="crumbs"><a href="../index.html">首页</a> / <a href="../ch1.html">第一章</a> / 章末练习</p>
+      <h1>第 1 章 · 章末练习</h1>
+      <p class="lead">函数、极限、连续 · 共 16 题（选择题 8 + 填空题 8），覆盖全部五节。每道题下方紧跟答案：选择题点选项即判对错，填空题点“显示答案”。</p>
+      <div class="btn-row">
+        <a class="btn secondary" href="../ch1.html">← 返回第一章</a>
+        <a class="btn" href="../lessons/ch1-1.html">忘记内容？回看 1.1</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="content">
+    <div class="wrap">
+      <div class="goal-box">
+        <b>作答建议：</b>先闭卷完成再对答案；答错的题，用“解析”里提到的知识点回课页复习。全部完成后点右上“重新作答”可再刷一遍。
+      </div>
+
+      <div class="quiz-toolbar">
+        <span>📋 第 1 章 · 函数、极限、连续</span>
+        <button type="button" class="reset-btn" id="resetQuiz">↺ 重新作答</button>
+      </div>
+
+      <div class="quiz-group">
+        <h2>一、选择题 <span style="font-size:0.95rem;font-weight:500;color:var(--muted);">（点击选项立即判对错）</span></h2>
+
+        <div class="quiz-q" data-correct="A">
+          <div class="q-top"><span class="q-no">选择 1</span><span class="q-type mc">选择题</span><span style="font-size:0.85rem;color:var(--muted);">§1.1 集合运算</span></div>
+          <p class="q-stem">设 $A=(-3,3)$，$B=[-1,3]$，则 $A\cap B=$</p>
+          <div class="options">
+            <button type="button" class="opt" data-key="A">A. $[-1,3)$</button>
+            <button type="button" class="opt" data-key="B">B. $(-1,3]$</button>
+            <button type="button" class="opt" data-key="C">C. $(-1,3)$</button>
+            <button type="button" class="opt" data-key="D">D. $[-1,3]$</button>
+          </div>
+          <p class="fb-result"></p>
+          <div class="explain" hidden>
+            <p><b>解析：</b>$3\in B$ 但 $3\notin A$，所以 3 不在交集里；$-1$ 同时属于 $A$ 与 $B$，保留。交集 $=[-1,3)$，选 A。</p>
+          </div>
+        </div>
+
+        <div class="quiz-q" data-correct="A">
+          <div class="q-top"><span class="q-no">选择 2</span><span class="q-type mc">选择题</span><span style="font-size:0.85rem;color:var(--muted);">§1.1 定义域</span></div>
+          <p class="q-stem">函数 $f(x)=\ln(x+1)+\sqrt{4-x^2}$ 的定义域是</p>
+          <div class="options">
+            <button type="button" class="opt" data-key="A">A. $(-1,2]$</button>
+            <button type="button" class="opt" data-key="B">B. $[-1,2]$</button>
+            <button type="button" class="opt" data-key="C">C. $(-1,2)$</button>
+            <button type="button" class="opt" data-key="D">D. $(-2,2]$</button>
+          </div>
+          <p class="fb-result"></p>
+          <div class="explain" hidden>
+            <p><b>解析：</b>真数 $x+1>0\Rightarrow x>-1$；根号 $4-x^2\ge0\Rightarrow -2\le x\le2$。取交集得 $(-1,2]$，选 A。$x=-1$ 让对数无意义，不能取；$x=2$ 可取。</p>
+          </div>
+        </div>
+
+        <div class="quiz-q" data-correct="B">
+          <div class="q-top"><span class="q-no">选择 3</span><span class="q-type mc">选择题</span><span style="font-size:0.85rem;color:var(--muted);">§1.2 数列极限计算</span></div>
+          <p class="q-stem">$\lim\limits_{n\to\infty}\left(\sqrt{n^2+n}-n\right)=$</p>
+          <div class="options">
+            <button type="button" class="opt" data-key="A">A. $0$</button>
+            <button type="button" class="opt" data-key="B">B. $\dfrac12$</button>
+            <button type="button" class="opt" data-key="C">C. $1$</button>
+            <button type="button" class="opt" data-key="D">D. 发散</button>
+          </div>
+          <p class="fb-result"></p>
+          <div class="explain" hidden>
+            <p><b>解析：</b>分子有理化：$\sqrt{n^2+n}-n=\dfrac{n}{\sqrt{n^2+n}+n}$，同除以 $n$ 得 $\dfrac{1}{\sqrt{1+\frac1n}+1}\to\dfrac12$，选 B。</p>
+          </div>
+        </div>
+
+        <div class="quiz-q" data-correct="A">
+          <div class="q-top"><span class="q-no">选择 4</span><span class="q-type mc">选择题</span><span style="font-size:0.85rem;color:var(--muted);">§1.2 收敛数列性质</span></div>
+          <p class="q-stem">下列命题中<b>正确</b>的是</p>
+          <div class="options">
+            <button type="button" class="opt" data-key="A">A. 无界数列必发散</button>
+            <button type="button" class="opt" data-key="B">B. 发散数列必无界</button>
+            <button type="button" class="opt" data-key="C">C. 收敛数列可以有多个极限</button>
+            <button type="button" class="opt" data-key="D">D. 有界数列必收敛</button>
+          </div>
+          <p class="fb-result"></p>
+          <div class="explain" hidden>
+            <p><b>解析：</b>收敛 $\Rightarrow$ 有界，其逆否命题即“无界 $\Rightarrow$ 发散”，A 正确。反例：$(-1)^n$ 有界但发散（B、D 错）；极限唯一（C 错）。</p>
+          </div>
+        </div>
+
+        <div class="quiz-q" data-correct="C">
+          <div class="q-top"><span class="q-no">选择 5</span><span class="q-type mc">选择题</span><span style="font-size:0.85rem;color:var(--muted);">§1.3 第一个重要极限</span></div>
+          <p class="q-stem">$\lim\limits_{x\to0}\dfrac{\sin 2x}{x}=$</p>
+          <div class="options">
+            <button type="button" class="opt" data-key="A">A. $0$</button>
+            <button type="button" class="opt" data-key="B">B. $1$</button>
+            <button type="button" class="opt" data-key="C">C. $2$</button>
+            <button type="button" class="opt" data-key="D">D. 不存在</button>
+          </div>
+          <p class="fb-result"></p>
+          <div class="explain" hidden>
+            <p><b>解析：</b>$\dfrac{\sin 2x}{x}=2\cdot\dfrac{\sin 2x}{2x}\to 2\times1=2$，选 C。</p>
+          </div>
+        </div>
+
+        <div class="quiz-q" data-correct="D">
+          <div class="q-top"><span class="q-no">选择 6</span><span class="q-type mc">选择题</span><span style="font-size:0.85rem;color:var(--muted);">§1.3 极限不存在</span></div>
+          <p class="q-stem">下列极限中<b>不存在</b>的是</p>
+          <div class="options">
+            <button type="button" class="opt" data-key="A">A. $\lim\limits_{x\to0}\dfrac{\sin x}{x}$</button>
+            <button type="button" class="opt" data-key="B">B. $\lim\limits_{x\to0}(1+x)^{1/x}$</button>
+            <button type="button" class="opt" data-key="C">C. $\lim\limits_{x\to0}x\sin\dfrac1x$</button>
+            <button type="button" class="opt" data-key="D">D. $\lim\limits_{x\to0}\sin\dfrac1x$</button>
+          </div>
+          <p class="fb-result"></p>
+          <div class="explain" hidden>
+            <p><b>解析：</b>A 趋于 1，B 趋于 $e$，C 由夹逼定理趋于 0。D 中 $\sin\frac1x$ 在 0 附近来回振荡（取 $x=\frac1{n\pi}$ 得 0，取 $x=\frac1{\pi/2+2n\pi}$ 得 1），极限不存在，选 D。</p>
+          </div>
+        </div>
+
+        <div class="quiz-q" data-correct="B">
+          <div class="q-top"><span class="q-no">选择 7</span><span class="q-type mc">选择题</span><span style="font-size:0.85rem;color:var(--muted);">§1.4 等价无穷小</span></div>
+          <p class="q-stem">当 $x\to0$ 时，与 $x$ <b>等价</b>的无穷小是</p>
+          <div class="options">
+            <button type="button" class="opt" data-key="A">A. $x^2$</button>
+            <button type="button" class="opt" data-key="B">B. $\sin x$</button>
+            <button type="button" class="opt" data-key="C">C. $1-\cos x$</button>
+            <button type="button" class="opt" data-key="D">D. $e^{2x}-1$</button>
+          </div>
+          <p class="fb-result"></p>
+          <div class="explain" hidden>
+            <p><b>解析：</b>$\sin x\sim x$，选 B。$x^2$ 是 $x$ 的高阶无穷小；$1-\cos x\sim\frac{x^2}{2}$ 是二阶；$e^{2x}-1\sim2x$ 与 $x$ 同阶但不等价。</p>
+          </div>
+        </div>
+
+        <div class="quiz-q" data-correct="B">
+          <div class="q-top"><span class="q-no">选择 8</span><span class="q-type mc">选择题</span><span style="font-size:0.85rem;color:var(--muted);">§1.5 间断点分类</span></div>
+          <p class="q-stem">设 $f(x)=\dfrac{x}{|x|}$（$x\ne0$），则 $x=0$ 是 $f$ 的</p>
+          <div class="options">
+            <button type="button" class="opt" data-key="A">A. 可去间断点</button>
+            <button type="button" class="opt" data-key="B">B. 跳跃间断点</button>
+            <button type="button" class="opt" data-key="C">C. 无穷间断点</button>
+            <button type="button" class="opt" data-key="D">D. 振荡间断点</button>
+          </div>
+          <p class="fb-result"></p>
+          <div class="explain" hidden>
+            <p><b>解析：</b>$x>0$ 时 $f=1$，$x<0$ 时 $f=-1$，左右极限分别为 $-1$ 与 $1$，都存在但不相等，属第一类<b>跳跃间断点</b>，选 B。</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="quiz-group">
+        <h2>二、填空题 <span style="font-size:0.95rem;font-weight:500;color:var(--muted);">（先自己算，再点“显示答案”）</span></h2>
+
+        <div class="quiz-q">
+          <div class="q-top"><span class="q-no">填空 1</span><span class="q-type fill">填空题</span><span style="font-size:0.85rem;color:var(--muted);">§1.1 确界</span></div>
+          <p class="q-stem">设 $S=\left\{1-\dfrac1n\;\middle|\;n\in\mathbb N^+\right\}$，则 $\sup S=$ ______ 。</p>
+          <button type="button" class="reveal-btn">显示答案</button>
+          <div class="answer-box" hidden>
+            <p><span class="ans-label">答案：</span>$\sup S=1$</p>
+            <div class="explain">
+              <p><b>解析：</b>集合各项从 0 单调递增地趋近 1，任何 $M\ge1$ 都是上界，而 1 是最小上界；且 $1\notin S$，所以 $S$ 有上确界 1 但没有最大值。</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="quiz-q">
+          <div class="q-top"><span class="q-no">填空 2</span><span class="q-type fill">填空题</span><span style="font-size:0.85rem;color:var(--muted);">§1.2 和式极限</span></div>
+          <p class="q-stem">$\lim\limits_{n\to\infty}\dfrac{1+2+\cdots+n}{n^2}=$ ______ 。</p>
+          <button type="button" class="reveal-btn">显示答案</button>
+          <div class="answer-box" hidden>
+            <p><span class="ans-label">答案：</span>$\dfrac12$</p>
+            <div class="explain">
+              <p><b>解析：</b>$1+2+\cdots+n=\dfrac{n(n+1)}2$，除以 $n^2$ 得 $\dfrac12\left(1+\dfrac1n\right)\to\dfrac12$。</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="quiz-q">
+          <div class="q-top"><span class="q-no">填空 3</span><span class="q-type fill">填空题</span><span style="font-size:0.85rem;color:var(--muted);">§1.2 夹逼定理</span></div>
+          <p class="q-stem">若数列 $\{x_n\}$ 满足 $|x_n-1|<\dfrac1n$（$n=1,2,\ldots$），则 $\lim\limits_{n\to\infty}x_n=$ ______ 。</p>
+          <button type="button" class="reveal-btn">显示答案</button>
+          <div class="answer-box" hidden>
+            <p><span class="ans-label">答案：</span>$1$</p>
+            <div class="explain">
+              <p><b>解析：</b>$1-\dfrac1n<x_n<1+\dfrac1n$，两边都趋于 1，由夹逼定理 $x_n\to1$。</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="quiz-q">
+          <div class="q-top"><span class="q-no">填空 4</span><span class="q-type fill">填空题</span><span style="font-size:0.85rem;color:var(--muted);">§1.3 第二个重要极限</span></div>
+          <p class="q-stem">$\lim\limits_{x\to\infty}\left(1+\dfrac2x\right)^{x}=$ ______ 。</p>
+          <button type="button" class="reveal-btn">显示答案</button>
+          <div class="answer-box" hidden>
+            <p><span class="ans-label">答案：</span>$e^2$</p>
+            <div class="explain">
+              <p><b>解析：</b>$\left(1+\dfrac2x\right)^x=\left[\left(1+\dfrac2x\right)^{x/2}\right]^2\to e^2$。</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="quiz-q">
+          <div class="q-top"><span class="q-no">填空 5</span><span class="q-type fill">填空题</span><span style="font-size:0.85rem;color:var(--muted);">§1.3 有界×无穷小</span></div>
+          <p class="q-stem">$\lim\limits_{x\to0}x\sin\dfrac1x=$ ______ 。</p>
+          <button type="button" class="reveal-btn">显示答案</button>
+          <div class="answer-box" hidden>
+            <p><span class="ans-label">答案：</span>$0$</p>
+            <div class="explain">
+              <p><b>解析：</b>$\left|\sin\dfrac1x\right|\le1$ 有界，$x\to0$ 是无穷小，有界函数乘无穷小仍为无穷小，故极限为 0。</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="quiz-q">
+          <div class="q-top"><span class="q-no">填空 6</span><span class="q-type fill">填空题</span><span style="font-size:0.85rem;color:var(--muted);">§1.4 无穷小的阶</span></div>
+          <p class="q-stem">当 $x\to0$ 时，$1-\cos x$ 是 $x$ 的 ______ 阶无穷小。</p>
+          <button type="button" class="reveal-btn">显示答案</button>
+          <div class="answer-box" hidden>
+            <p><span class="ans-label">答案：</span>$2$（二阶）</p>
+            <div class="explain">
+              <p><b>解析：</b>$1-\cos x\sim\dfrac{x^2}{2}$，与 $x^2$ 同阶，故是 $x$ 的二阶无穷小。</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="quiz-q">
+          <div class="q-top"><span class="q-no">填空 7</span><span class="q-type fill">填空题</span><span style="font-size:0.85rem;color:var(--muted);">§1.5 零点定理</span></div>
+          <p class="q-stem">设 $f$ 在 $[a,b]$ 上连续且 $f(a)f(b)<0$，则由零点定理，存在 $c\in(a,b)$ 使 $f(c)=$ ______ 。</p>
+          <button type="button" class="reveal-btn">显示答案</button>
+          <div class="answer-box" hidden>
+            <p><span class="ans-label">答案：</span>$0$</p>
+            <div class="explain">
+              <p><b>解析：</b>这是零点定理的直接结论：$f(a)$ 与 $f(b)$ 异号，连续函数必在 $(a,b)$ 内穿过 $x$ 轴，即存在 $c$ 使 $f(c)=0$。</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="quiz-q">
+          <div class="q-top"><span class="q-no">填空 8</span><span class="q-type fill">填空题</span><span style="font-size:0.85rem;color:var(--muted);">§1.5 一致连续</span></div>
+          <p class="q-stem">在闭区间上连续的函数，在该闭区间上一定 ______ 连续（填“一致”或“非一致”）。</p>
+          <button type="button" class="reveal-btn">显示答案</button>
+          <div class="answer-box" hidden>
+            <p><span class="ans-label">答案：</span>一致连续</p>
+            <div class="explain">
+              <p><b>解析：</b>闭区间上连续 $\Rightarrow$ 一致连续（本教材 5.4 节结论）。若区间换成开区间，如 $f(x)=\dfrac1x$ 在 $(0,1]$ 上连续但不一致连续。</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div style="margin-top:26px;">
+        <a class="ch-card" href="../ch1.html" style="background:var(--accent-soft);border-color:#b9cef0;">
+          <div class="ch-title"><h3>📚 练习完成？回去复习第一章</h3><span class="badge ok">继续加油</span></div>
+          <p class="ch-desc">学完本章可进入第二章（建设中）。第二章上线前，建议把课本第 1 章 A 类习题与综合练习题再做一遍。</p>
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <footer class="site-footer">
+    <div class="wrap footer-inner">
+      <div><b>工科数学分析基础（上册）自学站</b><br>第 1 章 · 章末练习（原创题目）</div>
+      <div><a href="../index.html">首页</a> · <a href="../ch1.html">第一章</a> · <a href="../lessons/ch1-5.html">回到 1.5</a></div>
+    </div>
+  </footer>
+</body>
+</html>

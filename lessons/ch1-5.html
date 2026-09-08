@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>1.5 连续函数 · 工科数学分析自学站</title>
+  <link rel="stylesheet" href="../assets/css/style.css">
+  <link rel="stylesheet" href="../assets/katex/katex.min.css">
+  <script defer src="../assets/katex/katex.min.js"></script>
+  <script defer src="../assets/katex/auto-render.min.js"></script>
+  <script defer src="../assets/js/app.js"></script>
+</head>
+<body>
+  <header class="site-header">
+    <div class="wrap header-inner">
+      <a class="brand" href="../index.html">📘 工科数学分析 · 自学站
+        <small>第三版 · 上册 · 一元函数微积分</small>
+      </a>
+      <nav class="main-nav">
+        <a href="../index.html">首页</a>
+        <a href="../ch1.html">第一章</a>
+        <a href="../ch2.html">第二章</a>
+        <a href="../ch3.html">第三章</a>
+        <a href="../ch4.html">第四章</a>
+      </nav>
+    </div>
+  </header>
+
+  <div class="page-head">
+    <div class="wrap">
+      <p class="crumbs"><a href="../index.html">首页</a> / <a href="../ch1.html">第一章</a> / 第五节</p>
+      <h1>1.5 连续函数</h1>
+      <p class="lead">“一笔能画完的曲线”用数学怎么说？连续性能让我们不画图就知道方程有没有根——这是第一章的收官之节。</p>
+    </div>
+  </div>
+
+  <div class="content">
+    <div class="wrap">
+      <div class="goal-box">
+        <b>本节要解决的问题：</b>什么是连续？间断点有哪几类？初等函数为什么“基本都连续”？闭区间上的连续函数有哪些“必然发生”的好事？
+      </div>
+
+      <div class="lesson-body">
+        <h2 class="subhead">5.1 函数的连续性概念与间断点的分类</h2>
+        <div class="box">
+          <span class="box-tag">定义 · 连续</span>
+          <p>$f$ 在点 $x_0$ <b>连续</b>，指：① $f(x_0)$ 有定义；② $\lim\limits_{x\to x_0}f(x)$ 存在；③ 二者相等。即
+          $$\lim_{x\to x_0}f(x)=f(x_0).$$</p>
+          <p style="margin-bottom:0;">用增量语言：记 $\Delta y=f(x_0+\Delta x)-f(x_0)$，则连续 $\iff\lim\limits_{\Delta x\to0}\Delta y=0$——“自变量微动，函数值跟着微动”。</p>
+        </div>
+        <p>若 $\lim\limits_{x\to x_0^-}f(x)=f(x_0)$，称右连续；左连续同理。$f$ 在 $x_0$ 连续 $\iff$ 既左连续又右连续。</p>
+        <p>不连续的点叫<b>间断点</b>，分类如下：</p>
+        <ul>
+          <li><b>第一类间断点</b>：左右极限都存在。若相等（只是函数值缺失或不对）→<b>可去间断点</b>；若不相等→<b>跳跃间断点</b>。</li>
+          <li><b>第二类间断点</b>：至少一侧极限不存在。典型如<b>无穷间断点</b>（如 $\dfrac1x$ 在 $0$）与<b>振荡间断点</b>（如 $\sin\dfrac1x$ 在 $0$）。</li>
+        </ul>
+        <p>函数在<b>区间上连续</b>指在区间内每一点都连续；在闭区间 $[a,b]$ 连续还要求 $a$ 处右连续、$b$ 处左连续。</p>
+
+        <h2 class="subhead">5.2 连续函数的运算性质与初等函数的连续性</h2>
+        <ul>
+          <li>连续函数的和、差、积、商（分母非零）仍连续；</li>
+          <li>连续函数复合仍连续：$g$ 在 $x_0$ 连续、$f$ 在 $u_0=g(x_0)$ 连续 $\Rightarrow f\circ g$ 在 $x_0$ 连续；</li>
+          <li>单调连续函数的反函数连续（且单调性不变）。</li>
+        </ul>
+        <div class="box thm">
+          <span class="box-tag">重要结论 · 初等函数的连续性</span>
+          <p>一切初等函数在它的<b>定义区间</b>内处处连续。</p>
+          <p style="margin-bottom:0;">这解释了为什么“代入法”求极限通常有效：若 $x_0$ 在定义区间内，$\lim\limits_{x\to x_0}f(x)=f(x_0)$ 直接代入即可。函数“不连续”，往往发生在定义域的边界或挖掉的点。</p>
+        </div>
+
+        <h2 class="subhead">5.3 闭区间上连续函数的性质</h2>
+        <div class="box thm">
+          <span class="box-tag">定理 · 有界性与最值定理</span>
+          <p>$f$ 在闭区间 $[a,b]$ 上连续 $\Rightarrow f$ 在 $[a,b]$ 上有界，且能取到最大值与最小值。</p>
+        </div>
+        <div class="box thm">
+          <span class="box-tag">定理 · 介值定理</span>
+          <p>$f$ 在 $[a,b]$ 上连续，且 $f(a)\ne f(b)$，则对介于 $f(a)$ 与 $f(b)$ 之间的任意数 $C$，存在 $\xi\in(a,b)$ 使 $f(\xi)=C$。</p>
+          <p style="margin-bottom:0;">连续函数的图像从 $f(a)$ 升到 $f(b)$ 时，<b>必须路过中间的每个高度</b>——不能“跳过去”。</p>
+        </div>
+        <div class="box thm">
+          <span class="box-tag">推论 · 零点定理</span>
+          <p>若 $f$ 在 $[a,b]$ 上连续且 $f(a)\cdot f(b)<0$（异号），则至少存在一点 $\xi\in(a,b)$ 使 $f(\xi)=0$。</p>
+          <p style="margin-bottom:0;">这是介值定理取 $C=0$ 的特例，也是证明“方程有根”“函数有零点”的万能入口。</p>
+        </div>
+        <p>以上三个结论都依赖“<b>闭区间 + 连续</b>”两个条件：开区间上 $f(x)=\dfrac1x$ 连续但无界，$f(x)=x$ 在 $(0,1)$ 上取不到最值——条件缺一不可。</p>
+
+        <h2 class="subhead">5.4 函数的一致连续性</h2>
+        <p>普通连续性是“逐点”的：$\delta$ 可以随点而变。若对任意 $\varepsilon>0$，能找到一个<b>只与 $\varepsilon$ 有关、与 $x$ 无关</b>的 $\delta>0$，使区间内任意两点只要距离小于 $\delta$，函数值差就小于 $\varepsilon$，则称函数在区间上<b>一致连续</b>。</p>
+        <div class="box thm">
+          <span class="box-tag">定理 · 一致连续性</span>
+          <p>$f$ 在闭区间 $[a,b]$ 上连续 $\Rightarrow f$ 在 $[a,b]$ 上一致连续。</p>
+          <p style="margin-bottom:0;">直观：闭区间上的连续函数“步调均匀”，不会在某处突然抖动加速。而 $f(x)=\dfrac1x$ 在 $(0,1]$ 连续但不一致连续——越靠近 0 抖动越剧烈。</p>
+        </div>
+
+        <h2 class="subhead">*5.5 压缩映射原理与迭代法（选学）</h2>
+        <span class="badge select" style="margin-bottom:10px;">选学内容</span>
+        <div class="box thm">
+          <span class="box-tag">定理 · 压缩映射原理（一维）</span>
+          <p>设 $f$ 在闭区间 $I$ 上满足 $f(I)\subseteq I$，且存在常数 $q\in(0,1)$ 使对任意 $x,y\in I$ 都有 $|f(x)-f(y)|\le q|x-y|$，则 $f$ 在 $I$ 上有<b>唯一不动点</b> $x^*$（即 $f(x^*)=x^*$），且从任意 $x_0\in I$ 出发的迭代 $x_{n+1}=f(x_n)$ 都收敛到 $x^*$。</p>
+          <p style="margin-bottom:0;">它把“解方程”变成“反复代入”：数值计算里求根、求不动点都靠这一思想。</p>
+        </div>
+
+        <div class="example">
+          <div class="ex-head"><h3>例 1　可去间断点补值</h3></div>
+          <p>设 $f(x)=\dfrac{\sin x}{x}\ (x\ne0)$。$x=0$ 是什么间断点？如何补充定义使函数在 0 处连续？</p>
+          <details class="solution">
+            <summary>先想再看解答</summary>
+            <div class="sol-body">
+              <p>$\lim\limits_{x\to0}\dfrac{\sin x}{x}=1$ 存在，但 $f(0)$ 未定义，所以 0 是<b>可去间断点</b>。</p>
+              <p>补充定义 $f(0)=1$ 后，$\lim\limits_{x\to0}f(x)=f(0)$，函数在 0 处连续。</p>
+              <p style="margin-bottom:0;"><b>命名由来：</b>“改一个点的值就能把洞补上”，故称可去。</p>
+            </div>
+          </details>
+        </div>
+
+        <div class="example">
+          <div class="ex-head"><h3>例 2　分段函数的连续性</h3></div>
+          <p>设 $f(x)=x^2\sin\dfrac1x$（$x\ne0$），$f(0)=0$。证明 $f$ 在 0 处连续。</p>
+          <details class="solution">
+            <summary>先想再看解答</summary>
+            <div class="sol-body">
+              <p>由夹逼定理（或有界 $\times$ 无穷小），$\lim\limits_{x\to0}x^2\sin\dfrac1x=0=f(0)$，故 $f$ 在 0 处连续。</p>
+              <p style="margin-bottom:0;"><b>对比：</b>如果改成 $f(x)=x\sin\dfrac1x$ 也一样连续；但若把 $x^2$ 换成常数 1，即 $\sin\dfrac1x$，在 0 处就不连续了——趋零的“压制因子”是关键。</p>
+            </div>
+          </details>
+        </div>
+
+        <div class="example">
+          <div class="ex-head"><h3>例 3　跳跃间断点</h3></div>
+          <p>讨论 $f(x)=\dfrac{x}{|x|}$ 在 $x=0$ 处的连续性。</p>
+          <details class="solution">
+            <summary>先想再看解答</summary>
+            <div class="sol-body">
+              <p>$x>0$ 时 $f(x)=1$，$x<0$ 时 $f(x)=-1$（$x=0$ 处无定义）。</p>
+              <p>左极限 $-1$，右极限 $1$，都存在但不相等，故 0 是<b>第一类跳跃间断点</b>。</p>
+              <p style="margin-bottom:0;"><b>无论怎样补 $f(0)$ 都不能使函数连续</b>——跳了就是跳了。</p>
+            </div>
+          </details>
+        </div>
+
+        <div class="example">
+          <div class="ex-head"><h3>例 4　零点定理证“方程有根”</h3></div>
+          <p>证明方程 $x^3+2x-1=0$ 在 $(0,1)$ 内至少有一个实根。</p>
+          <details class="solution">
+            <summary>先想再看解答</summary>
+            <div class="sol-body">
+              <p>令 $f(x)=x^3+2x-1$。$f$ 是多项式，在 $[0,1]$ 上连续。</p>
+              <p>$f(0)=-1<0$，$f(1)=2>0$，由零点定理，存在 $\xi\in(0,1)$ 使 $f(\xi)=0$，即原方程在 $(0,1)$ 内至少有一个根。证毕。</p>
+              <p style="margin-bottom:0;"><b>体会：</b>我们不知道根在哪，但连续性能“逼”出它的存在——这就是存在性证明的典型风格。</p>
+            </div>
+          </details>
+        </div>
+
+        <div class="example">
+          <div class="ex-head"><h3>例 5　介值定理的不动点应用（进阶）</h3></div>
+          <p>设 $f$ 在 $[0,1]$ 上连续且 $0\le f(x)\le1$。证明存在 $c\in[0,1]$ 使 $f(c)=c$。</p>
+          <details class="solution">
+            <summary>先想再看解答</summary>
+            <div class="sol-body">
+              <p>令 $g(x)=f(x)-x$。$g$ 在 $[0,1]$ 上连续。$g(0)=f(0)-0\ge0$，$g(1)=f(1)-1\le0$。</p>
+              <p>若 $g(0)=0$ 或 $g(1)=0$，则 $c=0$ 或 $1$ 已满足；否则 $g(0)>0$ 且 $g(1)<0$，由零点定理存在 $c\in(0,1)$ 使 $g(c)=0$，即 $f(c)=c$。证毕。</p>
+              <p style="margin-bottom:0;"><b>联系：</b>这就是选学 5.5 压缩映射原理的“存在性”版本——不加压缩条件，不动点仍存在但不一定唯一。</p>
+            </div>
+          </details>
+        </div>
+
+        <div class="box warn">
+          <span class="box-tag">易错提醒</span>
+          <p style="margin-bottom:0;">① 判断连续三步：有定义、极限存在、两者相等，一步都不能省。② “初等函数在定义区间连续”——是<b>定义区间</b>而非定义域上每个孤立点，例如 $\tan x$ 的定义域挖掉 $\dfrac\pi2+k\pi$，那些点都是间断点。③ 零点定理只给存在性，不给具体位置。④ 把开区间换成闭区间、或去掉连续条件，最值/介值结论都可能崩。</p>
+        </div>
+      </div>
+
+      <div class="pager">
+        <a href="ch1-4.html"><small>上一节</small>← 1.4 无穷小量与无穷大量</a>
+        <a class="next" href="../exercises/ch1-exercises.html"><small>下一站</small>✏️ 第 1 章 · 章末练习 →</a>
+      </div>
+    </div>
+  </div>
+
+  <footer class="site-footer">
+    <div class="wrap footer-inner">
+      <div><b>工科数学分析基础（上册）自学站</b><br>1.5 连续函数</div>
+      <div><a href="../index.html">首页</a> · <a href="../ch1.html">第一章</a> · <a href="../exercises/ch1-exercises.html">章末练习</a></div>
+    </div>
+  </footer>
+</body>
+</html>
