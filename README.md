@@ -5,7 +5,7 @@
 ## 如何使用
 
 - 本地学习：双击 `index.html`，完全离线可用（公式库 KaTeX 已内置）。
-- 在线访问：本仓库已开启 GitHub Pages，网址为 `https://<用户名>.github.io/math-analysis-web/`。
+- 在线访问：本仓库已开启 GitHub Pages，网址为 <https://fsyiyu.github.io/math-analysis-web/>。
 
 ## 目录结构
 
