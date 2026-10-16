@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>3.4 定积分的应用 · 工科数学分析自学站</title>
+  <link rel="stylesheet" href="../assets/css/style.css">
+  <link rel="stylesheet" href="../assets/katex/katex.min.css">
+  <script defer src="../assets/katex/katex.min.js"></script>
+  <script defer src="../assets/katex/auto-render.min.js"></script>
+  <script defer src="../assets/js/app.js"></script>
+</head>
+<body>
+  <header class="site-header">
+    <div class="wrap header-inner">
+      <a class="brand" href="../index.html">📘 工科数学分析 · 自学站
+        <small>第三版 · 上册 · 一元函数微积分</small>
+      </a>
+      <nav class="main-nav">
+        <a href="../index.html">首页</a>
+        <a href="../ch1.html">第一章</a>
+        <a href="../ch2.html">第二章</a>
+        <a href="../ch3.html">第三章</a>
+        <a href="../ch4.html">第四章</a>
+      </nav>
+    </div>
+  </header>
+
+  <div class="page-head">
+    <div class="wrap">
+      <p class="crumbs"><a href="../index.html">首页</a> / <a href="../ch3.html">第三章</a> / 第四节</p>
+      <h1>3.4 定积分的应用</h1>
+      <p class="lead">面积、体积、弧长、功、压力……只要能“切细了近似相加”，就能写成定积分。关键是掌握微元法这套通用写法。</p>
+    </div>
+  </div>
+
+  <div class="content">
+    <div class="wrap">
+      <div class="goal-box">
+        <b>本节要解决的问题：</b>怎样把实际问题写成一个定积分？几何量与物理量的公式（面积、体积、弧长、功）是怎么来的？
+      </div>
+
+      <div class="lesson-body">
+        <h2 class="subhead" id="s1">3.4.1 建立积分表达式的微元法</h2>
+        <p>若所求量 $U$ 具有<b>可加性</b>（整体等于各部分之和），且可选定一个变量 $x$，在小区间 $[x,x+\mathrm{d}x]$ 上其“微元”可近似写成</p>
+        <p class="formula-line">$$\mathrm{d}U\approx f(x)\,\mathrm{d}x,$$</p>
+        <p>则该量可以表示为定积分 $U=\displaystyle\int_a^b f(x)\,\mathrm{d}x$。使用微元法的三步：</p>
+        <ul>
+          <li>① 选取积分变量并确定它的变化范围 $[a,b]$；</li>
+          <li>② 在任一小区间上“以直代曲、以匀代变”，写出近似微元；</li>
+          <li>③ 把微元在 $[a,b]$ 上积分，得到精确值。</li>
+        </ul>
+        <div class="box idea">
+          <span class="box-tag">为什么可以“近似”后积分</span>
+          <p style="margin-bottom:0;">微元与真实增量相差一个比 $\mathrm{d}x$ 高阶的无穷小（正是 2.3 节微分的含义），求和无量级损失，取极限后近似变精确。这就是“以直代曲”的严格依据。</p>
+        </div>
+
+        <h2 class="subhead" id="s2">3.4.2 定积分在几何中的应用</h2>
+        <div class="box thm">
+          <span class="box-tag">常用公式</span>
+          <p><b>① 直角坐标下平面图形面积：</b>若 $f(x)\ge g(x)$ 于 $[a,b]$，则</p>
+          <p class="formula-line">$$A=\int_a^b\bigl[f(x)-g(x)\bigr]\mathrm{d}x.$$</p>
+          <p><b>② 旋转体体积：</b>曲线 $y=f(x)\ge0$ 与 $x$ 轴及 $x=a,x=b$ 围成的图形绕 $x$ 轴旋转，则</p>
+          <p class="formula-line">$$V=\pi\int_a^b f^2(x)\,\mathrm{d}x.$$</p>
+          <p><b>③ 平面曲线弧长：</b>光滑曲线 $y=f(x)\ (a\le x\le b)$ 的弧长</p>
+          <p class="formula-line">$$s=\int_a^b\sqrt{1+\bigl[f'(x)\bigr]^2}\,\mathrm{d}x.$$</p>
+          <p style="margin-bottom:0;"><b>④ 极坐标下曲边扇形面积：</b>$\rho=\rho(\theta)\ (\alpha\le\theta\le\beta)$ 围成的扇形面积 $A=\dfrac12\displaystyle\int_\alpha^\beta\rho^2(\theta)\,\mathrm{d}\theta$。</p>
+        </div>
+        <p>公式都来自微元法：面积微元是以 $\mathrm{d}x$ 为宽、以高差为高的窄条；体积微元是底面半径 $f(x)$、高 $\mathrm{d}x$ 的薄圆片；弧长微元由勾股定理得 $\mathrm{d}s=\sqrt{(\mathrm{d}x)^2+(\mathrm{d}y)^2}$。</p>
+
+        <h2 class="subhead" id="s3">3.4.3 定积分在物理中的应用</h2>
+        <ul>
+          <li><b>变力做功：</b>力 $F=F(x)$ 沿直线把物体从 $a$ 移动到 $b$，$W=\displaystyle\int_a^b F(x)\,\mathrm{d}x$；</li>
+          <li><b>变速直线运动的位移：</b>$\displaystyle s=\int_{t_1}^{t_2}v(t)\,\mathrm{d}t$（若求路程则取 $\displaystyle\int|v(t)|\mathrm{d}t$）；</li>
+          <li><b>液体静压力：</b>把受压面按深度切成窄条，压力微元 $\mathrm{d}P=\rho g h\,\mathrm{d}A$，再积分；</li>
+          <li><b>细杆质量、转动惯量、质心</b>等：同样是“密度 × 微元长度”后积分。</li>
+        </ul>
+
+        <div class="example">
+          <div class="ex-head"><h3>例 1　两条曲线围成的面积</h3></div>
+          <p>求曲线 $y=x^2$ 与直线 $y=x$ 所围图形的面积。</p>
+          <details class="solution">
+            <summary>先想再看解答</summary>
+            <div class="sol-body">
+              <p>两曲线交于 $x=0$ 与 $x=1$；在 $(0,1)$ 内 $x>x^2$，故上曲线为 $y=x$、下曲线为 $y=x^2$：</p>
+              <p class="formula-line">$$A=\int_0^1\left(x-x^2\right)\mathrm{d}x=\left[\frac{x^2}{2}-\frac{x^3}{3}\right]_0^1=\frac12-\frac13=\frac16.$$</p>
+            </div>
+          </details>
+        </div>
+
+        <div class="example">
+          <div class="ex-head"><h3>例 2　旋转体的体积</h3></div>
+          <p>求曲线 $y=\sqrt x$、$x$ 轴与直线 $x=1$ 围成的图形绕 $x$ 轴旋转所得旋转体的体积。</p>
+          <details class="solution">
+            <summary>先想再看解答</summary>
+            <div class="sol-body">
+              <p class="formula-line">$$V=\pi\int_0^1\left(\sqrt x\right)^2\mathrm{d}x=\pi\int_0^1x\,\mathrm{d}x=\pi\cdot\frac12=\frac{\pi}{2}.$$</p>
+              <p style="margin-bottom:0;"><b>对比：</b>若把曲线换成直线 $y=x$，得到的圆锥体积为 $\dfrac\pi3$；抛物线型曲线“更胖”，体积为 $\dfrac\pi2$。</p>
+            </div>
+          </details>
+        </div>
+
+        <div class="example">
+          <div class="ex-head"><h3>例 3　平面曲线弧长</h3></div>
+          <p>求曲线 $y=\dfrac23x^{3/2}$ 在 $0\le x\le3$ 上的弧长。</p>
+          <details class="solution">
+            <summary>先想再看解答</summary>
+            <div class="sol-body">
+              <p>$y'=x^{1/2}$，故 $\sqrt{1+y'^2}=\sqrt{1+x}$：</p>
+              <p class="formula-line">$$s=\int_0^3\sqrt{1+x}\,\mathrm{d}x=\left[\frac23(1+x)^{3/2}\right]_0^3=\frac23\left(8-1\right)=\frac{14}{3}.$$</p>
+            </div>
+          </details>
+        </div>
+
+        <div class="example">
+          <div class="ex-head"><h3>例 4　变力做功</h3></div>
+          <p>一物体在变力 $F(x)=x^2$（单位：N）作用下沿 $x$ 轴由 $x=0$ 移到 $x=3$（单位：m），求所做的功。</p>
+          <details class="solution">
+            <summary>先想再看解答</summary>
+            <div class="sol-body">
+              <p>取位移微元 $\mathrm{d}x$，功微元 $\mathrm{d}W=F(x)\mathrm{d}x$，故</p>
+              <p style="margin-bottom:0;">$$W=\int_0^3x^2\mathrm{d}x=\left[\frac{x^3}{3}\right]_0^3=9\ \text{J}.$$</p>
+            </div>
+          </details>
+        </div>
+
+        <div class="example">
+          <div class="ex-head"><h3>例 5　极坐标下的面积</h3></div>
+          <p>求心形线 $\rho=a(1+\cos\theta)\ (a>0)$ 所围图形的面积。</p>
+          <details class="solution">
+            <summary>先想再看解答</summary>
+            <div class="sol-body">
+              <p>曲线关于极轴对称，$\theta$ 从 $0$ 到 $2\pi$ 扫过整条封闭曲线：</p>
+              <p class="formula-line">$$A=\frac12\int_0^{2\pi}a^2(1+\cos\theta)^2\mathrm{d}\theta=\frac{a^2}{2}\int_0^{2\pi}\left(1+2\cos\theta+\cos^2\theta\right)\mathrm{d}\theta.$$</p>
+              <p>其中 $\displaystyle\int_0^{2\pi}\cos\theta\,\mathrm{d}\theta=0$，$\displaystyle\int_0^{2\pi}\cos^2\theta\,\mathrm{d}\theta=\pi$，故</p>
+              <p style="margin-bottom:0;">$$A=\frac{a^2}{2}\left(2\pi+0+\pi\right)=\frac{3\pi a^2}{2}.$$</p>
+            </div>
+          </details>
+        </div>
+
+        <div class="box warn">
+          <span class="box-tag">易错提醒</span>
+          <p style="margin-bottom:0;">① 面积题一定要先判断“谁在上、谁在下”，并求出交点确定积分限。② 若曲线在 $x$ 轴下方，用 $\displaystyle\int|f|$ 求面积，而 $\displaystyle\int f$ 得到的是代数和。③ 绕 $x$ 轴旋转用 $\pi\int f^2\mathrm{d}x$，别与 $\int f\mathrm{d}x$ 混淆。④ 弧长公式里的 $\sqrt{1+y'^2}$ 不能漏根号。⑤ 物理题先写清微元表达式与单位，再积分。</p>
+        </div>
+      </div>
+
+      <div class="pager">
+        <a href="ch3-3.html"><small>上一节</small>← 3.3 两种基本积分法</a>
+        <a class="next" href="ch3-5.html"><small>下一节</small>3.5 反常积分 →</a>
+      </div>
+    </div>
+  </div>
+
+  <footer class="site-footer">
+    <div class="wrap footer-inner">
+      <div><b>工科数学分析基础（上册）自学站</b><br>3.4 定积分的应用</div>
+      <div><a href="../index.html">首页</a> · <a href="../ch3.html">第三章</a> · <a href="../exercises/ch3-exercises.html">章末练习</a></div>
+    </div>
+  </footer>
+</body>
+</html>

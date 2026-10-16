@@ -3,8 +3,13 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>第 3 章 · 章末练习（建设中）· 工科数学分析自学站</title>
+  <title>第 3 章 · 章末练习 · 工科数学分析自学站</title>
   <link rel="stylesheet" href="../assets/css/style.css">
+  <link rel="stylesheet" href="../assets/katex/katex.min.css">
+  <script defer src="../assets/katex/katex.min.js"></script>
+  <script defer src="../assets/katex/auto-render.min.js"></script>
+  <script defer src="../assets/js/app.js"></script>
+  <script defer src="../assets/js/quiz.js"></script>
 </head>
 <body>
   <header class="site-header">
@@ -26,28 +31,262 @@
     <div class="wrap">
       <p class="crumbs"><a href="../index.html">首页</a> / <a href="../ch3.html">第三章</a> / 章末练习</p>
       <h1>第 3 章 · 章末练习</h1>
-      <p class="lead">一元函数积分学及其应用 · 练习页占位</p>
+      <p class="lead">一元函数积分学及其应用 · 共 16 题（选择题 8 + 填空题 8），覆盖 3.1–3.5 五节。选择题点选项即判对错，填空题点“显示答案”，每道题下方紧跟答案与解析。</p>
       <div class="btn-row">
-        <a class="btn" href="../ch3.html">← 返回第三章</a>
+        <a class="btn secondary" href="../ch3.html">← 返回第三章</a>
+        <a class="btn" href="../lessons/ch3-1.html">忘记内容？回看 3.1</a>
       </div>
     </div>
   </div>
 
   <div class="content">
     <div class="wrap">
-      <div class="todo-note">
-        <b>🚧 本章仍在建设中。</b><br>
-        第三章精讲课件上线后，这里将放置 16 题章末练习（选择题 + 填空题，答案隐藏点击显示）。
-        现阶段建议先把第一章学扎实。
+      <div class="goal-box">
+        <b>作答建议：</b>算定积分先在草稿纸上写出原函数，再代上下限；反常积分务必先判断是否收敛。全部完成后点右上“重新作答”可再刷一遍。
       </div>
-      <p><a href="../exercises/ch1-exercises.html">→ 去完成第 1 章 · 章末练习（可作答）</a></p>
+
+      <div class="quiz-toolbar">
+        <span>📋 第 3 章 · 一元函数积分学及其应用</span>
+        <button type="button" class="reset-btn" id="resetQuiz">↺ 重新作答</button>
+      </div>
+
+      <div class="quiz-group">
+        <h2>一、选择题 <span style="font-size:0.95rem;font-weight:500;color:var(--muted);">（点击选项立即判对错）</span></h2>
+
+        <div class="quiz-q" data-correct="B">
+          <div class="q-top"><span class="q-no">选择 1</span><span class="q-type mc">选择题</span><span style="font-size:0.85rem;color:var(--muted);">§3.1 定积分的几何意义</span></div>
+          <p class="q-stem">定积分 $\displaystyle\int_a^b f(x)\,\mathrm{d}x$ 的几何意义是</p>
+          <div class="options">
+            <button type="button" class="opt" data-key="A">A. 由曲线 $y=f(x)$、$x$ 轴与 $x=a,x=b$ 围成图形的面积</button>
+            <button type="button" class="opt" data-key="B">B. 上述图形面积的代数和</button>
+            <button type="button" class="opt" data-key="C">C. 曲线 $y=f(x)$ 的弧长</button>
+            <button type="button" class="opt" data-key="D">D. 上述图形的周长</button>
+          </div>
+          <p class="fb-result"></p>
+          <div class="explain" hidden>
+            <p><b>解析：</b>当 $f(x)\ge0$ 时积分等于曲边梯形面积，但 $f$ 变号时，$x$ 轴下方的部分贡献负值，所以一般情形是“面积的<b>代数和</b>”，A 只在 $f\ge0$ 时成立。选 B。</p>
+          </div>
+        </div>
+
+        <div class="quiz-q" data-correct="B">
+          <div class="q-top"><span class="q-no">选择 2</span><span class="q-type mc">选择题</span><span style="font-size:0.85rem;color:var(--muted);">§3.1 可积条件</span></div>
+          <p class="q-stem">下列函数在 $[-1,1]$ 上<b>一定可积</b>的是</p>
+          <div class="options">
+            <button type="button" class="opt" data-key="A">A. $f(x)=\dfrac1x$</button>
+            <button type="button" class="opt" data-key="B">B. $f(x)=|x|$</button>
+            <button type="button" class="opt" data-key="C">C. 在 $[-1,1]$ 上无界的函数</button>
+            <button type="button" class="opt" data-key="D">D. 有界但处处不连续的函数</button>
+          </div>
+          <p class="fb-result"></p>
+          <div class="explain" hidden>
+            <p><b>解析：</b>$|x|$ 在 $[-1,1]$ 上连续，连续函数必可积，选 B。$1/x$ 在 $0$ 附近无界（A 错）；无界函数必不可积（C 错）；有界但有无穷多个间断点不一定可积，如 Dirichlet 函数（D 错）。</p>
+          </div>
+        </div>
+
+        <div class="quiz-q" data-correct="A">
+          <div class="q-top"><span class="q-no">选择 3</span><span class="q-type mc">选择题</span><span style="font-size:0.85rem;color:var(--muted);">§3.2 变上限积分求导</span></div>
+          <p class="q-stem">$\dfrac{\mathrm{d}}{\mathrm{d}x}\displaystyle\int_0^{x}e^{t^2}\,\mathrm{d}t=$</p>
+          <div class="options">
+            <button type="button" class="opt" data-key="A">A. $e^{x^2}$</button>
+            <button type="button" class="opt" data-key="B">B. $e^{t^2}$</button>
+            <button type="button" class="opt" data-key="C">C. $2xe^{x^2}$</button>
+            <button type="button" class="opt" data-key="D">D. $0$</button>
+          </div>
+          <p class="fb-result"></p>
+          <div class="explain" hidden>
+            <p><b>解析：</b>由微积分基本定理，$\Phi(x)=\displaystyle\int_0^xf(t)\mathrm{d}t$ 满足 $\Phi'(x)=f(x)$，这里上限就是 $x$，故结果为 $e^{x^2}$（不含 $2x$，那是上限为 $x^2$ 时才出现）。选 A。</p>
+          </div>
+        </div>
+
+        <div class="quiz-q" data-correct="B">
+          <div class="q-top"><span class="q-no">选择 4</span><span class="q-type mc">选择题</span><span style="font-size:0.85rem;color:var(--muted);">§3.2 Newton–Leibniz 公式</span></div>
+          <p class="q-stem">$\displaystyle\int_0^{\pi/2}\cos x\,\mathrm{d}x=$</p>
+          <div class="options">
+            <button type="button" class="opt" data-key="A">A. $0$</button>
+            <button type="button" class="opt" data-key="B">B. $1$</button>
+            <button type="button" class="opt" data-key="C">C. $-1$</button>
+            <button type="button" class="opt" data-key="D">D. $\dfrac{\pi}{2}$</button>
+          </div>
+          <p class="fb-result"></p>
+          <div class="explain" hidden>
+            <p><b>解析：</b>$\displaystyle\int_0^{\pi/2}\cos x\,\mathrm{d}x=\big[\sin x\big]_0^{\pi/2}=1-0=1$。选 B。</p>
+          </div>
+        </div>
+
+        <div class="quiz-q" data-correct="B">
+          <div class="q-top"><span class="q-no">选择 5</span><span class="q-type mc">选择题</span><span style="font-size:0.85rem;color:var(--muted);">§3.3 凑微分</span></div>
+          <p class="q-stem">$\displaystyle\int xe^{x^2}\,\mathrm{d}x=$</p>
+          <div class="options">
+            <button type="button" class="opt" data-key="A">A. $e^{x^2}+C$</button>
+            <button type="button" class="opt" data-key="B">B. $\dfrac12e^{x^2}+C$</button>
+            <button type="button" class="opt" data-key="C">C. $2e^{x^2}+C$</button>
+            <button type="button" class="opt" data-key="D">D. $x^2e^{x^2}+C$</button>
+          </div>
+          <p class="fb-result"></p>
+          <div class="explain" hidden>
+            <p><b>解析：</b>因 $x\,\mathrm{d}x=\dfrac12\mathrm{d}(x^2)$，令 $u=x^2$ 得 $\displaystyle\frac12\int e^u\mathrm{d}u=\frac12e^{x^2}+C$。求导验证：$\left(\dfrac12e^{x^2}\right)'=xe^{x^2}$ ✓。选 B。</p>
+          </div>
+        </div>
+
+        <div class="quiz-q" data-correct="A">
+          <div class="q-top"><span class="q-no">选择 6</span><span class="q-type mc">选择题</span><span style="font-size:0.85rem;color:var(--muted);">§3.3 分部积分</span></div>
+          <p class="q-stem">$\displaystyle\int x\cos x\,\mathrm{d}x=$</p>
+          <div class="options">
+            <button type="button" class="opt" data-key="A">A. $x\sin x+\cos x+C$</button>
+            <button type="button" class="opt" data-key="B">B. $x\sin x-\cos x+C$</button>
+            <button type="button" class="opt" data-key="C">C. $\sin x+x\cos x+C$</button>
+            <button type="button" class="opt" data-key="D">D. $-x\sin x+\cos x+C$</button>
+          </div>
+          <p class="fb-result"></p>
+          <div class="explain" hidden>
+            <p><b>解析：</b>取 $u=x$、$\mathrm{d}v=\cos x\mathrm{d}x$，则 $\int x\cos x\mathrm{d}x=x\sin x-\int\sin x\mathrm{d}x=x\sin x+\cos x+C$。求导验证：$\sin x+x\cos x-\sin x=x\cos x$ ✓。选 A。</p>
+          </div>
+        </div>
+
+        <div class="quiz-q" data-correct="A">
+          <div class="q-top"><span class="q-no">选择 7</span><span class="q-type mc">选择题</span><span style="font-size:0.85rem;color:var(--muted);">§3.4 平面图形面积</span></div>
+          <p class="q-stem">曲线 $y=x^2$ 与直线 $y=x$ 所围图形的面积为</p>
+          <div class="options">
+            <button type="button" class="opt" data-key="A">A. $\dfrac16$</button>
+            <button type="button" class="opt" data-key="B">B. $\dfrac13$</button>
+            <button type="button" class="opt" data-key="C">C. $\dfrac12$</button>
+            <button type="button" class="opt" data-key="D">D. $\dfrac23$</button>
+          </div>
+          <p class="fb-result"></p>
+          <div class="explain" hidden>
+            <p><b>解析：</b>交点为 $x=0,1$，在 $(0,1)$ 内 $x>x^2$，故 $A=\displaystyle\int_0^1(x-x^2)\mathrm{d}x=\dfrac12-\dfrac13=\dfrac16$。选 A。</p>
+          </div>
+        </div>
+
+        <div class="quiz-q" data-correct="A">
+          <div class="q-top"><span class="q-no">选择 8</span><span class="q-type mc">选择题</span><span style="font-size:0.85rem;color:var(--muted);">§3.5 反常积分</span></div>
+          <p class="q-stem">反常积分 $\displaystyle\int_1^{+\infty}\frac{\mathrm{d}x}{x^p}$ 收敛的条件是</p>
+          <div class="options">
+            <button type="button" class="opt" data-key="A">A. $p>1$</button>
+            <button type="button" class="opt" data-key="B">B. $p<1$</button>
+            <button type="button" class="opt" data-key="C">C. $p\ge1$</button>
+            <button type="button" class="opt" data-key="D">D. 对一切 $p$ 都收敛</button>
+          </div>
+          <p class="fb-result"></p>
+          <div class="explain" hidden>
+            <p><b>解析：</b>当 $p\ne1$ 时 $\displaystyle\int_1^b\frac{\mathrm{d}x}{x^p}=\frac{1}{1-p}\left(b^{1-p}-1\right)$，仅当 $p>1$ 时 $b^{1-p}\to0$ 极限存在；$p=1$ 时积分为 $\ln b\to+\infty$ 发散。故 $p>1$ 收敛，选 A。</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="quiz-group">
+        <h2>二、填空题 <span style="font-size:0.95rem;font-weight:500;color:var(--muted);">（先自己算，再点“显示答案”）</span></h2>
+
+        <div class="quiz-q">
+          <div class="q-top"><span class="q-no">填空 1</span><span class="q-type fill">填空题</span><span style="font-size:0.85rem;color:var(--muted);">§3.1 定积分计算</span></div>
+          <p class="q-stem">$\displaystyle\int_0^1 x\,\mathrm{d}x=$ ______ 。</p>
+          <button type="button" class="reveal-btn">显示答案</button>
+          <div class="answer-box" hidden>
+            <p><span class="ans-label">答案：</span>$\dfrac12$</p>
+            <div class="explain">
+              <p><b>解析：</b>$\left[\dfrac{x^2}{2}\right]_0^1=\dfrac12$；也可用定义式等分求和验证。</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="quiz-q">
+          <div class="q-top"><span class="q-no">填空 2</span><span class="q-type fill">填空题</span><span style="font-size:0.85rem;color:var(--muted);">§3.2 基本公式</span></div>
+          <p class="q-stem">$\displaystyle\int_1^{e}\frac{\mathrm{d}x}{x}=$ ______ 。</p>
+          <button type="button" class="reveal-btn">显示答案</button>
+          <div class="answer-box" hidden>
+            <p><span class="ans-label">答案：</span>$1$</p>
+            <div class="explain">
+              <p><b>解析：</b>$\big[\ln x\big]_1^{e}=\ln e-\ln1=1$。</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="quiz-q">
+          <div class="q-top"><span class="q-no">填空 3</span><span class="q-type fill">填空题</span><span style="font-size:0.85rem;color:var(--muted);">§3.3 定积分分部积分</span></div>
+          <p class="q-stem">$\displaystyle\int_0^{\pi/2}x\cos x\,\mathrm{d}x=$ ______ 。</p>
+          <button type="button" class="reveal-btn">显示答案</button>
+          <div class="answer-box" hidden>
+            <p><span class="ans-label">答案：</span>$\dfrac{\pi}{2}-1$</p>
+            <div class="explain">
+              <p><b>解析：</b>$\displaystyle\int_0^{\pi/2}x\cos x\mathrm{d}x=\Big[x\sin x\Big]_0^{\pi/2}-\int_0^{\pi/2}\sin x\mathrm{d}x=\dfrac{\pi}{2}-1$。</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="quiz-q">
+          <div class="q-top"><span class="q-no">填空 4</span><span class="q-type fill">填空题</span><span style="font-size:0.85rem;color:var(--muted);">§3.3 凑微分</span></div>
+          <p class="q-stem">$\displaystyle\int_0^1\frac{x}{1+x^2}\,\mathrm{d}x=$ ______ 。</p>
+          <button type="button" class="reveal-btn">显示答案</button>
+          <div class="answer-box" hidden>
+            <p><span class="ans-label">答案：</span>$\dfrac{\ln 2}{2}$</p>
+            <div class="explain">
+              <p><b>解析：</b>$x\,\mathrm{d}x=\dfrac12\mathrm{d}(1+x^2)$，故积分 $=\dfrac12\Big[\ln(1+x^2)\Big]_0^1=\dfrac{\ln2}{2}\approx0.3466$。</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="quiz-q">
+          <div class="q-top"><span class="q-no">填空 5</span><span class="q-type fill">填空题</span><span style="font-size:0.85rem;color:var(--muted);">§3.4 旋转体体积</span></div>
+          <p class="q-stem">曲线 $y=\sqrt x$、$x$ 轴与直线 $x=1$ 围成的图形绕 $x$ 轴旋转所得旋转体的体积 $V=$ ______ 。</p>
+          <button type="button" class="reveal-btn">显示答案</button>
+          <div class="answer-box" hidden>
+            <p><span class="ans-label">答案：</span>$\dfrac{\pi}{2}$</p>
+            <div class="explain">
+              <p><b>解析：</b>$V=\pi\displaystyle\int_0^1(\sqrt x)^2\mathrm{d}x=\pi\int_0^1x\,\mathrm{d}x=\dfrac{\pi}{2}$。</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="quiz-q">
+          <div class="q-top"><span class="q-no">填空 6</span><span class="q-type fill">填空题</span><span style="font-size:0.85rem;color:var(--muted);">§3.4 弧长</span></div>
+          <p class="q-stem">曲线 $y=\dfrac23x^{3/2}$ 在 $0\le x\le3$ 上的弧长 $s=$ ______ 。</p>
+          <button type="button" class="reveal-btn">显示答案</button>
+          <div class="answer-box" hidden>
+            <p><span class="ans-label">答案：</span>$\dfrac{14}{3}$</p>
+            <div class="explain">
+              <p><b>解析：</b>$y'=x^{1/2}$，$s=\displaystyle\int_0^3\sqrt{1+x}\,\mathrm{d}x=\Big[\dfrac23(1+x)^{3/2}\Big]_0^3=\dfrac23(8-1)=\dfrac{14}{3}$。</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="quiz-q">
+          <div class="q-top"><span class="q-no">填空 7</span><span class="q-type fill">填空题</span><span style="font-size:0.85rem;color:var(--muted);">§3.5 瑕积分</span></div>
+          <p class="q-stem">$\displaystyle\int_0^1\frac{\mathrm{d}x}{\sqrt x}=$ ______ 。</p>
+          <button type="button" class="reveal-btn">显示答案</button>
+          <div class="answer-box" hidden>
+            <p><span class="ans-label">答案：</span>$2$</p>
+            <div class="explain">
+              <p><b>解析：</b>$x=0$ 为瑕点，$\displaystyle\lim_{\varepsilon\to0^+}\Big[2\sqrt x\Big]_\varepsilon^1=\lim_{\varepsilon\to0^+}\left(2-2\sqrt\varepsilon\right)=2$。</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="quiz-q">
+          <div class="q-top"><span class="q-no">填空 8</span><span class="q-type fill">填空题</span><span style="font-size:0.85rem;color:var(--muted);">§3.5 Γ 函数</span></div>
+          <p class="q-stem">$\Gamma(5)=$ ______ 。</p>
+          <button type="button" class="reveal-btn">显示答案</button>
+          <div class="answer-box" hidden>
+            <p><span class="ans-label">答案：</span>$24$</p>
+            <div class="explain">
+              <p><b>解析：</b>由 $\Gamma(s+1)=s\Gamma(s)$ 与 $\Gamma(1)=1$ 得 $\Gamma(5)=4!=24$。</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div style="margin-top:26px;">
+        <a class="ch-card" href="../ch3.html" style="background:var(--accent-soft);border-color:#b9cef0;">
+          <div class="ch-title"><h3>📚 练习完成？回看章末思维导图</h3><span class="badge ok">继续加油</span></div>
+          <p class="ch-desc">用思维导图把 3.1–3.5 串一遍；第四章（常微分方程）正在建设中。</p>
+        </a>
+      </div>
     </div>
   </div>
 
   <footer class="site-footer">
     <div class="wrap footer-inner">
-      <div><b>工科数学分析基础（上册）自学站</b><br>第 3 章 · 章末练习（建设中）</div>
-      <div><a href="../index.html">首页</a> · <a href="../ch3.html">第三章</a></div>
+      <div><b>工科数学分析基础（上册）自学站</b><br>第 3 章 · 章末练习（原创题目）</div>
+      <div><a href="../index.html">首页</a> · <a href="../ch3.html">第三章</a> · <a href="../lessons/ch3-5.html">回到 3.5</a></div>
     </div>
   </footer>
 </body>

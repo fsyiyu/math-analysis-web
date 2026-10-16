@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>3.2 微积分基本公式与基本定理 · 工科数学分析自学站</title>
+  <link rel="stylesheet" href="../assets/css/style.css">
+  <link rel="stylesheet" href="../assets/katex/katex.min.css">
+  <script defer src="../assets/katex/katex.min.js"></script>
+  <script defer src="../assets/katex/auto-render.min.js"></script>
+  <script defer src="../assets/js/app.js"></script>
+</head>
+<body>
+  <header class="site-header">
+    <div class="wrap header-inner">
+      <a class="brand" href="../index.html">📘 工科数学分析 · 自学站
+        <small>第三版 · 上册 · 一元函数微积分</small>
+      </a>
+      <nav class="main-nav">
+        <a href="../index.html">首页</a>
+        <a href="../ch1.html">第一章</a>
+        <a href="../ch2.html">第二章</a>
+        <a href="../ch3.html">第三章</a>
+        <a href="../ch4.html">第四章</a>
+      </nav>
+    </div>
+  </header>
+
+  <div class="page-head">
+    <div class="wrap">
+      <p class="crumbs"><a href="../index.html">首页</a> / <a href="../ch3.html">第三章</a> / 第二节</p>
+      <h1>3.2 微积分基本公式与基本定理</h1>
+      <p class="lead">本节是整本书的枢纽：变上限积分的导数等于被积函数，由此得到 Newton–Leibniz 公式，把“无限求和”变成“原函数相减”。</p>
+    </div>
+  </div>
+
+  <div class="content">
+    <div class="wrap">
+      <div class="goal-box">
+        <b>本节要解决的问题：</b>为什么求积分可以不用做极限？变上限积分怎么求导？不定积分与原函数、定积分三者是什么关系？
+      </div>
+
+      <div class="lesson-body">
+        <h2 class="subhead" id="s1">3.2.1 微积分基本公式</h2>
+        <div class="box thm">
+          <span class="box-tag">定理 · Newton–Leibniz 公式</span>
+          <p>若 $f$ 在 $[a,b]$ 上连续，且 $F$ 是 $f$ 在 $[a,b]$ 上的一个原函数（即 $F'(x)=f(x)$），则</p>
+          <p class="formula-line">$$\int_a^b f(x)\,\mathrm{d}x=F(b)-F(a)\ \Big(\text{也记作}\ \big[F(x)\big]_a^b\Big).$$</p>
+          <p style="margin-bottom:0;">它把定积分的计算归结为“找原函数、代端点相减”，从此不必再回到定义式做和式极限。</p>
+        </div>
+        <div class="box idea">
+          <span class="box-tag">理解</span>
+          <p style="margin-bottom:0;">“已知速度求位移”之所以能用端点相减，正是因为位移 $s(t)$ 是速度 $v(t)$ 的原函数：$\int_a^b v\,\mathrm{d}t=s(b)-s(a)$。这正是绪论里预告的结论。</p>
+        </div>
+
+        <h2 class="subhead" id="s2">3.2.2 微积分基本定理</h2>
+        <p>定义<b>变上限积分</b>（也称积分上限函数）：</p>
+        <p class="formula-line">$$\Phi(x)=\int_a^x f(t)\,\mathrm{d}t,\qquad x\in[a,b].$$</p>
+        <div class="box thm">
+          <span class="box-tag">定理 · 原函数存在定理</span>
+          <p>若 $f$ 在 $[a,b]$ 上连续，则 $\Phi(x)=\displaystyle\int_a^x f(t)\,\mathrm{d}t$ 在 $[a,b]$ 上可导，且</p>
+          <p class="formula-line">$$\Phi'(x)=f(x),$$</p>
+          <p style="margin-bottom:0;">即 Φ 是 $f$ 的一个原函数——<b>连续函数一定存在原函数</b>。这也说明“微分”与“积分”互为逆运算。</p>
+        </div>
+        <p><b>证明思路：</b>$\Phi(x+\Delta x)-\Phi(x)=\displaystyle\int_x^{x+\Delta x}f(t)\mathrm{d}t=f(\xi)\Delta x$（积分中值定理），而 $f$ 连续使 $f(\xi)\to f(x)$（当 $\Delta x\to0$）。</p>
+        <p>复合形式（考试常考）：若上限是 $g(x)$，则</p>
+        <p class="formula-line">$$\frac{\mathrm{d}}{\mathrm{d}x}\int_a^{g(x)}f(t)\,\mathrm{d}t=f\bigl(g(x)\bigr)g'(x).$$</p>
+
+        <h2 class="subhead" id="s3">3.2.3 不定积分</h2>
+        <div class="box thm">
+          <span class="box-tag">定义 · 不定积分</span>
+          <p>$f$ 的原函数的一般表达式称为不定积分，记</p>
+          <p class="formula-line">$$\int f(x)\,\mathrm{d}x=F(x)+C,$$</p>
+          <p style="margin-bottom:0;">其中 $F'(x)=f(x)$，$C$ 为任意常数。不定积分是<b>函数族</b>，定积分是<b>数</b>——这是两者的根本区别。</p>
+        </div>
+        <p>由导数公式表反向读取，得到基本积分表（$C$ 为任意常数）：</p>
+        <ul>
+          <li>$\displaystyle\int x^\mu\mathrm{d}x=\frac{x^{\mu+1}}{\mu+1}+C\ (\mu\ne-1)$，$\displaystyle\int\frac{\mathrm{d}x}{x}=\ln|x|+C$；</li>
+          <li>$\displaystyle\int e^x\mathrm{d}x=e^x+C$，$\displaystyle\int a^x\mathrm{d}x=\frac{a^x}{\ln a}+C$；</li>
+          <li>$\displaystyle\int\sin x\,\mathrm{d}x=-\cos x+C$，$\displaystyle\int\cos x\,\mathrm{d}x=\sin x+C$；</li>
+          <li>$\displaystyle\int\frac{\mathrm{d}x}{1+x^2}=\arctan x+C$，$\displaystyle\int\frac{\mathrm{d}x}{\sqrt{1-x^2}}=\arcsin x+C$。</li>
+        </ul>
+        <p>不定积分同样具有线性性质：$\int[\alpha f+\beta g]\mathrm{d}x=\alpha\int f\mathrm{d}x+\beta\int g\mathrm{d}x$。</p>
+
+        <div class="example">
+          <div class="ex-head"><h3>例 1　用基本公式计算定积分</h3></div>
+          <p>计算 $\displaystyle\int_0^1 x^2\,\mathrm{d}x$。</p>
+          <details class="solution">
+            <summary>先想再看解答</summary>
+            <div class="sol-body">
+              <p>$\dfrac{x^3}{3}$ 是 $x^2$ 的原函数，由 Newton–Leibniz 公式：</p>
+              <p style="margin-bottom:0;">$$\int_0^1x^2\mathrm{d}x=\left[\frac{x^3}{3}\right]_0^1=\frac13-0=\frac13.$$</p>
+            </div>
+          </details>
+        </div>
+
+        <div class="example">
+          <div class="ex-head"><h3>例 2　$\dfrac1x$ 型的定积分</h3></div>
+          <p>计算 $\displaystyle\int_1^{e}\frac{\mathrm{d}x}{x}$。</p>
+          <details class="solution">
+            <summary>先想再看解答</summary>
+            <div class="sol-body">
+              <p style="margin-bottom:0;">$$\int_1^{e}\frac{\mathrm{d}x}{x}=\big[\ln x\big]_1^{e}=\ln e-\ln 1=1.$$</p>
+            </div>
+          </details>
+        </div>
+
+        <div class="example">
+          <div class="ex-head"><h3>例 3　变上限积分求导（复合上限）</h3></div>
+          <p>求 $\dfrac{\mathrm{d}}{\mathrm{d}x}\displaystyle\int_0^{x^2}\sin t\,\mathrm{d}t$。</p>
+          <details class="solution">
+            <summary>先想再看解答</summary>
+            <div class="sol-body">
+              <p>把上限 $u=x^2$ 看成中间变量，用链式法则：</p>
+              <p style="margin-bottom:0;">$$\frac{\mathrm{d}}{\mathrm{d}x}\int_0^{x^2}\sin t\,\mathrm{d}t=\sin(x^2)\cdot 2x=2x\sin x^2.$$</p>
+            </div>
+          </details>
+        </div>
+
+        <div class="example">
+          <div class="ex-head"><h3>例 4　求不定积分</h3></div>
+          <p>求 $\displaystyle\int\left(3x^2+2\sin x\right)\mathrm{d}x$。</p>
+          <details class="solution">
+            <summary>先想再看解答</summary>
+            <div class="sol-body">
+              <p>逐项积分：$\displaystyle\int3x^2\mathrm{d}x=x^3+C_1$，$\displaystyle\int2\sin x\,\mathrm{d}x=-2\cos x+C_2$。</p>
+              <p style="margin-bottom:0;">合并常数得 $\displaystyle\int\left(3x^2+2\sin x\right)\mathrm{d}x=x^3-2\cos x+C$。</p>
+            </div>
+          </details>
+        </div>
+
+        <div class="example">
+          <div class="ex-head"><h3>例 5　奇偶性简化计算</h3></div>
+          <p>计算 $\displaystyle\int_{-1}^{1}\left(x^3+1\right)\mathrm{d}x$。</p>
+          <details class="solution">
+            <summary>先想再看解答</summary>
+            <div class="sol-body">
+              <p>在对称区间上奇函数的积分为 0，故 $\displaystyle\int_{-1}^{1}x^3\mathrm{d}x=0$。</p>
+              <p style="margin-bottom:0;">因此原式 $=\displaystyle\int_{-1}^{1}1\,\mathrm{d}x=1-(-1)=2$。</p>
+            </div>
+          </details>
+        </div>
+
+        <div class="example">
+          <div class="ex-head"><h3>例 6　基本定理 + L'Hospital 求极限</h3></div>
+          <p>求 $\lim\limits_{x\to0}\dfrac{\displaystyle\int_0^x\sin t\,\mathrm{d}t}{x^2}$。</p>
+          <details class="solution">
+            <summary>先想再看解答</summary>
+            <div class="sol-body">
+              <p>这是 $\dfrac00$ 型。分子是变上限积分，求导得 $\sin x$，故用 L'Hospital 法则：</p>
+              <p class="formula-line">$$\lim_{x\to0}\frac{\int_0^x\sin t\,\mathrm{d}t}{x^2}=\lim_{x\to0}\frac{\sin x}{2x}=\frac12.$$</p>
+              <p style="margin-bottom:0;">这一步的合法性来自微积分基本定理：分子对 $x$ 求导恰为被积函数 $\sin x$。</p>
+            </div>
+          </details>
+        </div>
+
+        <div class="box warn">
+          <span class="box-tag">易错提醒</span>
+          <p style="margin-bottom:0;">① 用 Newton–Leibniz 公式前必须确认 $f$ 在区间上连续（若有无穷间断点会出问题，见 3.5 节）。② 不定积分别忘了 $+C$，定积分不加。③ 变上限积分求导时，下限是常数、上限是变量才对；若上下限都含 $x$，要拆成两个积分再求导。④ $\displaystyle\int\frac{\mathrm{d}x}{x}=\ln|x|+C$，别丢绝对值。</p>
+        </div>
+      </div>
+
+      <div class="pager">
+        <a href="ch3-1.html"><small>上一节</small>← 3.1 定积分的概念、存在条件与性质</a>
+        <a class="next" href="ch3-3.html"><small>下一节</small>3.3 两种基本积分法 →</a>
+      </div>
+    </div>
+  </div>
+
+  <footer class="site-footer">
+    <div class="wrap footer-inner">
+      <div><b>工科数学分析基础（上册）自学站</b><br>3.2 微积分基本公式与基本定理</div>
+      <div><a href="../index.html">首页</a> · <a href="../ch3.html">第三章</a> · <a href="../exercises/ch3-exercises.html">章末练习</a></div>
+    </div>
+  </footer>
+</body>
+</html>

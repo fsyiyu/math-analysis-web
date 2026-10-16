@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>3.3 两种基本积分法 · 工科数学分析自学站</title>
+  <link rel="stylesheet" href="../assets/css/style.css">
+  <link rel="stylesheet" href="../assets/katex/katex.min.css">
+  <script defer src="../assets/katex/katex.min.js"></script>
+  <script defer src="../assets/katex/auto-render.min.js"></script>
+  <script defer src="../assets/js/app.js"></script>
+</head>
+<body>
+  <header class="site-header">
+    <div class="wrap header-inner">
+      <a class="brand" href="../index.html">📘 工科数学分析 · 自学站
+        <small>第三版 · 上册 · 一元函数微积分</small>
+      </a>
+      <nav class="main-nav">
+        <a href="../index.html">首页</a>
+        <a href="../ch1.html">第一章</a>
+        <a href="../ch2.html">第二章</a>
+        <a href="../ch3.html">第三章</a>
+        <a href="../ch4.html">第四章</a>
+      </nav>
+    </div>
+  </header>
+
+  <div class="page-head">
+    <div class="wrap">
+      <p class="crumbs"><a href="../index.html">首页</a> / <a href="../ch3.html">第三章</a> / 第三节</p>
+      <h1>3.3 两种基本积分法</h1>
+      <p class="lead">换元与分部，是求不定积分与定积分的“两把手术刀”：前者把复杂结构变简单，后者把乘积拆成好算的部分。</p>
+    </div>
+  </div>
+
+  <div class="content">
+    <div class="wrap">
+      <div class="goal-box">
+        <b>本节要解决的问题：</b>遇到不会积的函数怎么办？凑微分和变量代换有什么区别？分部积分里 $u$ 与 $\mathrm{d}v$ 怎么选？
+      </div>
+
+      <div class="lesson-body">
+        <h2 class="subhead" id="s1">3.3.1 换元积分法</h2>
+        <div class="box thm">
+          <span class="box-tag">公式 · 第一类换元法（凑微分）</span>
+          <p>若 $f$ 有原函数 $F$，则</p>
+          <p class="formula-line">$$\int f\bigl(\varphi(x)\bigr)\varphi'(x)\,\mathrm{d}x=\int f(u)\,\mathrm{d}u=F\bigl(\varphi(x)\bigr)+C,\qquad u=\varphi(x).$$</p>
+          <p style="margin-bottom:0;">关键是<b>把被积表达式的一部分凑成某个函数的微分</b>，例如 $\varphi'(x)\mathrm{d}x=\mathrm{d}\varphi(x)$。</p>
+        </div>
+        <div class="box thm">
+          <span class="box-tag">公式 · 第二类换元法（变量代换）</span>
+          <p>设 $x=\varphi(t)$ 单调可导且 $\varphi'(t)\ne0$，则</p>
+          <p class="formula-line">$$\int f(x)\,\mathrm{d}x=\int f\bigl(\varphi(t)\bigr)\varphi'(t)\,\mathrm{d}t.$$</p>
+          <p style="margin-bottom:0;">常用代换：含 $\sqrt{a^2-x^2}$ 令 $x=a\sin t$；含 $\sqrt{a^2+x^2}$ 令 $x=a\tan t$；含 $\sqrt{x^2-a^2}$ 令 $x=a\sec t$。<b>定积分换元必须同时换上下限</b>。</p>
+        </div>
+        <div class="box idea">
+          <span class="box-tag">对比记忆</span>
+          <p style="margin-bottom:0;">第一类换元是“把 $x$ 换成 $u$，上下限不变但要换成对应的 $u$ 值”；第二类换元是“把 $u$ 换回 $x$”，定积分则要换成新变量的上下限，且<b>换了就不必回代</b>。</p>
+        </div>
+
+        <h2 class="subhead" id="s2">3.3.2 分部积分法</h2>
+        <div class="box thm">
+          <span class="box-tag">公式 · 分部积分</span>
+          <p>设 $u,v$ 可导且导数连续，则</p>
+          <p class="formula-line">$$\int u\,\mathrm{d}v=uv-\int v\,\mathrm{d}u,\qquad \int_a^b u\,\mathrm{d}v=\Big[uv\Big]_a^b-\int_a^b v\,\mathrm{d}u.$$</p>
+          <p style="margin-bottom:0;">它由乘积求导法则移项而来，作用是把“难积的 $\int u\,\mathrm{d}v$”换成“好积的 $\int v\,\mathrm{d}u$”。</p>
+        </div>
+        <p><b>选 $u$ 的口诀（按优先级）：反三角函数 → 对数函数 → 幂函数 → 指数函数 → 三角函数</b>，排在前的取作 $u$，剩下的连同 $\mathrm{d}x$ 一起凑成 $\mathrm{d}v$。例如 $\int x\ln x\,\mathrm{d}x$ 中取 $u=\ln x$；$\int xe^x\mathrm{d}x$ 中取 $u=x$。</p>
+        <p>有时需要连续使用两次，甚至出现“还原方程”的情形，例如 $\int e^x\sin x\,\mathrm{d}x$ 两次分部后移项解出。</p>
+
+        <h2 class="subhead" id="s3">3.3.3 初等函数的积分问题</h2>
+        <p>本课程要求掌握的范围：</p>
+        <ul>
+          <li><b>有理函数</b>：先把假分式化为多项式 + 真分式，再作部分分式分解，逐项积分；</li>
+          <li><b>简单无理式</b>：用根式代换或三角代换化为有理式；</li>
+          <li><b>三角函数有理式</b>：可用万能代换 $t=\tan\dfrac x2$（了解其思想），或先利用恒等式化简。</li>
+        </ul>
+        <div class="box warn">
+          <span class="box-tag">重要事实</span>
+          <p style="margin-bottom:0;">并不是所有初等函数的原函数都是初等函数。例如 $\displaystyle\int e^{-x^2}\mathrm{d}x$、$\displaystyle\int\frac{\sin x}{x}\mathrm{d}x$、$\displaystyle\int\frac{\mathrm{d}x}{\ln x}$ 都“积不出来”（原函数存在但不能用初等函数表示）。遇到它们时，要么改换方法（如按级数展开，见下册），要么只能数值计算。</p>
+        </div>
+
+        <div class="example">
+          <div class="ex-head"><h3>例 1　凑微分</h3></div>
+          <p>求 $\displaystyle\int 2xe^{x^2}\,\mathrm{d}x$。</p>
+          <details class="solution">
+            <summary>先想再看解答</summary>
+            <div class="sol-body">
+              <p>注意 $2x\,\mathrm{d}x=\mathrm{d}(x^2)$，令 $u=x^2$：</p>
+              <p class="formula-line">$$\int 2xe^{x^2}\mathrm{d}x=\int e^{u}\mathrm{d}u=e^{u}+C=e^{x^2}+C.$$</p>
+            </div>
+          </details>
+        </div>
+
+        <div class="example">
+          <div class="ex-head"><h3>例 2　定积分凑微分</h3></div>
+          <p>计算 $\displaystyle\int_0^1\frac{x}{1+x^2}\,\mathrm{d}x$。</p>
+          <details class="solution">
+            <summary>先想再看解答</summary>
+            <div class="sol-body">
+              <p>因为 $x\,\mathrm{d}x=\dfrac12\mathrm{d}(1+x^2)$，</p>
+              <p class="formula-line">$$\int_0^1\frac{x}{1+x^2}\mathrm{d}x=\frac12\int_0^1\frac{\mathrm{d}(1+x^2)}{1+x^2}=\frac12\Big[\ln(1+x^2)\Big]_0^1=\frac{\ln 2}{2}.$$</p>
+            </div>
+          </details>
+        </div>
+
+        <div class="example">
+          <div class="ex-head"><h3>例 3　三角代换</h3></div>
+          <p>计算 $\displaystyle\int_0^1\sqrt{1-x^2}\,\mathrm{d}x$。</p>
+          <details class="solution">
+            <summary>先想再看解答</summary>
+            <div class="sol-body">
+              <p>令 $x=\sin t$，则 $\mathrm{d}x=\cos t\,\mathrm{d}t$；$x=0$ 时 $t=0$，$x=1$ 时 $t=\dfrac{\pi}{2}$：</p>
+              <p class="formula-line">$$\int_0^1\sqrt{1-x^2}\mathrm{d}x=\int_0^{\pi/2}\cos^2t\,\mathrm{d}t=\frac12\int_0^{\pi/2}(1+\cos 2t)\mathrm{d}t=\frac12\cdot\frac{\pi}{2}=\frac{\pi}{4}.$$</p>
+              <p style="margin-bottom:0;">结果与 3.1 节用几何意义得到的四分之一圆面积一致。</p>
+            </div>
+          </details>
+        </div>
+
+        <div class="example">
+          <div class="ex-head"><h3>例 4　分部积分（不定积分）</h3></div>
+          <p>求 $\displaystyle\int xe^{x}\,\mathrm{d}x$。</p>
+          <details class="solution">
+            <summary>先想再看解答</summary>
+            <div class="sol-body">
+              <p>取 $u=x$、$\mathrm{d}v=e^x\mathrm{d}x$，则 $\mathrm{d}u=\mathrm{d}x$、$v=e^x$：</p>
+              <p class="formula-line">$$\int xe^x\mathrm{d}x=xe^x-\int e^x\mathrm{d}x=(x-1)e^x+C.$$</p>
+            </div>
+          </details>
+        </div>
+
+        <div class="example">
+          <div class="ex-head"><h3>例 5　分部积分（定积分）</h3></div>
+          <p>计算 $\displaystyle\int_0^{\pi/2}x\cos x\,\mathrm{d}x$。</p>
+          <details class="solution">
+            <summary>先想再看解答</summary>
+            <div class="sol-body">
+              <p>取 $u=x$、$\mathrm{d}v=\cos x\,\mathrm{d}x$，得 $v=\sin x$：</p>
+              <p class="formula-line">$$\int_0^{\pi/2}x\cos x\,\mathrm{d}x=\Big[x\sin x\Big]_0^{\pi/2}-\int_0^{\pi/2}\sin x\,\mathrm{d}x=\frac{\pi}{2}-\Big[-\cos x\Big]_0^{\pi/2}=\frac{\pi}{2}-1.$$</p>
+            </div>
+          </details>
+        </div>
+
+        <div class="example">
+          <div class="ex-head"><h3>例 6　对数函数的分部积分</h3></div>
+          <p>计算 $\displaystyle\int_1^{e}\ln x\,\mathrm{d}x$。</p>
+          <details class="solution">
+            <summary>先想再看解答</summary>
+            <div class="sol-body">
+              <p>取 $u=\ln x$、$\mathrm{d}v=\mathrm{d}x$，则 $\mathrm{d}u=\dfrac{\mathrm{d}x}{x}$、$v=x$：</p>
+              <p class="formula-line">$$\int_1^e\ln x\,\mathrm{d}x=\Big[x\ln x\Big]_1^e-\int_1^e1\,\mathrm{d}x=e-(e-1)=1.$$</p>
+            </div>
+          </details>
+        </div>
+
+        <div class="box warn">
+          <span class="box-tag">易错提醒</span>
+          <p style="margin-bottom:0;">① 定积分换元后一定要换上下限，且不要忘了 $\mathrm{d}x=\varphi'(t)\mathrm{d}t$。② 分部积分中 $u$ 与 $\mathrm{d}v$ 的选择直接决定难易，按“反对幂指三”的顺序取 $u$。③ 不定积分结果中的 $+C$ 不能丢。④ 用三角代换时注意回代或换限，别把 $t$ 与 $x$ 混用。⑤ 遇到“积不出来”的函数不要硬套方法，先判断类型。</p>
+        </div>
+      </div>
+
+      <div class="pager">
+        <a href="ch3-2.html"><small>上一节</small>← 3.2 微积分基本公式与基本定理</a>
+        <a class="next" href="ch3-4.html"><small>下一节</small>3.4 定积分的应用 →</a>
+      </div>
+    </div>
+  </div>
+
+  <footer class="site-footer">
+    <div class="wrap footer-inner">
+      <div><b>工科数学分析基础（上册）自学站</b><br>3.3 两种基本积分法</div>
+      <div><a href="../index.html">首页</a> · <a href="../ch3.html">第三章</a> · <a href="../exercises/ch3-exercises.html">章末练习</a></div>
+    </div>
+  </footer>
+</body>
+</html>
