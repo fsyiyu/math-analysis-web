@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>4.3 线性微分方程组（选学）· 工科数学分析自学站</title>
+  <link rel="stylesheet" href="../assets/css/style.css">
+  <link rel="stylesheet" href="../assets/katex/katex.min.css">
+  <script defer src="../assets/katex/katex.min.js"></script>
+  <script defer src="../assets/katex/auto-render.min.js"></script>
+  <script defer src="../assets/js/app.js"></script>
+</head>
+<body>
+  <header class="site-header">
+    <div class="wrap header-inner">
+      <a class="brand" href="../index.html">📘 工科数学分析 · 自学站
+        <small>第三版 · 上册 · 一元函数微积分</small>
+      </a>
+      <nav class="main-nav">
+        <a href="../index.html">首页</a>
+        <a href="../ch1.html">第一章</a>
+        <a href="../ch2.html">第二章</a>
+        <a href="../ch3.html">第三章</a>
+        <a href="../ch4.html">第四章</a>
+      </nav>
+    </div>
+  </header>
+
+  <div class="page-head">
+    <div class="wrap">
+      <p class="crumbs"><a href="../index.html">首页</a> / <a href="../ch4.html">第四章</a> / 第三节</p>
+      <h1>4.3 线性微分方程组 <span class="badge select" style="vertical-align:6px;">选学</span></h1>
+      <p class="lead">多个未知函数互相影响、同时变化，就得到微分方程组。用向量与矩阵来写，它和一阶线性方程几乎是“同一件事”。</p>
+    </div>
+  </div>
+
+  <div class="content">
+    <div class="wrap">
+      <div class="goal-box">
+        <b>本节要解决的问题（选学）：</b>怎样把高阶方程写成一阶方程组？方程组的通解结构与单个方程有何异同？常系数方程组怎样用特征值方法求解？
+      </div>
+
+      <div class="lesson-body">
+        <h2 class="subhead" id="s1">4.3.1 线性微分方程组的基本概念</h2>
+        <div class="box thm">
+          <span class="box-tag">定义 · 一阶线性微分方程组</span>
+          <p>把 $n$ 个未知函数记成向量 $\boldsymbol{X}(t)=\bigl(x_1(t),\dots,x_n(t)\bigr)^{\mathrm T}$，则一阶线性方程组可写成向量形式</p>
+          <p class="formula-line">$$\frac{\mathrm{d}\boldsymbol{X}}{\mathrm{d}t}=A(t)\boldsymbol{X}+\boldsymbol{F}(t),$$</p>
+          <p style="margin-bottom:0;">当 $\boldsymbol{F}\equiv\boldsymbol{0}$ 时称为<b>齐次</b>方程组，否则为非齐次。加上初始条件 $\boldsymbol{X}(t_0)=\boldsymbol{X}_0$ 即构成初值问题。</p>
+        </div>
+        <p><b>高阶方程可以化为一阶方程组</b>，这是本节的起点。例如二阶方程 $y''+py'+qy=f(x)$，令 $x_1=y$、$x_2=y'$，则</p>
+        <p class="formula-line">$$\begin{cases}x_1'=x_2,\\[2pt] x_2'=-qx_1-px_2+f(x),\end{cases}\qquad A=\begin{pmatrix}0&1\\-q&-p\end{pmatrix}.$$</p>
+        <p>正因为如此，方程组与高阶方程的理论是相通的：<b>解空间是 $n$ 维的</b>，通解含 $n$ 个独立任意常数。</p>
+
+        <h2 class="subhead" id="s2">4.3.2 线性微分方程组解的结构</h2>
+        <div class="box thm">
+          <span class="box-tag">定理 · 解的结构</span>
+          <p>① 齐次方程组的解组成 $n$ 维向量空间：若 $\boldsymbol{X}_1,\dots,\boldsymbol{X}_n$ 是 $n$ 个线性无关的解（<b>基本解组</b>），则齐次通解为 $\boldsymbol{X}=C_1\boldsymbol{X}_1+\cdots+C_n\boldsymbol{X}_n$；</p>
+          <p>② 由基本解组构造的矩阵 $\Phi(t)=\bigl(\boldsymbol{X}_1,\dots,\boldsymbol{X}_n\bigr)$ 称为<b>基解矩阵</b>，其行列式 $\det\Phi(t)$ 即朗斯基行列式，在区间上恒不为零；</p>
+          <p style="margin-bottom:0;">③ 非齐次方程组的通解 $=\ \Phi(t)\boldsymbol{C}+\boldsymbol{X}^*(t)$，即“齐次通解 + 任一特解”。</p>
+        </div>
+        <div class="box idea">
+          <span class="box-tag">对比</span>
+          <p style="margin-bottom:0;">与 4.2 节对照记忆：基本解组 ↔ 两个线性无关的解；基解矩阵 ↔ Wronskian；“齐次通解 + 特解” ↔ 完全相同。</p>
+        </div>
+
+        <h2 class="subhead" id="s3">4.3.3 常系数线性齐次方程组的求解方法</h2>
+        <div class="box thm">
+          <span class="box-tag">方法 · 特征值法</span>
+          <p>对常系数齐次方程组 $\dfrac{\mathrm{d}\boldsymbol{X}}{\mathrm{d}t}=A\boldsymbol{X}$，先求特征方程</p>
+          <p class="formula-line">$$\det(A-\lambda E)=0$$</p>
+          <p>的全部特征值 $\lambda$ 及相应特征向量，再按情形写出解：</p>
+          <ul style="margin-bottom:0;">
+            <li><b>特征值互异（实）：</b>每个 $\lambda_i$ 对应特征向量 $\boldsymbol{v}_i$，给出解 $\boldsymbol{X}_i=e^{\lambda_i t}\boldsymbol{v}_i$；</li>
+            <li><b>共轭复特征值 $\alpha\pm\beta i$：</b>取 $e^{\alpha t}\bigl(\boldsymbol{u}\cos\beta t-\boldsymbol{w}\sin\beta t\bigr)$ 与 $e^{\alpha t}\bigl(\boldsymbol{u}\sin\beta t+\boldsymbol{w}\cos\beta t\bigr)$（$\boldsymbol{u},\boldsymbol{w}$ 为实、虚部）；</li>
+            <li><b>重特征值：</b>若特征向量的个数少于重数，需要补充“广义特征向量”形式为 $\bigl(\boldsymbol{v}+\boldsymbol{w}t\bigr)e^{\lambda t}$ 的解（了解即可）。</li>
+          </ul>
+        </div>
+
+        <h2 class="subhead" id="s4">4.3.4 常系数线性非齐次方程组的求解</h2>
+        <p>对非齐次方程组 $\boldsymbol{X}'=A\boldsymbol{X}+\boldsymbol{F}(t)$：</p>
+        <ul>
+          <li><b>待定系数法：</b>当 $\boldsymbol{F}(t)$ 是多项式、指数或三角向量时，按与 4.2 节相同的思路设特解形式（注意是否需要乘 $t$）；</li>
+          <li><b>常数变易法：</b>设特解 $\boldsymbol{X}^*(t)=\Phi(t)\boldsymbol{C}(t)$，代入可推出</li>
+        </ul>
+        <p class="formula-line">$$\boldsymbol{X}^*(t)=\Phi(t)\int \Phi^{-1}(t)\boldsymbol{F}(t)\,\mathrm{d}t,$$</p>
+        <p>加上 $\Phi(t)\boldsymbol{C}$ 即得通解。这一公式与一阶线性方程的“积分因子”解法在结构上完全一致。</p>
+
+        <h2 class="subhead" id="s5">4.3.5 微分方程组应用举例</h2>
+        <ul>
+          <li><b>耦合振子：</b>两个由弹簧相连的物体，各自位移满足相互耦合的二阶方程，化为一阶方程组后用特征值法求解；</li>
+          <li><b>种群模型：</b>被捕食者与捕食者的数量变化由耦合方程描述，线性化后可用本节方法分析；</li>
+          <li><b>网络与电路：</b>多个回路中的电流满足线性方程组，节点分析得到的正是 $A\boldsymbol{X}+\boldsymbol{F}$ 的形式。</li>
+        </ul>
+        <p>现实中大多数系统都是“多变量相互耦合”的，这正是方程组方法的价值所在。</p>
+
+        <div class="example">
+          <div class="ex-head"><h3>例 1　把二阶方程化为方程组</h3></div>
+          <p>将 $y''+3y'+2y=0$ 化为一阶线性方程组并写出系数矩阵。</p>
+          <details class="solution">
+            <summary>先想再看解答</summary>
+            <div class="sol-body">
+              <p>令 $x_1=y$、$x_2=y'$，则 $x_1'=x_2$，而由原方程 $x_2'=y''=-2y-3y'=-2x_1-3x_2$：</p>
+              <p style="margin-bottom:0;">$$\begin{cases}x_1'=x_2,\\[2pt]x_2'=-2x_1-3x_2,\end{cases}\qquad A=\begin{pmatrix}0&1\\-2&-3\end{pmatrix}.$$</p>
+            </div>
+          </details>
+        </div>
+
+        <div class="example">
+          <div class="ex-head"><h3>例 2　互异实特征值</h3></div>
+          <p>求解 $\boldsymbol{X}'=A\boldsymbol{X}$，其中 $A=\begin{pmatrix}2&1\\1&2\end{pmatrix}$。</p>
+          <details class="solution">
+            <summary>先想再看解答</summary>
+            <div class="sol-body">
+              <p>特征方程 $\begin{vmatrix}2-\lambda&1\\1&2-\lambda\end{vmatrix}=(2-\lambda)^2-1=0$，得 $\lambda_1=3$、$\lambda_2=1$。</p>
+              <p>对应特征向量：$\lambda_1=3$ 时 $\boldsymbol{v}_1=(1,1)^{\mathrm T}$；$\lambda_2=1$ 时 $\boldsymbol{v}_2=(1,-1)^{\mathrm T}$。</p>
+              <p style="margin-bottom:0;">于是通解 $\boldsymbol{X}=C_1e^{3t}\begin{pmatrix}1\\1\end{pmatrix}+C_2e^{t}\begin{pmatrix}1\\-1\end{pmatrix}$，同时得到 $x_1=C_1e^{3t}+C_2e^{t}$，$x_2=C_1e^{3t}-C_2e^{t}$。</p>
+            </div>
+          </details>
+        </div>
+
+        <div class="example">
+          <div class="ex-head"><h3>例 3　复特征值</h3></div>
+          <p>求解 $\begin{cases}x'=y,\\[2pt]y'=-x,\end{cases}$ 即 $\boldsymbol{X}'=A\boldsymbol{X}$，$A=\begin{pmatrix}0&1\\-1&0\end{pmatrix}$。</p>
+          <details class="solution">
+            <summary>先想再看解答</summary>
+            <div class="sol-body">
+              <p>特征方程 $\lambda^2+1=0$，得 $\lambda=\pm i$（$\alpha=0,\beta=1$）。取 $\lambda=i$ 的特征向量 $\boldsymbol{v}=(1,-i)^{\mathrm T}$，其实部与虚部分别为 $\boldsymbol{u}=(1,0)^{\mathrm T}$、$\boldsymbol{w}=(0,-1)^{\mathrm T}$。</p>
+              <p>按复特征值公式得两组实解：$\begin{pmatrix}\cos t\\-\sin t\end{pmatrix}$ 与 $\begin{pmatrix}\sin t\\ \cos t\end{pmatrix}$，故</p>
+              <p style="margin-bottom:0;">$$x=C_1\cos t+C_2\sin t,\qquad y=-C_1\sin t+C_2\cos t.$$</p>
+            </div>
+          </details>
+        </div>
+
+        <div class="example">
+          <div class="ex-head"><h3>例 4　非齐次方程组与常数变易法</h3></div>
+          <p>设 $\boldsymbol{X}'=A\boldsymbol{X}+\boldsymbol{F}(t)$ 的基解矩阵为 $\Phi(t)$，写出它的通解。</p>
+          <details class="solution">
+            <summary>先想再看解答</summary>
+            <div class="sol-body">
+              <p>由常数变易法，取 $\boldsymbol{X}^*(t)=\Phi(t)\displaystyle\int\Phi^{-1}(t)\boldsymbol{F}(t)\,\mathrm{d}t$ 为非齐次特解。</p>
+              <p style="margin-bottom:0;">于是通解为 $\boldsymbol{X}=\Phi(t)\left[\displaystyle\int\Phi^{-1}(t)\boldsymbol{F}(t)\,\mathrm{d}t+\boldsymbol{C}\right]$，其中 $\boldsymbol{C}$ 为任意常向量。当 $\boldsymbol{F}\equiv\boldsymbol{0}$ 时退化为 $\Phi(t)\boldsymbol{C}$，与齐次情形一致。</p>
+            </div>
+          </details>
+        </div>
+
+        <div class="example">
+          <div class="ex-head"><h3>例 5　应用建模（耦合系统）</h3></div>
+          <p>两个相同的弹簧振子由弱弹簧耦合，位移分别为 $u(t),v(t)$，可写成 $u''=-\omega^2u+k(v-u)$、$v''=-\omega^2v+k(u-v)$。将其写成一阶方程组。</p>
+          <details class="solution">
+            <summary>先想再看解答</summary>
+            <div class="sol-body">
+              <p>令 $x_1=u$、$x_2=v$、$x_3=u'$、$x_4=v'$，则</p>
+              <p style="margin-bottom:0;">$$\begin{cases}x_1'=x_3,\quad x_2'=x_4,\\[2pt]x_3'=-(\omega^2+k)x_1+kx_2,\\[2pt]x_4'=kx_1-(\omega^2+k)x_2,\end{cases}\qquad A=\begin{pmatrix}0&0&1&0\\0&0&0&1\\-(\omega^2+k)&k&0&0\\k&-(\omega^2+k)&0&0\end{pmatrix}.$$</p>
+              <p style="margin-top:8px;margin-bottom:0;">方程组的特征值对应系统的两种“简正模式”，这正是用线性代数方法研究振动的起点。</p>
+            </div>
+          </details>
+        </div>
+
+        <div class="box warn">
+          <span class="box-tag">易错提醒（选学）</span>
+          <p style="margin-bottom:0;">① 化方程组时变量命名要清楚（$x_1,x_2,\dots$ 顺序千万别错位）。② 特征值是复数时必须取实部与虚部构造实解，不能用复数写“实值通解”。③ 重特征值情形容易漏解，需要广义特征向量。④ 非齐次通解不要忘记加齐次通解。⑤ 本节为选学内容，先把 4.1、4.2 的单方程解法练熟更重要。</p>
+        </div>
+      </div>
+
+      <div class="pager">
+        <a href="ch4-2.html"><small>上一节</small>← 4.2 高阶线性微分方程</a>
+        <a class="next" href="../exercises/ch4-exercises.html"><small>下一站</small>✏️ 第 4 章 · 章末练习 →</a>
+      </div>
+    </div>
+  </div>
+
+  <footer class="site-footer">
+    <div class="wrap footer-inner">
+      <div><b>工科数学分析基础（上册）自学站</b><br>4.3 线性微分方程组（选学）</div>
+      <div><a href="../index.html">首页</a> · <a href="../ch4.html">第四章</a> · <a href="../exercises/ch4-exercises.html">章末练习</a></div>
+    </div>
+  </footer>
+</body>
+</html>

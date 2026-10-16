@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>4.1 几类简单的微分方程 · 工科数学分析自学站</title>
+  <link rel="stylesheet" href="../assets/css/style.css">
+  <link rel="stylesheet" href="../assets/katex/katex.min.css">
+  <script defer src="../assets/katex/katex.min.js"></script>
+  <script defer src="../assets/katex/auto-render.min.js"></script>
+  <script defer src="../assets/js/app.js"></script>
+</head>
+<body>
+  <header class="site-header">
+    <div class="wrap header-inner">
+      <a class="brand" href="../index.html">📘 工科数学分析 · 自学站
+        <small>第三版 · 上册 · 一元函数微积分</small>
+      </a>
+      <nav class="main-nav">
+        <a href="../index.html">首页</a>
+        <a href="../ch1.html">第一章</a>
+        <a href="../ch2.html">第二章</a>
+        <a href="../ch3.html">第三章</a>
+        <a href="../ch4.html">第四章</a>
+      </nav>
+    </div>
+  </header>
+
+  <div class="page-head">
+    <div class="wrap">
+      <p class="crumbs"><a href="../index.html">首页</a> / <a href="../ch4.html">第四章</a> / 第一节</p>
+      <h1>4.1 几类简单的微分方程</h1>
+      <p class="lead">前三章都从函数求导数；这一节反其道而行——已知导数满足的关系，把未知函数“解回来”。</p>
+    </div>
+  </div>
+
+  <div class="content">
+    <div class="wrap">
+      <div class="goal-box">
+        <b>本节要解决的问题：</b>什么方程叫微分方程？怎样识别类型、对症下药求通解？初值条件怎么用？这些方程在物理、生物、工程里长什么样？
+      </div>
+
+      <div class="lesson-body">
+        <h2 class="subhead" id="s1">4.1.1 几个基本概念</h2>
+        <div class="box thm">
+          <span class="box-tag">定义 · 微分方程</span>
+          <p>含有未知函数的<b>导数</b>（或微分）的方程称为<b>微分方程</b>；未知函数是一元函数的称为常微分方程。方程中出现的未知函数最高阶导数的阶数称为方程的<b>阶</b>。</p>
+          <p style="margin-bottom:0;">若未知函数及其各阶导数都是一次的，且不含它们的乘积或非线性函数，称为<b>线性</b>微分方程，否则是非线性的。例如 $y''-3y'+2y=e^x$ 是二阶线性方程，而 $y'=y^2$、$y''+\sin y=0$ 是非线性的。</p>
+        </div>
+        <p>若把某个函数代入方程后使方程成为恒等式，这个函数就叫方程的<b>解</b>。</p>
+        <ul>
+          <li><b>通解：</b>含独立任意常数、且常数个数等于方程阶数的解；</li>
+          <li><b>特解：</b>不含任意常数的解；</li>
+          <li><b>初值问题：</b>由方程加上初始条件（如 $y(x_0)=y_0$、$y'(x_0)=y_0'$）确定特解。</li>
+        </ul>
+        <p>本章方程的一般形式可写成 $F(x,y,y',\dots,y^{(n)})=0$，一阶微分方程常写成 $y'=f(x,y)$ 或 $M(x,y)\mathrm{d}x+N(x,y)\mathrm{d}y=0$。</p>
+
+        <h2 class="subhead" id="s2">4.1.2 可分离变量的一阶微分方程</h2>
+        <div class="box thm">
+          <span class="box-tag">解法 · 分离变量</span>
+          <p>若方程可写成 $\dfrac{\mathrm{d}y}{\mathrm{d}x}=\dfrac{f(x)}{g(y)}$（或 $g(y)\mathrm{d}y=f(x)\mathrm{d}x$），则两边分别积分：</p>
+          <p style="margin-bottom:0;">$$\int g(y)\,\mathrm{d}y=\int f(x)\,\mathrm{d}x+C.$$</p>
+        </div>
+        <p>这是最基本的一类方程，也是后面各种代换法的“归宿”：很多方程经过代换后都会化成可分离变量的形式。</p>
+
+        <h2 class="subhead" id="s3">4.1.3 一阶线性微分方程</h2>
+        <div class="box thm">
+          <span class="box-tag">公式 · 一阶线性方程的通解</span>
+          <p>方程 $y'+P(x)y=Q(x)$ 的通解为</p>
+          <p class="formula-line">$$y=e^{-\int P(x)\mathrm{d}x}\left[\int Q(x)e^{\int P(x)\mathrm{d}x}\,\mathrm{d}x+C\right].$$</p>
+          <p style="margin-bottom:0;">推导思想：两边同乘积分因子 $e^{\int P\mathrm{d}x}$，左边恰好成为 $\left[ye^{\int P\mathrm{d}x}\right]'$，再积分即可。当 $Q(x)\equiv0$ 时方程称为<b>齐次线性方程</b>，此时 $y=Ce^{-\int P\mathrm{d}x}$。</p>
+        </div>
+        <p><b>不要死记公式</b>：记住“乘积分因子 → 左边凑成乘积的导数 → 两边积分”这条线索，遇到带初值的问题更稳妥。</p>
+
+        <h2 class="subhead" id="s4">4.1.4 可用变量代换法求解的一阶微分方程</h2>
+        <ul>
+          <li><b>齐次形方程</b> $\dfrac{\mathrm{d}y}{\mathrm{d}x}=f\!\left(\dfrac yx\right)$：令 $u=\dfrac yx$（即 $y=ux$），则 $\dfrac{\mathrm{d}y}{\mathrm{d}x}=u+x\dfrac{\mathrm{d}u}{\mathrm{d}x}$，方程化为可分离变量；</li>
+          <li><b>形如</b> $\dfrac{\mathrm{d}y}{\mathrm{d}x}=f(ax+by+c)$：令 $u=ax+by+c$，则 $\dfrac{\mathrm{d}u}{\mathrm{d}x}=a+b f(u)$，同样化为可分离变量。</li>
+        </ul>
+        <p>代换的目标只有一个：把方程变成已经会解的类型。</p>
+
+        <h2 class="subhead" id="s5">4.1.5 可降阶的高阶微分方程</h2>
+        <div class="box thm">
+          <span class="box-tag">三种可降阶的情形</span>
+          <p>① $y^{(n)}=f(x)$：逐次积分 $n$ 次，每次添一个任意常数；</p>
+          <p>② $y''=f(x,y')$（方程中不显含 $y$）：令 $p=y'$，则 $y''=\dfrac{\mathrm{d}p}{\mathrm{d}x}$，化为一阶方程；</p>
+          <p style="margin-bottom:0;">③ $y''=f(y,y')$（不显含 $x$）：令 $p=y'$ 并把 $p$ 看作 $y$ 的函数，则 $y''=p\dfrac{\mathrm{d}p}{\mathrm{d}y}$，化为一阶方程。</p>
+        </div>
+        <p>这三种情形覆盖了大部分能“手算”的高阶方程；第 ②③ 种的关键是选对中间变量 $p$ 以及把 $y''$ 正确改写。</p>
+
+        <h2 class="subhead" id="s6">4.1.6 微分方程应用举例</h2>
+        <ul>
+          <li><b>指数增长/衰减：</b>$\dfrac{\mathrm{d}N}{\mathrm{d}t}=kN$，解为 $N=N_0e^{kt}$——人口、细菌繁殖、放射性衰变都属此类；</li>
+          <li><b>冷却定律：</b>$\dfrac{\mathrm{d}T}{\mathrm{d}t}=-k(T-T_m)$，物体温度趋于环境温度 $T_m$；</li>
+          <li><b>混合问题：</b>容器内溶质总量的变化率 $=$ 流入速率 $-$ 流出速率，得到一阶线性方程。</li>
+        </ul>
+        <div class="box idea">
+          <span class="box-tag">建模四步</span>
+          <p style="margin-bottom:0;">① 设未知函数并确定自变量；② 用“变化率 = 输入 − 输出”等物理或几何规律写出方程；③ 由题意给出初始条件；④ 解方程并解释结果的实际意义。</p>
+        </div>
+
+        <div class="example">
+          <div class="ex-head"><h3>例 1　识别阶数与线性性</h3></div>
+          <p>指出下列方程的阶，并判断是否为线性方程：① $y'=y^2+x$；② $y''-3y'+2y=e^x$；③ $y''+\sin y=0$。并验证 $y=Ce^{2x}$ 是 $y'=2y$ 的解。</p>
+          <details class="solution">
+            <summary>先想再看解答</summary>
+            <div class="sol-body">
+              <p>① 一阶，非线性（含 $y^2$）；② 二阶，线性；③ 二阶，非线性（含 $\sin y$）。</p>
+              <p style="margin-bottom:0;"><b>验证：</b>$y=Ce^{2x}$ 时 $y'=2Ce^{2x}=2y$，代入方程成为恒等式，故它是解；由于含一个任意常数而方程是一阶的，它正是通解。</p>
+            </div>
+          </details>
+        </div>
+
+        <div class="example">
+          <div class="ex-head"><h3>例 2　分离变量</h3></div>
+          <p>求方程 $\dfrac{\mathrm{d}y}{\mathrm{d}x}=2xy$ 的通解。</p>
+          <details class="solution">
+            <summary>先想再看解答</summary>
+            <div class="sol-body">
+              <p>分离变量：$\dfrac{\mathrm{d}y}{y}=2x\,\mathrm{d}x$（$y\ne0$），两边积分得</p>
+              <p class="formula-line">$$\ln|y|=x^2+C_1\ \Longrightarrow\ y=Ce^{x^2}\ (C\ne0).$$</p>
+              <p style="margin-bottom:0;">$y\equiv0$ 也是解，可取 $C=0$ 一并包含，故通解为 $y=Ce^{x^2}$。</p>
+            </div>
+          </details>
+        </div>
+
+        <div class="example">
+          <div class="ex-head"><h3>例 3　带初始条件的特解</h3></div>
+          <p>求 $\dfrac{\mathrm{d}y}{\mathrm{d}x}=\dfrac{x}{y}$ 满足 $y(0)=1$ 的特解。</p>
+          <details class="solution">
+            <summary>先想再看解答</summary>
+            <div class="sol-body">
+              <p>分离变量：$y\,\mathrm{d}y=x\,\mathrm{d}x$，积分得 $\dfrac{y^2}{2}=\dfrac{x^2}{2}+C_1$，即 $y^2=x^2+C$。</p>
+              <p>由 $y(0)=1$ 得 $C=1$；因为 $y(0)=1>0$，取正号：$y=\sqrt{x^2+1}$。</p>
+              <p style="margin-bottom:0;"><b>验证：</b>$y'=\dfrac{x}{\sqrt{x^2+1}}=\dfrac xy$ ✓。</p>
+            </div>
+          </details>
+        </div>
+
+        <div class="example">
+          <div class="ex-head"><h3>例 4　一阶线性方程</h3></div>
+          <p>求 $y'+y=e^{-x}$ 的通解。</p>
+          <details class="solution">
+            <summary>先想再看解答</summary>
+            <div class="sol-body">
+              <p>这里 $P(x)=1$，积分因子 $e^{\int1\mathrm{d}x}=e^{x}$。两边同乘 $e^x$：</p>
+              <p class="formula-line">$$e^xy'+e^xy=1\ \Longrightarrow\ \left(e^xy\right)'=1.$$</p>
+              <p style="margin-bottom:0;">两边积分得 $e^xy=x+C$，故通解 $y=(x+C)e^{-x}$。</p>
+            </div>
+          </details>
+        </div>
+
+        <div class="example">
+          <div class="ex-head"><h3>例 5　变量代换（齐次形）</h3></div>
+          <p>求 $\dfrac{\mathrm{d}y}{\mathrm{d}x}=\dfrac{x+y}{x}\ (x>0)$ 的通解。</p>
+          <details class="solution">
+            <summary>先想再看解答</summary>
+            <div class="sol-body">
+              <p>右端 $=\ 1+\dfrac yx$ 只依赖 $\dfrac yx$，属齐次形。令 $u=\dfrac yx$，则 $y=ux$，$\dfrac{\mathrm{d}y}{\mathrm{d}x}=u+x\dfrac{\mathrm{d}u}{\mathrm{d}x}$，代入得</p>
+              <p class="formula-line">$$u+x\frac{\mathrm{d}u}{\mathrm{d}x}=1+u\ \Longrightarrow\ \frac{\mathrm{d}u}{\mathrm{d}x}=\frac1x\ \Longrightarrow\ u=\ln x+C.$$</p>
+              <p style="margin-bottom:0;">回代 $u=\dfrac yx$ 得通解 $y=x(\ln x+C)$。</p>
+            </div>
+          </details>
+        </div>
+
+        <div class="example">
+          <div class="ex-head"><h3>例 6　可降阶方程</h3></div>
+          <p>求 $y''=2y'$ 的通解。</p>
+          <details class="solution">
+            <summary>先想再看解答</summary>
+            <div class="sol-body">
+              <p>方程不显含 $y$，令 $p=y'$，则 $p'=2p$，分离变量得 $p=C_1e^{2x}$。</p>
+              <p style="margin-bottom:0;">再由 $y'=C_1e^{2x}$ 积分得 $y=\dfrac{C_1}{2}e^{2x}+C_2$，即通解 $y=C_1e^{2x}+C_2$（重新命名常数）。</p>
+            </div>
+          </details>
+        </div>
+
+        <div class="box warn">
+          <span class="box-tag">易错提醒</span>
+          <p style="margin-bottom:0;">① 分离变量时除以 $y$ 会丢掉 $y\equiv0$ 这类解，最后要单独检查。② 通解中任意常数的个数必须等于方程阶数，少了就还没解完。③ 一阶线性方程中 $P(x)$ 的符号别抄错（$y'+Py=Q$ 才是标准形，先整理成这个形式再套用）。④ 用代换法时别忘最后回代成原变量。⑤ 降阶时 $y''=p\dfrac{\mathrm{d}p}{\mathrm{d}y}$ 只适用于“不显含 $x$”的方程。</p>
+        </div>
+      </div>
+
+      <div class="pager">
+        <a href="../ch4.html"><small>上一站</small>← 第四章章页</a>
+        <a class="next" href="ch4-2.html"><small>下一节</small>4.2 高阶线性微分方程 →</a>
+      </div>
+    </div>
+  </div>
+
+  <footer class="site-footer">
+    <div class="wrap footer-inner">
+      <div><b>工科数学分析基础（上册）自学站</b><br>4.1 几类简单的微分方程</div>
+      <div><a href="../index.html">首页</a> · <a href="../ch4.html">第四章</a> · <a href="../exercises/ch4-exercises.html">章末练习</a></div>
+    </div>
+  </footer>
+</body>
+</html>

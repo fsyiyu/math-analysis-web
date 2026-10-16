@@ -5,6 +5,10 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>第四章 常微分方程 · 工科数学分析自学站</title>
   <link rel="stylesheet" href="assets/css/style.css">
+  <link rel="stylesheet" href="assets/katex/katex.min.css">
+  <script defer src="assets/katex/katex.min.js"></script>
+  <script defer src="assets/katex/auto-render.min.js"></script>
+  <script defer src="assets/js/app.js"></script>
 </head>
 <body>
   <header class="site-header">
@@ -26,36 +30,120 @@
     <div class="wrap">
       <p class="crumbs"><a href="index.html">首页</a> / 第四章</p>
       <h1>第四章 常微分方程</h1>
-      <p class="lead">前几章从函数求导数，这一章反过来：已知“变化率满足的关系”，把未知函数解出来。它是描述物理、工程中动态过程的语言。</p>
+      <p class="lead">
+        前面几章都是“已知函数求导数”，本章反过来：已知导数满足的关系，把未知函数解出来。
+        它是描述物理、工程、生物中动态过程的通用语言，也是上册的收官一章（其中第三节为选学）。
+      </p>
       <div class="btn-row">
-        <a class="btn" href="ch3.html">← 上一章</a>
-        <a class="btn secondary" href="exercises/ch4-exercises.html">章末练习页（占位）</a>
+        <a class="btn" href="lessons/ch4-1.html">开始第一节</a>
+        <a class="btn secondary" href="exercises/ch4-exercises.html">✏️ 章末练习（16 题）</a>
+        <a class="btn secondary" href="#mindmap">📊 章末思维导图</a>
       </div>
     </div>
   </div>
 
   <div class="content">
     <div class="wrap">
-      <div class="todo-note">
-        <b>🚧 本章建设中。</b>
-        课程框架与练习入口已按教材目录搭好；精讲课件将沿用第一章的模板逐节补齐。
+      <div class="goal-box">
+        <b>学完本章你应该能做到：</b>
+        识别微分方程的阶与线性性，理解通解、特解与初值问题；熟练求解可分离变量方程与一阶线性方程，
+        会用变量代换把方程化为已知类型；掌握三类可降阶的高阶方程；理解线性方程解的结构，
+        会用特征方程求解常系数齐次方程、用待定系数法求非齐次特解；了解 Euler 方程与线性微分方程组（选学）。
       </div>
+
       <div class="sec-head">
-        <h2>章节结构（对照教材）</h2>
-        <p>共三节（第三节为选学），学完本章后将配套 16 题章末练习。</p>
+        <h2>章节路线图</h2>
+        <p>三节（第三节为选学）+ 章末练习。</p>
       </div>
       <div class="lesson-cards">
-        <div class="lesson-row"><span class="l-no">4.1</span><span><b>几类简单的微分方程</b> <span class="badge todo">待建设</span><br><span style="font-size:.9rem;color:var(--muted);">基本概念 · 可分离变量 · 一阶线性 · 变量代换法 · 可降阶高阶方程 · 应用举例</span></span></div>
-        <div class="lesson-row"><span class="l-no">4.2</span><span><b>高阶线性微分方程</b> <span class="badge todo">待建设</span><br><span style="font-size:.9rem;color:var(--muted);">解的结构 · 常系数齐次/非齐次解法 · 变系数方程求解问题</span></span></div>
-        <div class="lesson-row"><span class="l-no">4.3*</span><span><b>线性微分方程组</b> <span class="badge select">选学</span> <span class="badge todo">待建设</span><br><span style="font-size:.9rem;color:var(--muted);">基本概念 · 解的结构 · 常系数方程组 · 应用举例</span></span></div>
+        <a class="lesson-row" href="lessons/ch4-1.html">
+          <span class="l-no">4.1</span>
+          <span><b>几类简单的微分方程</b><br><span style="font-size:.9rem;color:var(--muted);">基本概念 · 可分离变量 · 一阶线性 · 变量代换 · 可降阶高阶方程 · 应用举例</span></span>
+          <span class="l-q">开场问题：已知导数关系，怎么找回原函数？</span>
+        </a>
+        <a class="lesson-row" href="lessons/ch4-2.html">
+          <span class="l-no">4.2</span>
+          <span><b>高阶线性微分方程</b><br><span style="font-size:.9rem;color:var(--muted);">解的结构 · 常系数齐次方程 · 非齐次特解 · Euler 方程</span></span>
+          <span class="l-q">开场问题：特征方程的三个根情形分别对应什么解？</span>
+        </a>
+        <a class="lesson-row" href="lessons/ch4-3.html">
+          <span class="l-no">4.3*</span>
+          <span><b>线性微分方程组</b> <span class="badge select">选学</span><br><span style="font-size:.9rem;color:var(--muted);">基本概念 · 解的结构 · 特征值法 · 非齐次方程组 · 应用举例</span></span>
+          <span class="l-q">开场问题：多个未知函数同时变化，怎样一起求解？</span>
+        </a>
       </div>
+
+      <div style="margin-top:26px;">
+        <a class="ch-card" href="exercises/ch4-exercises.html" style="background:var(--green-soft);border-color:#b9e3ca;">
+          <div class="ch-title"><h3>✏️ 第 4 章 · 章末练习</h3><span class="badge ok">可作答</span></div>
+          <p class="ch-desc">16 题（选择题 8 + 填空题 8），覆盖 4.1–4.3（含选学）。选择题点击即判对错，填空题点“显示答案”，每道题下方紧跟答案与解析。</p>
+        </a>
+      </div>
+
+      <div class="box warn" style="margin-top:24px;">
+        <span class="box-tag">学习建议</span>
+        <p style="margin-bottom:0;">微分方程的关键是“认类型、定方法”：先把方程整理成标准形，判断它属于哪一类，再选对应解法。解完一定要代回原方程验算，并检查任意常数个数是否等于方程的阶数。4.3 为选学，先把 4.1、4.2 练熟。</p>
+      </div>
+
+      <div class="sec-head" id="mindmap" style="margin-top:34px;">
+        <h2>章节思维导图</h2>
+        <p>把本章串成一张网：点节标题进入课页，点知识点卡片直达对应小节。</p>
+      </div>
+      <div class="mindmap">
+        <div class="mm-root">
+          <span class="mm-root-tag">第四章</span>
+          <h3>常微分方程</h3>
+          <p>一阶方程 → 高阶线性方程 → 方程组（选学）</p>
+        </div>
+        <div class="mm-branches">
+          <div class="mm-branch">
+            <a class="mm-sec" href="lessons/ch4-1.html"><span class="mm-sec-no">4.1</span><b>几类简单的微分方程</b></a>
+            <div class="mm-leaves">
+              <a class="mm-leaf" href="lessons/ch4-1.html#s1">基本概念：阶、线性、通解与特解</a>
+              <a class="mm-leaf" href="lessons/ch4-1.html#s2">可分离变量方程</a>
+              <a class="mm-leaf" href="lessons/ch4-1.html#s3">一阶线性方程</a>
+              <a class="mm-leaf" href="lessons/ch4-1.html#s4">变量代换法</a>
+              <a class="mm-leaf" href="lessons/ch4-1.html#s5">可降阶的高阶方程</a>
+              <a class="mm-leaf" href="lessons/ch4-1.html#s6">建模应用举例</a>
+            </div>
+          </div>
+          <div class="mm-branch">
+            <a class="mm-sec" href="lessons/ch4-2.html"><span class="mm-sec-no">4.2</span><b>高阶线性微分方程</b></a>
+            <div class="mm-leaves">
+              <a class="mm-leaf" href="lessons/ch4-2.html#s1">方程举例与标准形式</a>
+              <a class="mm-leaf" href="lessons/ch4-2.html#s2">解的结构与 Wronskian</a>
+              <a class="mm-leaf" href="lessons/ch4-2.html#s3">常系数齐次方程与特征方程</a>
+              <a class="mm-leaf" href="lessons/ch4-2.html#s4">非齐次方程与待定系数法</a>
+              <a class="mm-leaf" href="lessons/ch4-2.html#s5">变系数方程与 Euler 方程</a>
+            </div>
+          </div>
+          <div class="mm-branch">
+            <a class="mm-sec" href="lessons/ch4-3.html"><span class="mm-sec-no">4.3*</span><b>线性微分方程组（选学）</b></a>
+            <div class="mm-leaves">
+              <a class="mm-leaf" href="lessons/ch4-3.html#s1">基本概念与高阶方程化方程组</a>
+              <a class="mm-leaf" href="lessons/ch4-3.html#s2">解的结构与基解矩阵</a>
+              <a class="mm-leaf" href="lessons/ch4-3.html#s3">特征值法解常系数齐次方程组</a>
+              <a class="mm-leaf" href="lessons/ch4-3.html#s4">非齐次方程组与常数变易法</a>
+              <a class="mm-leaf" href="lessons/ch4-3.html#s5">耦合系统应用举例</a>
+              <a class="mm-leaf special" href="exercises/ch4-exercises.html">✏️ 章末练习（16 题）</a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <p class="mm-hint">提示：本图按教材 4.1–4.3 的顺序排列，叶子节点与每节课的小节标题一一对应，可当作复习清单逐条打勾。</p>
     </div>
   </div>
 
   <footer class="site-footer">
     <div class="wrap footer-inner">
-      <div><b>工科数学分析基础（上册）自学站</b><br>第四章：常微分方程（建设中）</div>
-      <div><a href="index.html">首页</a> · <a href="ch4.html">第四章</a> · <a href="exercises/ch4-exercises.html">练习占位页</a></div>
+      <div>
+        <b>工科数学分析基础（上册）自学站</b><br>
+        第四章：常微分方程（本期精讲）
+      </div>
+      <div>
+        <a href="index.html">首页</a> · <a href="ch4.html">第四章</a> ·
+        <a href="exercises/ch4-exercises.html">章末练习</a>
+      </div>
     </div>
   </footer>
 </body>

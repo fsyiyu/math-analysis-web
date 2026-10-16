@@ -3,8 +3,13 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>第 4 章 · 章末练习（建设中）· 工科数学分析自学站</title>
+  <title>第 4 章 · 章末练习 · 工科数学分析自学站</title>
   <link rel="stylesheet" href="../assets/css/style.css">
+  <link rel="stylesheet" href="../assets/katex/katex.min.css">
+  <script defer src="../assets/katex/katex.min.js"></script>
+  <script defer src="../assets/katex/auto-render.min.js"></script>
+  <script defer src="../assets/js/app.js"></script>
+  <script defer src="../assets/js/quiz.js"></script>
 </head>
 <body>
   <header class="site-header">
@@ -26,28 +31,262 @@
     <div class="wrap">
       <p class="crumbs"><a href="../index.html">首页</a> / <a href="../ch4.html">第四章</a> / 章末练习</p>
       <h1>第 4 章 · 章末练习</h1>
-      <p class="lead">常微分方程 · 练习页占位</p>
+      <p class="lead">常微分方程 · 共 16 题（选择题 8 + 填空题 8），覆盖 4.1–4.3（4.3 为选学）。选择题点选项即判对错，填空题点“显示答案”，每道题下方紧跟答案与解析。</p>
       <div class="btn-row">
-        <a class="btn" href="../ch4.html">← 返回第四章</a>
+        <a class="btn secondary" href="../ch4.html">← 返回第四章</a>
+        <a class="btn" href="../lessons/ch4-1.html">忘记内容？回看 4.1</a>
       </div>
     </div>
   </div>
 
   <div class="content">
     <div class="wrap">
-      <div class="todo-note">
-        <b>🚧 本章仍在建设中。</b><br>
-        第四章精讲课件上线后，这里将放置 16 题章末练习（选择题 + 填空题，答案隐藏点击显示）。
-        现阶段建议先把第一章学扎实。
+      <div class="goal-box">
+        <b>作答建议：</b>先判断方程类型（可分离变量 / 一阶线性 / 可降阶 / 常系数线性），再动笔；解完记得把结果代回方程验算，并检查任意常数个数是否等于方程阶数。
       </div>
-      <p><a href="../exercises/ch1-exercises.html">→ 去完成第 1 章 · 章末练习（可作答）</a></p>
+
+      <div class="quiz-toolbar">
+        <span>📋 第 4 章 · 常微分方程</span>
+        <button type="button" class="reset-btn" id="resetQuiz">↺ 重新作答</button>
+      </div>
+
+      <div class="quiz-group">
+        <h2>一、选择题 <span style="font-size:0.95rem;font-weight:500;color:var(--muted);">（点击选项立即判对错）</span></h2>
+
+        <div class="quiz-q" data-correct="A">
+          <div class="q-top"><span class="q-no">选择 1</span><span class="q-type mc">选择题</span><span style="font-size:0.85rem;color:var(--muted);">§4.1 可分离变量方程</span></div>
+          <p class="q-stem">方程 $\dfrac{\mathrm{d}y}{\mathrm{d}x}=2xy$ 的通解是</p>
+          <div class="options">
+            <button type="button" class="opt" data-key="A">A. $y=Ce^{x^2}$</button>
+            <button type="button" class="opt" data-key="B">B. $y=Ce^{2x}$</button>
+            <button type="button" class="opt" data-key="C">C. $y=Cx^2$</button>
+            <button type="button" class="opt" data-key="D">D. $y=Ce^{x^2/2}$</button>
+          </div>
+          <p class="fb-result"></p>
+          <div class="explain" hidden>
+            <p><b>解析：</b>分离变量 $\dfrac{\mathrm{d}y}{y}=2x\,\mathrm{d}x$，积分得 $\ln|y|=x^2+C_1$，即 $y=Ce^{x^2}$（$C=0$ 对应零解）。选 A。</p>
+          </div>
+        </div>
+
+        <div class="quiz-q" data-correct="A">
+          <div class="q-top"><span class="q-no">选择 2</span><span class="q-type mc">选择题</span><span style="font-size:0.85rem;color:var(--muted);">§4.1 一阶线性方程</span></div>
+          <p class="q-stem">方程 $y'+y=e^{-x}$ 的通解是</p>
+          <div class="options">
+            <button type="button" class="opt" data-key="A">A. $y=(x+C)e^{-x}$</button>
+            <button type="button" class="opt" data-key="B">B. $y=Ce^{-x}$</button>
+            <button type="button" class="opt" data-key="C">C. $y=Ce^{x}$</button>
+            <button type="button" class="opt" data-key="D">D. $y=(x+C)e^{x}$</button>
+          </div>
+          <p class="fb-result"></p>
+          <div class="explain" hidden>
+            <p><b>解析：</b>积分因子 $e^{x}$，两边同乘得 $\left(e^xy\right)'=1$，积分得 $e^xy=x+C$，故 $y=(x+C)e^{-x}$。选 A。</p>
+          </div>
+        </div>
+
+        <div class="quiz-q" data-correct="B">
+          <div class="q-top"><span class="q-no">选择 3</span><span class="q-type mc">选择题</span><span style="font-size:0.85rem;color:var(--muted);">§4.1 可降阶方程</span></div>
+          <p class="q-stem">方程 $y''=6x$ 的通解是</p>
+          <div class="options">
+            <button type="button" class="opt" data-key="A">A. $y=x^3+C$</button>
+            <button type="button" class="opt" data-key="B">B. $y=x^3+C_1x+C_2$</button>
+            <button type="button" class="opt" data-key="C">C. $y=3x^2+C_1x+C_2$</button>
+            <button type="button" class="opt" data-key="D">D. $y=6x+C$</button>
+          </div>
+          <p class="fb-result"></p>
+          <div class="explain" hidden>
+            <p><b>解析：</b>逐次积分：$y'=3x^2+C_1$，$y=x^3+C_1x+C_2$。二阶方程的通解必须含两个任意常数。选 B。</p>
+          </div>
+        </div>
+
+        <div class="quiz-q" data-correct="C">
+          <div class="q-top"><span class="q-no">选择 4</span><span class="q-type mc">选择题</span><span style="font-size:0.85rem;color:var(--muted);">§4.2 常系数齐次方程</span></div>
+          <p class="q-stem">方程 $y''-3y'+2y=0$ 的通解是</p>
+          <div class="options">
+            <button type="button" class="opt" data-key="A">A. $y=C_1e^{-x}+C_2e^{-2x}$</button>
+            <button type="button" class="opt" data-key="B">B. $y=(C_1+C_2x)e^{x}$</button>
+            <button type="button" class="opt" data-key="C">C. $y=C_1e^{x}+C_2e^{2x}$</button>
+            <button type="button" class="opt" data-key="D">D. $y=C_1\cos x+C_2\sin x$</button>
+          </div>
+          <p class="fb-result"></p>
+          <div class="explain" hidden>
+            <p><b>解析：</b>特征方程 $r^2-3r+2=0$ 的根为 $r=1,2$，两个不同实根给出 $y=C_1e^{x}+C_2e^{2x}$。选 C。</p>
+          </div>
+        </div>
+
+        <div class="quiz-q" data-correct="B">
+          <div class="q-top"><span class="q-no">选择 5</span><span class="q-type mc">选择题</span><span style="font-size:0.85rem;color:var(--muted);">§4.2 复特征根</span></div>
+          <p class="q-stem">方程 $y''+y=0$ 的通解是</p>
+          <div class="options">
+            <button type="button" class="opt" data-key="A">A. $y=C_1e^{x}+C_2e^{-x}$</button>
+            <button type="button" class="opt" data-key="B">B. $y=C_1\cos x+C_2\sin x$</button>
+            <button type="button" class="opt" data-key="C">C. $y=(C_1+C_2x)e^{x}$</button>
+            <button type="button" class="opt" data-key="D">D. $y=C_1\cos x-C_2\sin x$</button>
+          </div>
+          <p class="fb-result"></p>
+          <div class="explain" hidden>
+            <p><b>解析：</b>特征方程 $r^2+1=0$ 的根为 $r=\pm i$（$\alpha=0,\beta=1$），故通解为 $y=e^{0\cdot x}(C_1\cos x+C_2\sin x)=C_1\cos x+C_2\sin x$。选 B。</p>
+          </div>
+        </div>
+
+        <div class="quiz-q" data-correct="A">
+          <div class="q-top"><span class="q-no">选择 6</span><span class="q-type mc">选择题</span><span style="font-size:0.85rem;color:var(--muted);">§4.2 重特征根</span></div>
+          <p class="q-stem">方程 $y''-2y'+y=0$ 的通解是</p>
+          <div class="options">
+            <button type="button" class="opt" data-key="A">A. $y=(C_1+C_2x)e^{x}$</button>
+            <button type="button" class="opt" data-key="B">B. $y=C_1e^{x}+C_2e^{-x}$</button>
+            <button type="button" class="opt" data-key="C">C. $y=C_1e^{x}+C_2e^{2x}$</button>
+            <button type="button" class="opt" data-key="D">D. $y=e^{x}\left(C_1\cos x+C_2\sin x\right)$</button>
+          </div>
+          <p class="fb-result"></p>
+          <div class="explain" hidden>
+            <p><b>解析：</b>$r^2-2r+1=(r-1)^2=0$ 有二重根 $r=1$，通解为 $(C_1+C_2x)e^{x}$。注意二重根不能写成两个相同指数项的叠加（那样只有 1 个独立常数）。选 A。</p>
+          </div>
+        </div>
+
+        <div class="quiz-q" data-correct="A">
+          <div class="q-top"><span class="q-no">选择 7</span><span class="q-type mc">选择题</span><span style="font-size:0.85rem;color:var(--muted);">§4.3 常系数方程组（选学）</span></div>
+          <p class="q-stem">设 $A=\begin{pmatrix}2&1\\1&2\end{pmatrix}$，方程组 $\boldsymbol{X}'=A\boldsymbol{X}$ 的通解为</p>
+          <div class="options">
+            <button type="button" class="opt" data-key="A">A. $C_1e^{3t}\begin{pmatrix}1\\1\end{pmatrix}+C_2e^{t}\begin{pmatrix}1\\-1\end{pmatrix}$</button>
+            <button type="button" class="opt" data-key="B">B. $C_1e^{2t}\begin{pmatrix}1\\1\end{pmatrix}+C_2e^{2t}\begin{pmatrix}1\\-1\end{pmatrix}$</button>
+            <button type="button" class="opt" data-key="C">C. $C_1e^{3t}\begin{pmatrix}1\\-1\end{pmatrix}+C_2e^{t}\begin{pmatrix}1\\1\end{pmatrix}$</button>
+            <button type="button" class="opt" data-key="D">D. $C_1e^{t}\begin{pmatrix}1\\1\end{pmatrix}+C_2e^{3t}\begin{pmatrix}1\\1\end{pmatrix}$</button>
+          </div>
+          <p class="fb-result"></p>
+          <div class="explain" hidden>
+            <p><b>解析：</b>特征值 $\lambda_1=3$（特征向量 $(1,1)^{\mathrm T}$）与 $\lambda_2=1$（特征向量 $(1,-1)^{\mathrm T}$），对应解为 $e^{3t}(1,1)^{\mathrm T}$ 与 $e^{t}(1,-1)^{\mathrm T}$。选 A。</p>
+          </div>
+        </div>
+
+        <div class="quiz-q" data-correct="B">
+          <div class="q-top"><span class="q-no">选择 8</span><span class="q-type mc">选择题</span><span style="font-size:0.85rem;color:var(--muted);">§4.3 解的结构（选学）</span></div>
+          <p class="q-stem">若 $\boldsymbol{X}_1,\boldsymbol{X}_2$ 是二阶齐次线性方程组的基本解组，则它们的朗斯基行列式</p>
+          <div class="options">
+            <button type="button" class="opt" data-key="A">A. 恒等于零</button>
+            <button type="button" class="opt" data-key="B">B. 在区间上恒不为零</button>
+            <button type="button" class="opt" data-key="C">C. 可以为零也可以不为零</button>
+            <button type="button" class="opt" data-key="D">D. 只在初始时刻为零</button>
+          </div>
+          <p class="fb-result"></p>
+          <div class="explain" hidden>
+            <p><b>解析：</b>基本解组即线性无关的解组，其朗斯基行列式（基解矩阵的行列式）在定义区间上处处不为零。选 B。</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="quiz-group">
+        <h2>二、填空题 <span style="font-size:0.95rem;font-weight:500;color:var(--muted);">（先自己算，再点“显示答案”）</span></h2>
+
+        <div class="quiz-q">
+          <div class="q-top"><span class="q-no">填空 1</span><span class="q-type fill">填空题</span><span style="font-size:0.85rem;color:var(--muted);">§4.1 初值问题</span></div>
+          <p class="q-stem">微分方程 $y'=y$ 满足 $y(0)=1$ 的特解是 $y=$ ______ 。</p>
+          <button type="button" class="reveal-btn">显示答案</button>
+          <div class="answer-box" hidden>
+            <p><span class="ans-label">答案：</span>$y=e^{x}$</p>
+            <div class="explain">
+              <p><b>解析：</b>通解为 $y=Ce^{x}$，由 $y(0)=C=1$ 得 $C=1$，故 $y=e^{x}$。</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="quiz-q">
+          <div class="q-top"><span class="q-no">填空 2</span><span class="q-type fill">填空题</span><span style="font-size:0.85rem;color:var(--muted);">§4.1 分离变量与初值</span></div>
+          <p class="q-stem">方程 $\dfrac{\mathrm{d}y}{\mathrm{d}x}=\dfrac{x}{y}$ 满足 $y(0)=1$ 的特解是 $y=$ ______ 。</p>
+          <button type="button" class="reveal-btn">显示答案</button>
+          <div class="answer-box" hidden>
+            <p><span class="ans-label">答案：</span>$y=\sqrt{x^2+1}$</p>
+            <div class="explain">
+              <p><b>解析：</b>$y\,\mathrm{d}y=x\,\mathrm{d}x$ 积分得 $y^2=x^2+C$；由 $y(0)=1$ 得 $C=1$，且 $y(0)>0$ 取正根，故 $y=\sqrt{x^2+1}$。</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="quiz-q">
+          <div class="q-top"><span class="q-no">填空 3</span><span class="q-type fill">填空题</span><span style="font-size:0.85rem;color:var(--muted);">§4.1 可降阶方程</span></div>
+          <p class="q-stem">方程 $y''=2y'$ 的通解是 $y=$ ______ 。</p>
+          <button type="button" class="reveal-btn">显示答案</button>
+          <div class="answer-box" hidden>
+            <p><span class="ans-label">答案：</span>$y=C_1e^{2x}+C_2$</p>
+            <div class="explain">
+              <p><b>解析：</b>不显含 $y$，令 $p=y'$ 得 $p'=2p$，故 $p=C_1e^{2x}$；再积分得 $y=\dfrac{C_1}{2}e^{2x}+C_2$，重命名常数即 $y=C_1e^{2x}+C_2$。</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="quiz-q">
+          <div class="q-top"><span class="q-no">填空 4</span><span class="q-type fill">填空题</span><span style="font-size:0.85rem;color:var(--muted);">§4.2 齐次方程通解</span></div>
+          <p class="q-stem">方程 $y''-y=0$ 的通解是 $y=$ ______ 。</p>
+          <button type="button" class="reveal-btn">显示答案</button>
+          <div class="answer-box" hidden>
+            <p><span class="ans-label">答案：</span>$y=C_1e^{x}+C_2e^{-x}$</p>
+            <div class="explain">
+              <p><b>解析：</b>特征方程 $r^2-1=0$，根 $r=\pm1$，故通解为 $C_1e^{x}+C_2e^{-x}$。</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="quiz-q">
+          <div class="q-top"><span class="q-no">填空 5</span><span class="q-type fill">填空题</span><span style="font-size:0.85rem;color:var(--muted);">§4.2 复特征根</span></div>
+          <p class="q-stem">方程 $y''+2y'+5y=0$ 的通解是 $y=$ ______ 。</p>
+          <button type="button" class="reveal-btn">显示答案</button>
+          <div class="answer-box" hidden>
+            <p><span class="ans-label">答案：</span>$y=e^{-x}\left(C_1\cos 2x+C_2\sin 2x\right)$</p>
+            <div class="explain">
+              <p><b>解析：</b>$r^2+2r+5=0\Rightarrow r=-1\pm2i$，即 $\alpha=-1,\beta=2$，故通解为 $e^{-x}(C_1\cos2x+C_2\sin2x)$。</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="quiz-q">
+          <div class="q-top"><span class="q-no">填空 6</span><span class="q-type fill">填空题</span><span style="font-size:0.85rem;color:var(--muted);">§4.2 非齐次特解</span></div>
+          <p class="q-stem">方程 $y''+y=x$ 的一个特解是 $y^*=$ ______ 。</p>
+          <button type="button" class="reveal-btn">显示答案</button>
+          <div class="answer-box" hidden>
+            <p><span class="ans-label">答案：</span>$y^*=x$</p>
+            <div class="explain">
+              <p><b>解析：</b>右端为一次多项式，设 $y^*=ax+b$，代入 $y''+y=x$ 得 $ax+b=x$，故 $a=1,b=0$，即 $y^*=x$。（通解为 $C_1\cos x+C_2\sin x+x$。）</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="quiz-q">
+          <div class="q-top"><span class="q-no">填空 7</span><span class="q-type fill">填空题</span><span style="font-size:0.85rem;color:var(--muted);">§4.3 化为高阶方程（选学）</span></div>
+          <p class="q-stem">对 $\begin{cases}x'=y,\\[2pt]y'=-x,\end{cases}$ 消去 $y$ 后，$x(t)$ 满足的二阶方程是 ______ 。</p>
+          <button type="button" class="reveal-btn">显示答案</button>
+          <div class="answer-box" hidden>
+            <p><span class="ans-label">答案：</span>$x''+x=0$</p>
+            <div class="explain">
+              <p><b>解析：</b>由 $x'=y$ 得 $x''=y'=-x$，即 $x''+x=0$，其解为 $x=C_1\cos t+C_2\sin t$。</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="quiz-q">
+          <div class="q-top"><span class="q-no">填空 8</span><span class="q-type fill">填空题</span><span style="font-size:0.85rem;color:var(--muted);">§4.3 特征值（选学）</span></div>
+          <p class="q-stem">方程 $\det(A-\lambda E)=0$ 称为矩阵 $A$ 的 ______ 方程。</p>
+          <button type="button" class="reveal-btn">显示答案</button>
+          <div class="answer-box" hidden>
+            <p><span class="ans-label">答案：</span>特征方程</p>
+            <div class="explain">
+              <p><b>解析：</b>$\det(A-\lambda E)=0$ 即特征方程，它的根是 $A$ 的特征值；相应地 $\det\Phi(t)$ 为朗斯基行列式。</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div style="margin-top:26px;">
+        <a class="ch-card" href="../ch4.html" style="background:var(--green-soft);border-color:#b9e3ca;">
+          <div class="ch-title"><h3>🎉 上册四章全部学完！</h3><span class="badge ok">全部就绪</span></div>
+          <p class="ch-desc">回看第四章思维导图，把微分方程的类型与解法再过一遍；也可以从第一章导图开始做全书总复习。</p>
+        </a>
+      </div>
     </div>
   </div>
 
   <footer class="site-footer">
     <div class="wrap footer-inner">
-      <div><b>工科数学分析基础（上册）自学站</b><br>第 4 章 · 章末练习（建设中）</div>
-      <div><a href="../index.html">首页</a> · <a href="../ch4.html">第四章</a></div>
+      <div><b>工科数学分析基础（上册）自学站</b><br>第 4 章 · 章末练习（原创题目）</div>
+      <div><a href="../index.html">首页</a> · <a href="../ch4.html">第四章</a> · <a href="../lessons/ch4-3.html">回到 4.3</a></div>
     </div>
   </footer>
 </body>
