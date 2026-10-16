@@ -41,7 +41,7 @@
       </div>
 
       <div class="lesson-body">
-        <h2 class="subhead">1.1 集合及其运算</h2>
+        <h2 class="subhead" id="s1">1.1 集合及其运算</h2>
         <div class="box">
           <span class="box-tag">定义 · 集合</span>
           <p>集合是具有某种确定属性的对象的整体。若 $x$ 属于集合 $A$，记 $x\in A$；否则记 $x\notin A$。不含任何元素的集合叫<b>空集</b>，记 $\varnothing$。</p>
@@ -56,7 +56,7 @@
         <p>描述“自变量附近”最常用的工具是<b>区间与邻域</b>。记 $a$ 为实数，$\delta>0$，称开区间 $(a-\delta,a+\delta)$ 为 $a$ 的 $\delta$ <b>邻域</b>，去掉中心 $a$ 后称为<b>去心邻域</b>：</p>
         <p class="formula-line">$$U(a,\delta)=\{x\mid |x-a|<\delta\},\qquad \mathring{U}(a,\delta)=\{x\mid 0<|x-a|<\delta\}.$$</p>
 
-        <h2 class="subhead">1.2 实数集的完备性与确界存在定理</h2>
+        <h2 class="subhead" id="s2">1.2 实数集的完备性与确界存在定理</h2>
         <p>设 $S$ 是非空实数集。若存在 $M$ 使一切 $x\in S$ 都有 $x\le M$，称 $M$ 是 $S$ 的<b>上界</b>；若存在 $m$ 使一切 $x\in S$ 都有 $x\ge m$，称 $m$ 是 $S$ 的<b>下界</b>。有上界又有下界称为<b>有界集</b>。</p>
         <div class="box">
           <span class="box-tag">定义 · 上确界 / 下确界</span>
@@ -69,7 +69,7 @@
           <p style="margin-bottom:0;">“完备”指实数轴没有“缝隙”：有理数集里求极限可能跳出有理数（如 $\sqrt2$），而任何“合理的上界”都在实数里取得到。这是后面极限理论的地基。</p>
         </div>
 
-        <h2 class="subhead">1.3 映射与函数的概念</h2>
+        <h2 class="subhead" id="s3">1.3 映射与函数的概念</h2>
         <div class="box">
           <span class="box-tag">定义 · 映射</span>
           <p>设 $A,B$ 为非空集合，若按某种对应法则 $f$，对 $A$ 中<b>每一个</b>元素 $x$，都有 $B$ 中<b>唯一确定</b>的元素 $y$ 与之对应，则称 $f$ 是 $A$ 到 $B$ 的<b>映射</b>，记 $f:A\to B$，$y=f(x)$。</p>
@@ -81,7 +81,7 @@
           <p>$f(x)=\dfrac{x^2-1}{x-1}$ 与 $g(x)=x+1$ 是同一个函数吗？<b>不是。</b>前者定义域是 $\{x\in\mathbb R\mid x\ne1\}$，后者是整个 $\mathbb R$。定义域不同，函数就不同。</p>
         </div>
 
-        <h2 class="subhead">1.4 函数的基本属性</h2>
+        <h2 class="subhead" id="s4">1.4 函数的基本属性</h2>
         <ul>
           <li><b>有界性</b>：存在 $M>0$ 使 $|f(x)|\le M$ 对定义域（或其子区间）内一切 $x$ 成立。</li>
           <li><b>单调性</b>：若 $x_1<x_2\Rightarrow f(x_1)\le f(x_2)$，称单调增加（不减）；严格情形用 $<$。</li>
@@ -90,18 +90,18 @@
         </ul>
         <p>几何直觉：奇函数关于原点对称，偶函数关于 $y$ 轴对称；$y=\sin x$ 既有界（$|\sin x|\le1$）又奇又周期；$y=x^2$ 偶且有下界无上界。</p>
 
-        <h2 class="subhead">1.5 复合映射与复合函数</h2>
+        <h2 class="subhead" id="s5">1.5 复合映射与复合函数</h2>
         <div class="box">
           <span class="box-tag">定义 · 复合函数</span>
           <p>设 $y=f(u)$ 的定义域含 $u=g(x)$ 的值域，则可定义复合函数 $(f\circ g)(x)=f\big(g(x)\big)$。</p>
           <p style="margin-bottom:0;">复合的关键：<b>内层函数的值必须落在外层函数的定义域内</b>，这直接决定了复合函数的定义域。</p>
         </div>
 
-        <h2 class="subhead">1.6 逆映射与反函数</h2>
+        <h2 class="subhead" id="s6">1.6 逆映射与反函数</h2>
         <p>若 $f:A\to B$ 是双射，则对每个 $y\in B$ 存在唯一的 $x\in A$ 使 $f(x)=y$，由此定义<b>反函数</b> $f^{-1}:B\to A$。严格单调的函数必有反函数（反过来不一定）。</p>
         <p>实用上：从 $y=f(x)$ 中解出 $x=\varphi(y)$，再把变量名统一换成 $x$（习惯上自变量记 $x$），并<b>交换定义域与值域</b>。图像上，$y=f(x)$ 与 $y=f^{-1}(x)$ 关于直线 $y=x$ 对称。</p>
 
-        <h2 class="subhead">1.7 初等函数与双曲函数</h2>
+        <h2 class="subhead" id="s7">1.7 初等函数与双曲函数</h2>
         <p><b>基本初等函数</b>：常数函数、幂函数 $x^\mu$、指数函数 $a^x$、对数函数 $\log_a x$、三角函数与反三角函数。</p>
         <div class="box thm">
           <span class="box-tag">结论 · 初等函数</span>

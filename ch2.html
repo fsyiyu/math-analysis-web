@@ -5,6 +5,10 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>第二章 一元函数微分学及其应用 · 工科数学分析自学站</title>
   <link rel="stylesheet" href="assets/css/style.css">
+  <link rel="stylesheet" href="assets/katex/katex.min.css">
+  <script defer src="assets/katex/katex.min.js"></script>
+  <script defer src="assets/katex/auto-render.min.js"></script>
+  <script defer src="assets/js/app.js"></script>
 </head>
 <body>
   <header class="site-header">
@@ -26,39 +30,167 @@
     <div class="wrap">
       <p class="crumbs"><a href="index.html">首页</a> / 第二章</p>
       <h1>第二章 一元函数微分学及其应用</h1>
-      <p class="lead">研究“瞬时变化率”：从导数的定义出发，建立一套求导法则，再用中值定理与 Taylor 公式把导数变成研究函数性质的工具。</p>
+      <p class="lead">
+        本章研究“瞬时变化率”：先用极限定义导数，再建立一整套求导法则，然后用微分中值定理、Taylor
+        公式把导数变成研究函数性质的工具。本章共六节，建议 3–4 周学完。
+      </p>
       <div class="btn-row">
-        <a class="btn" href="ch1.html">← 先复习第一章</a>
-        <a class="btn secondary" href="exercises/ch2-exercises.html">章末练习页（占位）</a>
+        <a class="btn" href="lessons/ch2-1.html">开始第一节</a>
+        <a class="btn secondary" href="exercises/ch2-exercises.html">✏️ 章末练习（16 题）</a>
+        <a class="btn secondary" href="#mindmap">📊 章末思维导图</a>
       </div>
     </div>
   </div>
 
   <div class="content">
     <div class="wrap">
-      <div class="todo-note">
-        <b>🚧 本章建设中。</b>
-        课程框架与练习入口已按教材目录搭好；精讲课件将沿用第一章的模板逐节补齐。
+      <div class="goal-box">
+        <b>学完本章你应该能做到：</b>
+        用定义计算导数并说明其几何意义；熟练运用四则、链式、反函数法则与导数表求导，会求高阶导数、隐函数与参数方程确定的函数的导数；
+        理解微分的含义并做近似计算；掌握 Rolle、Lagrange、Cauchy 中值定理与 L'Hospital 法则；
+        会用 Taylor 公式求极限、估计误差、证明不等式；能完整研究函数的单调性、极值、最值与凹凸性。
       </div>
+
       <div class="sec-head">
-        <h2>章节结构（对照教材）</h2>
-        <p>共六节，学完一章后将配套 16 题章末练习。</p>
+        <h2>章节路线图</h2>
+        <p>六节 + 章末练习，按顺序学下去。</p>
       </div>
       <div class="lesson-cards">
-        <div class="lesson-row"><span class="l-no">2.1</span><span><b>导数的概念</b> <span class="badge todo">待建设</span><br><span style="font-size:.9rem;color:var(--muted);">导数定义 · 几何意义 · 可导与连续 · 变化率</span></span></div>
-        <div class="lesson-row"><span class="l-no">2.2</span><span><b>求导的基本法则</b> <span class="badge todo">待建设</span><br><span style="font-size:.9rem;color:var(--muted);">四则与复合 · 反函数 · 初等函数求导 · 高阶导数 · 隐函数与参数方程 · 相关变化率</span></span></div>
-        <div class="lesson-row"><span class="l-no">2.3</span><span><b>微分</b> <span class="badge todo">待建设</span><br><span style="font-size:.9rem;color:var(--muted);">微分概念 · 运算法则 · 高阶微分 · 近似计算</span></span></div>
-        <div class="lesson-row"><span class="l-no">2.4</span><span><b>微分中值定理及其应用</b> <span class="badge todo">待建设</span><br><span style="font-size:.9rem;color:var(--muted);">极值必要条件 · Rolle / Lagrange / Cauchy 中值定理 · L'Hospital 法则</span></span></div>
-        <div class="lesson-row"><span class="l-no">2.5</span><span><b>Taylor 定理及其应用</b> <span class="badge todo">待建设</span><br><span style="font-size:.9rem;color:var(--muted);">Taylor 定理 · 常用 Maclaurin 公式 · 逼近与近似计算</span></span></div>
-        <div class="lesson-row"><span class="l-no">2.6</span><span><b>函数性态的研究</b> <span class="badge todo">待建设</span><br><span style="font-size:.9rem;color:var(--muted);">单调性 · 极值 · 最大（小）值 · 凹凸性与拐点</span></span></div>
+        <a class="lesson-row" href="lessons/ch2-1.html">
+          <span class="l-no">2.1</span>
+          <span><b>导数的概念</b><br><span style="font-size:.9rem;color:var(--muted);">平均变化率与瞬时变化率 · 导数定义 · 几何意义 · 可导与连续 · 变化率</span></span>
+          <span class="l-q">开场问题：怎么算“某一瞬间”的变化快慢？</span>
+        </a>
+        <a class="lesson-row" href="lessons/ch2-2.html">
+          <span class="l-no">2.2</span>
+          <span><b>求导的基本法则</b><br><span style="font-size:.9rem;color:var(--muted);">四则运算 · 链式法则 · 反函数 · 导数表 · 高阶导数 · 隐函数与参数方程 · 相关变化率</span></span>
+          <span class="l-q">开场问题：怎样又快又准地求导？</span>
+        </a>
+        <a class="lesson-row" href="lessons/ch2-3.html">
+          <span class="l-no">2.3</span>
+          <span><b>微分</b><br><span style="font-size:.9rem;color:var(--muted);">微分概念 · 几何意义 · 形式不变性 · 微分法则 · 高阶微分 · 近似计算</span></span>
+          <span class="l-q">开场问题：函数值到底改变了多少？</span>
+        </a>
+        <a class="lesson-row" href="lessons/ch2-4.html">
+          <span class="l-no">2.4</span>
+          <span><b>微分中值定理及其应用</b><br><span style="font-size:.9rem;color:var(--muted);">极值必要条件 · Rolle / Lagrange / Cauchy 中值定理 · L'Hospital 法则</span></span>
+          <span class="l-q">开场问题：整体差值与局部导数如何联系？</span>
+        </a>
+        <a class="lesson-row" href="lessons/ch2-5.html">
+          <span class="l-no">2.5</span>
+          <span><b>Taylor 定理及其应用</b><br><span style="font-size:.9rem;color:var(--muted);">多项式逼近 · Taylor 公式与余项 · 常用 Maclaurin 公式 · 求极限与误差估计</span></span>
+          <span class="l-q">开场问题：怎样用多项式逼近一般函数？</span>
+        </a>
+        <a class="lesson-row" href="lessons/ch2-6.html">
+          <span class="l-no">2.6</span>
+          <span><b>函数性态的研究</b><br><span style="font-size:.9rem;color:var(--muted);">单调性 · 极值 · 最大（小）值 · 凹凸性与拐点 · 渐近线与作图</span></span>
+          <span class="l-q">开场问题：怎样把导数当作研究函数的显微镜？</span>
+        </a>
       </div>
+
+      <div style="margin-top:26px;">
+        <a class="ch-card" href="exercises/ch2-exercises.html" style="background:var(--green-soft);border-color:#b9e3ca;">
+          <div class="ch-title"><h3>✏️ 第 2 章 · 章末练习</h3><span class="badge ok">可作答</span></div>
+          <p class="ch-desc">16 题（选择题 8 + 填空题 8），覆盖全部六节。选择题点击即判对错，填空题点“显示答案”，每道题下方紧跟答案与解析。</p>
+        </a>
+      </div>
+
+      <div class="box warn" style="margin-top:24px;">
+        <span class="box-tag">学习建议</span>
+        <p style="margin-bottom:0;">第二章的“计算量”明显变大：导数公式与法则必须练到条件反射，否则后面的中值定理与 Taylor 公式会寸步难行。建议每节课后先做课本对应节的 A 类习题，再回来做章末练习。</p>
+      </div>
+
+      <div class="sec-head" id="mindmap" style="margin-top:34px;">
+        <h2>章节思维导图</h2>
+        <p>把本章串成一张网：点节标题进入课页，点知识点卡片直达对应小节。</p>
+      </div>
+      <div class="mindmap">
+        <div class="mm-root">
+          <span class="mm-root-tag">第二章</span>
+          <h3>一元函数微分学及其应用</h3>
+          <p>导数 → 微分 → 中值定理 → Taylor → 性态研究</p>
+        </div>
+        <div class="mm-branches">
+          <div class="mm-branch">
+            <a class="mm-sec" href="lessons/ch2-1.html"><span class="mm-sec-no">2.1</span><b>导数的概念</b></a>
+            <div class="mm-leaves">
+              <a class="mm-leaf" href="lessons/ch2-1.html#s1">从平均变化率到瞬时变化率</a>
+              <a class="mm-leaf" href="lessons/ch2-1.html#s2">导数的定义</a>
+              <a class="mm-leaf" href="lessons/ch2-1.html#s3">导数的几何意义</a>
+              <a class="mm-leaf" href="lessons/ch2-1.html#s4">可导与连续的关系</a>
+              <a class="mm-leaf" href="lessons/ch2-1.html#s5">变化率与导数的实际含义</a>
+            </div>
+          </div>
+          <div class="mm-branch">
+            <a class="mm-sec" href="lessons/ch2-2.html"><span class="mm-sec-no">2.2</span><b>求导的基本法则</b></a>
+            <div class="mm-leaves">
+              <a class="mm-leaf" href="lessons/ch2-2.html#s1">四则运算法则</a>
+              <a class="mm-leaf" href="lessons/ch2-2.html#s2">链式法则</a>
+              <a class="mm-leaf" href="lessons/ch2-2.html#s3">反函数的求导法则</a>
+              <a class="mm-leaf" href="lessons/ch2-2.html#s4">基本初等函数导数公式</a>
+              <a class="mm-leaf" href="lessons/ch2-2.html#s5">高阶导数</a>
+              <a class="mm-leaf" href="lessons/ch2-2.html#s6">隐函数求导法</a>
+              <a class="mm-leaf" href="lessons/ch2-2.html#s7">参数方程确定的函数的导数</a>
+              <a class="mm-leaf" href="lessons/ch2-2.html#s8">相关变化率</a>
+            </div>
+          </div>
+          <div class="mm-branch">
+            <a class="mm-sec" href="lessons/ch2-3.html"><span class="mm-sec-no">2.3</span><b>微分</b></a>
+            <div class="mm-leaves">
+              <a class="mm-leaf" href="lessons/ch2-3.html#s1">微分的概念</a>
+              <a class="mm-leaf" href="lessons/ch2-3.html#s2">微分的几何意义</a>
+              <a class="mm-leaf" href="lessons/ch2-3.html#s3">微分的形式不变性</a>
+              <a class="mm-leaf" href="lessons/ch2-3.html#s4">微分法则与基本公式</a>
+              <a class="mm-leaf" href="lessons/ch2-3.html#s5">高阶微分</a>
+              <a class="mm-leaf" href="lessons/ch2-3.html#s6">微分在近似计算中的应用</a>
+            </div>
+          </div>
+          <div class="mm-branch">
+            <a class="mm-sec" href="lessons/ch2-4.html"><span class="mm-sec-no">2.4</span><b>微分中值定理及其应用</b></a>
+            <div class="mm-leaves">
+              <a class="mm-leaf" href="lessons/ch2-4.html#s1">极值及其必要条件</a>
+              <a class="mm-leaf" href="lessons/ch2-4.html#s2">Rolle 定理</a>
+              <a class="mm-leaf" href="lessons/ch2-4.html#s3">Lagrange 中值定理</a>
+              <a class="mm-leaf" href="lessons/ch2-4.html#s4">Cauchy 中值定理</a>
+              <a class="mm-leaf" href="lessons/ch2-4.html#s5">L'Hospital 法则</a>
+            </div>
+          </div>
+          <div class="mm-branch">
+            <a class="mm-sec" href="lessons/ch2-5.html"><span class="mm-sec-no">2.5</span><b>Taylor 定理及其应用</b></a>
+            <div class="mm-leaves">
+              <a class="mm-leaf" href="lessons/ch2-5.html#s1">从线性近似到多项式近似</a>
+              <a class="mm-leaf" href="lessons/ch2-5.html#s2">Taylor 定理与余项</a>
+              <a class="mm-leaf" href="lessons/ch2-5.html#s3">常用 Maclaurin 公式</a>
+              <a class="mm-leaf" href="lessons/ch2-5.html#s4">Taylor 公式的应用</a>
+            </div>
+          </div>
+          <div class="mm-branch">
+            <a class="mm-sec" href="lessons/ch2-6.html"><span class="mm-sec-no">2.6</span><b>函数性态的研究</b></a>
+            <div class="mm-leaves">
+              <a class="mm-leaf" href="lessons/ch2-6.html#s1">函数的单调性</a>
+              <a class="mm-leaf" href="lessons/ch2-6.html#s2">函数的极值</a>
+              <a class="mm-leaf" href="lessons/ch2-6.html#s3">最大值与最小值</a>
+              <a class="mm-leaf" href="lessons/ch2-6.html#s4">凹凸性与拐点</a>
+              <a class="mm-leaf" href="lessons/ch2-6.html#s5">性态研究与作图</a>
+              <a class="mm-leaf special" href="exercises/ch2-exercises.html">✏️ 章末练习（16 题）</a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <p class="mm-hint">提示：本图按教材 2.1–2.6 的顺序排列，叶子节点与每节课的小节标题一一对应，可当作复习清单逐条打勾。</p>
     </div>
   </div>
 
   <footer class="site-footer">
     <div class="wrap footer-inner">
-      <div><b>工科数学分析基础（上册）自学站</b><br>第二章：一元函数微分学及其应用（建设中）</div>
-      <div><a href="index.html">首页</a> · <a href="ch2.html">第二章</a> · <a href="exercises/ch2-exercises.html">练习占位页</a></div>
+      <div>
+        <b>工科数学分析基础（上册）自学站</b><br>
+        第二章：一元函数微分学及其应用（本期精讲）
+      </div>
+      <div>
+        <a href="index.html">首页</a> · <a href="ch2.html">第二章</a> ·
+        <a href="exercises/ch2-exercises.html">章末练习</a>
+      </div>
     </div>
   </footer>
 </body>

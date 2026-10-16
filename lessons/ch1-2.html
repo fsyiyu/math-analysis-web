@@ -41,7 +41,7 @@
       </div>
 
       <div class="lesson-body">
-        <h2 class="subhead">2.1 数列极限的概念</h2>
+        <h2 class="subhead" id="s1">2.1 数列极限的概念</h2>
         <p>数列是按正整数编号的一串数：$a_1,a_2,a_3,\ldots,a_n,\ldots$，记 $\{a_n\}$。所谓“$a_n$ 趋于 $a$”，是指：<b>不管你给一个多小的正数 $\varepsilon$，从某项之后开始，所有 $a_n$ 与 $a$ 的距离都小于 $\varepsilon$</b>。</p>
         <div class="box thm">
           <span class="box-tag">定义 · 数列极限（ε–N 语言）</span>
@@ -54,7 +54,7 @@
         </div>
         <p>不收敛的数列称为<b>发散</b>。注意区分两类发散：有界但来回振荡（如 $(-1)^n$），以及真正跑到无穷（如 $n^2$）——后者只是“$\to\infty$”，并不算收敛到某个实数。</p>
 
-        <h2 class="subhead">2.2 收敛数列的性质</h2>
+        <h2 class="subhead" id="s2">2.2 收敛数列的性质</h2>
         <ul>
           <li><b>唯一性</b>：收敛数列的极限唯一。</li>
           <li><b>有界性</b>：收敛数列必有界（反之不成立，$(-1)^n$ 有界但发散）。</li>
@@ -64,7 +64,7 @@
           <li><b>子列</b>：若数列收敛于 $a$，则它的任何子列都收敛于 $a$。逆否命题常用来<b>证明发散</b>：找到两个趋于不同极限的子列即可。</li>
         </ul>
 
-        <h2 class="subhead">2.3 数列收敛性的判别准则</h2>
+        <h2 class="subhead" id="s3">2.3 数列收敛性的判别准则</h2>
         <div class="box thm">
           <span class="box-tag">准则一 · 夹逼定理</span>
           <p>若从某项起 $a_n\le c_n\le b_n$，且 $\lim a_n=\lim b_n=A$，则 $\lim c_n=A$。</p>

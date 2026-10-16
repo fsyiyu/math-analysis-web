@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>2.6 函数性态的研究 · 工科数学分析自学站</title>
+  <link rel="stylesheet" href="../assets/css/style.css">
+  <link rel="stylesheet" href="../assets/katex/katex.min.css">
+  <script defer src="../assets/katex/katex.min.js"></script>
+  <script defer src="../assets/katex/auto-render.min.js"></script>
+  <script defer src="../assets/js/app.js"></script>
+</head>
+<body>
+  <header class="site-header">
+    <div class="wrap header-inner">
+      <a class="brand" href="../index.html">📘 工科数学分析 · 自学站
+        <small>第三版 · 上册 · 一元函数微积分</small>
+      </a>
+      <nav class="main-nav">
+        <a href="../index.html">首页</a>
+        <a href="../ch1.html">第一章</a>
+        <a href="../ch2.html">第二章</a>
+        <a href="../ch3.html">第三章</a>
+        <a href="../ch4.html">第四章</a>
+      </nav>
+    </div>
+  </header>
+
+  <div class="page-head">
+    <div class="wrap">
+      <p class="crumbs"><a href="../index.html">首页</a> / <a href="../ch2.html">第二章</a> / 第六节</p>
+      <h1>2.6 函数性态的研究</h1>
+      <p class="lead">把导数当作“研究函数的显微镜”：单调、极值、最值、凹凸与拐点，全部可以由 $f'$ 和 $f''$ 的符号读出来。</p>
+    </div>
+  </div>
+
+  <div class="content">
+    <div class="wrap">
+      <div class="goal-box">
+        <b>本节要解决的问题：</b>怎样不画图就判断函数升降？极值和最值怎么求？凹凸性、拐点、渐近线分别看什么？实际问题中的“最省、最大”怎么建模？
+      </div>
+
+      <div class="lesson-body">
+        <h2 class="subhead" id="s1">2.6.1 函数的单调性</h2>
+        <div class="box thm">
+          <span class="box-tag">定理 · 单调性判定</span>
+          <p>设 $f$ 在区间 $I$ 上连续、在 $I$ 内部可导，则：</p>
+          <p>① $f'(x)>0\Rightarrow f$ 在 $I$ 上单调增加；$f'(x)<0\Rightarrow f$ 单调减少；</p>
+          <p style="margin-bottom:0;">② 反之，若 $f$ 单调增加且可导，则 $f'(x)\ge0$。</p>
+        </div>
+        <p>判定步骤：求 $f'(x)$ → 解 $f'(x)=0$ 及 $f'$ 不存在的点 → 用这些点划分区间 → 在各区间判断 $f'$ 的符号。</p>
+
+        <h2 class="subhead" id="s2">2.6.2 函数的极值</h2>
+        <div class="box thm">
+          <span class="box-tag">定理 · 极值的充分条件</span>
+          <p><b>第一充分条件：</b>设 $f$ 在 $x_0$ 连续，在去心邻域可导。若 $f'$ 在 $x_0$ 左侧为正、右侧为负，则 $x_0$ 为极大值点；符号由负变正则为极小值点；符号不变则不是极值点。</p>
+          <p style="margin-bottom:0;"><b>第二充分条件：</b>若 $f'(x_0)=0$ 且 $f''(x_0)\ne0$，则 $f''(x_0)<0$ 时 $x_0$ 为极大值点，$f''(x_0)>0$ 时为极小值点。</p>
+        </div>
+        <p>注意：$f''(x_0)=0$ 时第二充分条件失效，需回到第一条件或 Taylor 展开判断（如 $y=x^3$ 在 0 处、$y=x^4$ 在 0 处）。</p>
+
+        <h2 class="subhead" id="s3">2.6.3 函数的最大值与最小值</h2>
+        <p>闭区间 $[a,b]$ 上连续函数必能取到最大值与最小值，求法是“<b>比较候选点</b>”：</p>
+        <ul>
+          <li>求出 $(a,b)$ 内所有驻点与不可导点，算出它们的函数值；</li>
+          <li>再算端点值 $f(a)$、$f(b)$；</li>
+          <li>比较这些数值，最大者为最大值，最小者为最小值。</li>
+        </ul>
+        <p>实际问题建模四步：设变量 → 写目标函数并确定定义域 → 求最值 → 回答原问题（含单位与实际意义）。</p>
+
+        <h2 class="subhead" id="s4">2.6.4 函数图像的凹凸性与拐点</h2>
+        <div class="box thm">
+          <span class="box-tag">定理 · 凹凸性判定</span>
+          <p>设 $f$ 在区间上二阶可导：$f''(x)>0$ 时曲线是<b>凹的（下凸）</b>，$f''(x)<0$ 时是<b>凸的（上凸）</b>。</p>
+          <p style="margin-bottom:0;">凹凸性的分界点（且曲线在该点连续）称为<b>拐点</b>：拐点处 $f''$ 必变号；$f''(x_0)=0$ 的点<b>不一定</b>是拐点（如 $y=x^4$ 在 0 处）。</p>
+        </div>
+
+        <h2 class="subhead" id="s5">2.6.5 函数性态研究与作图</h2>
+        <p>综合以上工具，作图的完整流程是：① 确定定义域、奇偶性与周期性；② 求 $f'$，定单调区间与极值；③ 求 $f''$，定凹凸区间与拐点；④ 考察渐近线；⑤ 补算若干关键点，连线成图。</p>
+        <p>常见渐近线：<b>垂直</b>（$x\to x_0$ 时 $y\to\infty$）、<b>水平</b>（$x\to\infty$ 时 $y\to A$）、<b>斜</b>（$x\to\infty$ 时 $y-(kx+b)\to0$，其中 $k=\lim\dfrac{f(x)}{x}$，$b=\lim[f(x)-kx]$）。</p>
+
+        <div class="example">
+          <div class="ex-head"><h3>例 1　求单调区间</h3></div>
+          <p>求 $f(x)=x^3-3x$ 的单调区间。</p>
+          <details class="solution">
+            <summary>先想再看解答</summary>
+            <div class="sol-body">
+              <p>$f'(x)=3x^2-3=3(x-1)(x+1)$，令 $f'=0$ 得 $x=\pm1$。</p>
+              <p style="margin-bottom:0;">当 $x<-1$ 或 $x>1$ 时 $f'>0$，函数增加；当 $-1<x<1$ 时 $f'<0$，函数减少。即增区间 $(-\infty,-1)$、$(1,+\infty)$，减区间 $(-1,1)$。</p>
+            </div>
+          </details>
+        </div>
+
+        <div class="example">
+          <div class="ex-head"><h3>例 2　求极值</h3></div>
+          <p>续例 1，求 $f(x)=x^3-3x$ 的极值。</p>
+          <details class="solution">
+            <summary>先想再看解答</summary>
+            <div class="sol-body">
+              <p>由 $f'$ 的符号：在 $x=-1$ 处由正变负，故为极大值点，$f(-1)=2$；</p>
+              <p style="margin-bottom:0;">在 $x=1$ 处由负变正，故为极小值点，$f(1)=-2$。</p>
+            </div>
+          </details>
+        </div>
+
+        <div class="example">
+          <div class="ex-head"><h3>例 3　最值应用（篱笆问题）</h3></div>
+          <p>用长为 $L$ 的篱笆靠墙围一个矩形（墙一侧不用篱笆），问怎样围面积最大？</p>
+          <details class="solution">
+            <summary>先想再看解答</summary>
+            <div class="sol-body">
+              <p>设垂直于墙的边长为 $x$，则平行于墙的边长为 $L-2x$，面积</p>
+              <p class="formula-line">$$A(x)=x(L-2x),\qquad 0<x<\frac L2.$$</p>
+              <p>$A'(x)=L-4x=0\Rightarrow x=\dfrac L4$，且 $A''(x)=-4<0$，故为极大值点（也是最大值点）。</p>
+              <p style="margin-bottom:0;">此时边长分别为 $\dfrac L4$ 与 $\dfrac L2$，最大面积 $A=\dfrac{L^2}{8}$。</p>
+            </div>
+          </details>
+        </div>
+
+        <div class="example">
+          <div class="ex-head"><h3>例 4　凹凸性与拐点</h3></div>
+          <p>讨论 $y=x^3$ 的凹凸性与拐点。</p>
+          <details class="solution">
+            <summary>先想再看解答</summary>
+            <div class="sol-body">
+              <p>$y'=3x^2$，$y''=6x$。$x<0$ 时 $y''<0$（凸），$x>0$ 时 $y''>0$（凹）。</p>
+              <p style="margin-bottom:0;">$y''$ 在 $x=0$ 两侧变号，故 $(0,0)$ 是拐点。</p>
+            </div>
+          </details>
+        </div>
+
+        <div class="example">
+          <div class="ex-head"><h3>例 5　综合研究</h3></div>
+          <p>研究 $f(x)=xe^{-x}$ 的单调性、极值与凹凸性。</p>
+          <details class="solution">
+            <summary>先想再看解答</summary>
+            <div class="sol-body">
+              <p>$f'(x)=e^{-x}(1-x)$：$x<1$ 时 $f'>0$（增），$x>1$ 时 $f'<0$（减），故 $x=1$ 为极大值点，$f(1)=\dfrac1e$。</p>
+              <p>$f''(x)=e^{-x}(x-2)$：$x<2$ 时 $f''<0$（凸），$x>2$ 时 $f''>0$（凹），故 $(2,2e^{-2})$ 为拐点。</p>
+              <p style="margin-bottom:0;">又有 $\lim\limits_{x\to+\infty}f(x)=0$，即 $x$ 轴为水平渐近线。</p>
+            </div>
+          </details>
+        </div>
+
+        <div class="example">
+          <div class="ex-head"><h3>例 6　求渐近线</h3></div>
+          <p>求曲线 $y=x+\dfrac1x$ 的渐近线。</p>
+          <details class="solution">
+            <summary>先想再看解答</summary>
+            <div class="sol-body">
+              <p>因 $\lim\limits_{x\to0}y=\infty$，故 $x=0$ 是垂直渐近线。</p>
+              <p>又 $\lim\limits_{x\to\infty}\dfrac yx=\lim\limits_{x\to\infty}\left(1+\dfrac{1}{x^2}\right)=1$，$\lim\limits_{x\to\infty}(y-x)=0$，故 $y=x$ 是斜渐近线。</p>
+              <p style="margin-bottom:0;">当 $x\to+\infty$ 时曲线从上方贴近 $y=x$；当 $x\to-\infty$ 时从下方贴近。</p>
+            </div>
+          </details>
+        </div>
+
+        <div class="box warn">
+          <span class="box-tag">易错提醒</span>
+          <p style="margin-bottom:0;">① 单调区间要写开区间，分界点是驻点或导数不存在的点。② 极值是“局部”概念，最值是“整体”概念；闭区间求最值千万别漏端点。③ $f''(x_0)=0$ 不一定是拐点，必须看变号。④ 用第二充分条件前先确认 $f'(x_0)=0$。⑤ 应用题要写清定义域，并检验取到的确实是最大值（可用单调性或二阶导数说明）。</p>
+        </div>
+      </div>
+
+      <div class="pager">
+        <a href="ch2-5.html"><small>上一节</small>← 2.5 Taylor 定理及其应用</a>
+        <a class="next" href="../exercises/ch2-exercises.html"><small>下一站</small>✏️ 第 2 章 · 章末练习 →</a>
+      </div>
+    </div>
+  </div>
+
+  <footer class="site-footer">
+    <div class="wrap footer-inner">
+      <div><b>工科数学分析基础（上册）自学站</b><br>2.6 函数性态的研究</div>
+      <div><a href="../index.html">首页</a> · <a href="../ch2.html">第二章</a> · <a href="../exercises/ch2-exercises.html">章末练习</a></div>
+    </div>
+  </footer>
+</body>
+</html>

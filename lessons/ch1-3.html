@@ -41,7 +41,7 @@
       </div>
 
       <div class="lesson-body">
-        <h2 class="subhead">3.1 函数极限的概念</h2>
+        <h2 class="subhead" id="s1">3.1 函数极限的概念</h2>
         <div class="box">
           <span class="box-tag">定义 · $x\to x_0$ 时函数的极限</span>
           <p>设函数 $f$ 在 $x_0$ 的某去心邻域内有定义。若对任意 $\varepsilon>0$，存在 $\delta>0$，当 $0<|x-x_0|<\delta$ 时恒有 $|f(x)-A|<\varepsilon$，则称 $x\to x_0$ 时 $f(x)$ 以 $A$ 为极限，记 $\lim\limits_{x\to x_0}f(x)=A$。</p>
@@ -53,14 +53,14 @@
         </ul>
         <p>自变量趋于无穷时，定义改为：对任意 $\varepsilon>0$，存在 $X>0$，当 $|x|>X$ 时 $|f(x)-A|<\varepsilon$，记 $\lim\limits_{x\to\infty}f(x)=A$。单侧无穷（$x\to+\infty$ 或 $x\to-\infty$）同理。</p>
 
-        <h2 class="subhead">3.2 函数极限的性质</h2>
+        <h2 class="subhead" id="s2">3.2 函数极限的性质</h2>
         <ul>
           <li><b>唯一性、局部有界性、局部保号性</b>：与数列极限的性质一一对应，只是“某项之后”换成“某去心邻域内”。</li>
           <li><b>四则运算法则</b>：两个函数极限都存在时，和差积商（分母极限非零）的极限等于极限的运算。</li>
           <li><b>夹逼准则</b>：在 $x_0$ 的去心邻域内 $g(x)\le f(x)\le h(x)$，且 $g,h$ 同趋于 $A$，则 $f$ 也趋于 $A$。</li>
         </ul>
 
-        <h2 class="subhead">3.3 两个重要极限</h2>
+        <h2 class="subhead" id="s3">3.3 两个重要极限</h2>
         <div class="box thm">
           <span class="box-tag">重要极限（一）</span>
           <p class="formula-line">$$\lim_{x\to0}\frac{\sin x}{x}=1.$$</p>
@@ -72,7 +72,7 @@
           <p>$e\approx2.71828$ 就是“利滚利”“复利增长”在无限细分时的极限值，也是指数函数与对数的天然底数。</p>
         </div>
 
-        <h2 class="subhead">3.4 函数极限的存在准则：归结原则</h2>
+        <h2 class="subhead" id="s4">3.4 函数极限的存在准则：归结原则</h2>
         <div class="box thm">
           <span class="box-tag">定理 · 归结原则（Heine 定理）</span>
           <p>$\lim\limits_{x\to x_0}f(x)=A$ 成立的充要条件是：对任意满足 $x_n\ne x_0$ 且 $x_n\to x_0$ 的数列 $\{x_n\}$，都有 $\lim\limits_{n\to\infty}f(x_n)=A$。</p>

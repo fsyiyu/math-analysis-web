@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>2.5 Taylor 定理及其应用 · 工科数学分析自学站</title>
+  <link rel="stylesheet" href="../assets/css/style.css">
+  <link rel="stylesheet" href="../assets/katex/katex.min.css">
+  <script defer src="../assets/katex/katex.min.js"></script>
+  <script defer src="../assets/katex/auto-render.min.js"></script>
+  <script defer src="../assets/js/app.js"></script>
+</head>
+<body>
+  <header class="site-header">
+    <div class="wrap header-inner">
+      <a class="brand" href="../index.html">📘 工科数学分析 · 自学站
+        <small>第三版 · 上册 · 一元函数微积分</small>
+      </a>
+      <nav class="main-nav">
+        <a href="../index.html">首页</a>
+        <a href="../ch1.html">第一章</a>
+        <a href="../ch2.html">第二章</a>
+        <a href="../ch3.html">第三章</a>
+        <a href="../ch4.html">第四章</a>
+      </nav>
+    </div>
+  </header>
+
+  <div class="page-head">
+    <div class="wrap">
+      <p class="crumbs"><a href="../index.html">首页</a> / <a href="../ch2.html">第二章</a> / 第五节</p>
+      <h1>2.5 Taylor 定理及其应用</h1>
+      <p class="lead">线性近似不够用时，就用多项式继续“加项”。Taylor 公式是微分中值定理的高阶版本，也是第三章无穷级数的前奏。</p>
+    </div>
+  </div>
+
+  <div class="content">
+    <div class="wrap">
+      <div class="goal-box">
+        <b>本节要解决的问题：</b>怎样用多项式逼近一般函数？逼近的误差怎么估计？Taylor 公式如何快速求出复杂极限？
+      </div>
+
+      <div class="lesson-body">
+        <h2 class="subhead" id="s1">2.5.1 从线性近似到多项式近似</h2>
+        <p>微分给出一次近似 $f(x_0+\Delta x)\approx f(x_0)+f'(x_0)\Delta x$，它只用到函数值与一阶导数。要想更精确，自然想到用更高次多项式去匹配函数在某点的更多阶导数：</p>
+        <p class="formula-line">$$P_n(x)=a_0+a_1(x-x_0)+a_2(x-x_0)^2+\cdots+a_n(x-x_0)^n,$$</p>
+        <p>并令 $P_n^{(k)}(x_0)=f^{(k)}(x_0)\ (k=0,1,\ldots,n)$。逐项求导并代入 $x=x_0$，可得 $a_k=\dfrac{f^{(k)}(x_0)}{k!}$。</p>
+
+        <h2 class="subhead" id="s2">2.5.2 Taylor 定理</h2>
+        <div class="box thm">
+          <span class="box-tag">定理 · Taylor 公式（带 Lagrange 余项）</span>
+          <p>若 $f$ 在含 $x_0$ 的区间内有 $n+1$ 阶导数，则对该区间内任意 $x$，存在介于 $x_0$ 与 $x$ 之间的 $\xi$，使</p>
+          <p class="formula-line">$$f(x)=\sum_{k=0}^{n}\frac{f^{(k)}(x_0)}{k!}(x-x_0)^k+R_n(x),$$</p>
+          <p class="formula-line">$$R_n(x)=\frac{f^{(n+1)}(\xi)}{(n+1)!}(x-x_0)^{n+1}.$$</p>
+          <p style="margin-bottom:0;">$x_0=0$ 时的特例称为 <b>Maclaurin 公式</b>。若只需知道余项“是更高阶无穷小”，也可用带 Peano 余项的形式：$R_n(x)=o\big((x-x_0)^n\big)$。</p>
+        </div>
+        <p>理解要点：Taylor 公式把“函数在一点的全部局部信息（各阶导数）”打包成一个多项式，$n=0$ 给出中值定理（$f(x)=f(x_0)+f'(\xi)(x-x_0)$），$n=1$ 就是微分近似。</p>
+
+        <h2 class="subhead" id="s3">2.5.3 常用 Maclaurin 公式</h2>
+        <p>下面几个展开式要熟记（$x\to0$ 时余项为更高阶无穷小）：</p>
+        <p class="formula-line">$$e^x=1+x+\frac{x^2}{2!}+\cdots+\frac{x^n}{n!}+o(x^n);$$</p>
+        <p class="formula-line">$$\sin x=x-\frac{x^3}{3!}+\frac{x^5}{5!}-\cdots+(-1)^{m}\frac{x^{2m+1}}{(2m+1)!}+o(x^{2m+1});$$</p>
+        <p class="formula-line">$$\cos x=1-\frac{x^2}{2!}+\frac{x^4}{4!}-\cdots+(-1)^m\frac{x^{2m}}{(2m)!}+o(x^{2m});$$</p>
+        <p class="formula-line">$$\ln(1+x)=x-\frac{x^2}{2}+\frac{x^3}{3}-\cdots+(-1)^{n-1}\frac{x^n}{n}+o(x^n);$$</p>
+        <p class="formula-line">$$(1+x)^\alpha=1+\alpha x+\frac{\alpha(\alpha-1)}{2!}x^2+\cdots+o(x^n),\qquad \frac{1}{1-x}=1+x+x^2+\cdots+o(x^n).$$</p>
+
+        <h2 class="subhead" id="s4">2.5.4 Taylor 公式的应用</h2>
+        <ul>
+          <li><b>求极限</b>：把各函数展开到足够阶，抵消主导项后比较最低次幂；</li>
+          <li><b>近似计算与误差估计</b>：用 $R_n$ 的表达式给出误差上界；</li>
+          <li><b>证明不等式</b>：利用余项的符号（例如 $e^x$ 的余项恒正）；</li>
+          <li><b>判断极值</b>：$f'(x_0)=0$ 时，看第一个非零导数的阶数与符号（偶阶且为正 → 极小，为负 → 极大）。</li>
+        </ul>
+
+        <div class="example">
+          <div class="ex-head"><h3>例 1　写出展开式</h3></div>
+          <p>写出 $f(x)=e^x$ 的 $n$ 阶 Maclaurin 公式（带 Lagrange 余项）。</p>
+          <details class="solution">
+            <summary>先想再看解答</summary>
+            <div class="sol-body">
+              <p>因为 $(e^x)^{(k)}=e^x$，在 $0$ 处各阶导数都为 1，所以</p>
+              <p class="formula-line">$$e^x=1+x+\frac{x^2}{2!}+\cdots+\frac{x^n}{n!}+\frac{e^{\xi}}{(n+1)!}x^{n+1},\quad \xi\ \text{介于}\ 0,x\ \text{之间}.$$</p>
+              <p style="margin-bottom:0;">当 $x>0$ 时 $e^{\xi}>1$，余项为正——这正是后面证明不等式的基础。</p>
+            </div>
+          </details>
+        </div>
+
+        <div class="example">
+          <div class="ex-head"><h3>例 2　用 Taylor 公式求极限</h3></div>
+          <p>求 $\lim\limits_{x\to0}\dfrac{e^x-1-x}{x^2}$。</p>
+          <details class="solution">
+            <summary>先想再看解答</summary>
+            <div class="sol-body">
+              <p>把 $e^x$ 展开到 $x^2$ 项：$e^x=1+x+\dfrac{x^2}{2}+o(x^2)$，于是</p>
+              <p class="formula-line">$$\frac{e^x-1-x}{x^2}=\frac{\frac{x^2}{2}+o(x^2)}{x^2}\longrightarrow\frac12.$$</p>
+              <p style="margin-bottom:0;">与 2.4 节用 L'Hospital 法则两次的结果一致，但展开法往往更快。</p>
+            </div>
+          </details>
+        </div>
+
+        <div class="example">
+          <div class="ex-head"><h3>例 3　近似计算与误差估计</h3></div>
+          <p>用四阶 Maclaurin 多项式近似 $\sin 0.1$，并估计误差。</p>
+          <details class="solution">
+            <summary>先想再看解答</summary>
+            <div class="sol-body">
+              <p>$\sin x=x-\dfrac{x^3}{3!}+R$，取 $x=0.1$：</p>
+              <p class="formula-line">$$\sin 0.1\approx 0.1-\frac{0.001}{6}=0.1-0.0001667=0.0998333.$$</p>
+              <p>误差由余项控制：$|R|\le\dfrac{|x|^5}{5!}=\dfrac{10^{-5}}{120}\approx8.3\times10^{-8}$。</p>
+              <p style="margin-bottom:0;">即近似值的前 7 位小数都可信——多项式逼近的效率非常高。</p>
+            </div>
+          </details>
+        </div>
+
+        <div class="example">
+          <div class="ex-head"><h3>例 4　用余项证明不等式</h3></div>
+          <p>证明：当 $x>0$ 时，$e^x>1+x+\dfrac{x^2}{2}$。</p>
+          <details class="solution">
+            <summary>先想再看解答</summary>
+            <div class="sol-body">
+              <p>把 $e^x$ 展开到 $x^2$ 项并写出一阶余项（$n=2$）：</p>
+              <p class="formula-line">$$e^x=1+x+\frac{x^2}{2}+\frac{e^{\xi}}{3!}x^3,\qquad \xi\in(0,x).$$</p>
+              <p style="margin-bottom:0;">当 $x>0$ 时 $e^{\xi}>0$，故余项 $\dfrac{e^{\xi}x^3}{6}>0$，即 $e^x>1+x+\dfrac{x^2}{2}$。</p>
+            </div>
+          </details>
+        </div>
+
+        <div class="example">
+          <div class="ex-head"><h3>例 5　用展开式处理三角极限</h3></div>
+          <p>求 $\lim\limits_{x\to0}\dfrac{1-\cos x}{x^2}$。</p>
+          <details class="solution">
+            <summary>先想再看解答</summary>
+            <div class="sol-body">
+              <p>$\cos x=1-\dfrac{x^2}{2}+o(x^2)$，于是 $1-\cos x=\dfrac{x^2}{2}+o(x^2)$，</p>
+              <p class="formula-line">$$\lim_{x\to0}\frac{1-\cos x}{x^2}=\frac12.$$</p>
+              <p style="margin-bottom:0;">这与第一章用半角公式得到的等价无穷小 $1-\cos x\sim\dfrac{x^2}{2}$ 完全一致。</p>
+            </div>
+          </details>
+        </div>
+
+        <div class="box warn">
+          <span class="box-tag">易错提醒</span>
+          <p style="margin-bottom:0;">① 展开的阶数要“够用”：分子分母同阶，需要展到能消去主导项的那一阶。② 余项不能丢：用 Lagrange 余项证明不等式、估计误差时必须写出来。③ 在 $x_0\ne0$ 处展开要用 $(x-x_0)^k$ 而不是 $x^k$。④ 熟记的公式只在 $x\to0$ 的局部近似意义下使用，不能当成恒等式。</p>
+        </div>
+      </div>
+
+      <div class="pager">
+        <a href="ch2-4.html"><small>上一节</small>← 2.4 微分中值定理及其应用</a>
+        <a class="next" href="ch2-6.html"><small>下一节</small>2.6 函数性态的研究 →</a>
+      </div>
+    </div>
+  </div>
+
+  <footer class="site-footer">
+    <div class="wrap footer-inner">
+      <div><b>工科数学分析基础（上册）自学站</b><br>2.5 Taylor 定理及其应用</div>
+      <div><a href="../index.html">首页</a> · <a href="../ch2.html">第二章</a> · <a href="../exercises/ch2-exercises.html">章末练习</a></div>
+    </div>
+  </footer>
+</body>
+</html>

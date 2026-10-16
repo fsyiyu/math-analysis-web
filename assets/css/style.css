@@ -511,6 +511,150 @@ details.solution[open] summary { border-bottom: 1px dashed var(--accent-soft); }
 
 .skeleton-list { margin: 10px 0 4px; padding-left: 20px; color: var(--muted); }
 
+/* ---------- mind map ---------- */
+.subhead[id],
+.sec-head[id],
+.mindmap[id] { scroll-margin-top: 86px; }
+
+.mindmap {
+  display: grid;
+  grid-template-columns: 230px 1fr;
+  gap: 22px;
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: 22px;
+  margin-top: 20px;
+}
+
+.mm-root {
+  background: linear-gradient(160deg, var(--accent) 0%, var(--accent-deep) 100%);
+  color: #fff;
+  border-radius: 12px;
+  padding: 16px 18px 18px;
+  align-self: start;
+}
+
+.mm-root-tag {
+  display: block;
+  font-size: 0.74rem;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  color: #a9c7ee;
+  margin-bottom: 6px;
+}
+
+.mm-root h3 {
+  color: #fff;
+  font-size: 1.06rem;
+  margin: 0 0 8px;
+}
+
+.mm-root p {
+  color: #cfe0f6;
+  font-size: 0.85rem;
+  margin: 0;
+  line-height: 1.65;
+}
+
+.mm-branches { display: grid; gap: 14px; }
+
+.mm-branch {
+  position: relative;
+  padding-left: 24px;
+}
+
+.mm-branch::before {
+  content: "";
+  position: absolute;
+  left: 6px;
+  top: 16px;
+  bottom: 4px;
+  width: 2px;
+  background: var(--accent-soft);
+}
+
+.mm-branch::after {
+  content: "";
+  position: absolute;
+  left: 6px;
+  top: 21px;
+  width: 16px;
+  height: 2px;
+  background: var(--accent-soft);
+}
+
+.mm-sec {
+  display: inline-flex;
+  align-items: baseline;
+  gap: 9px;
+  background: var(--accent-soft);
+  border: 1px solid #cbdcf3;
+  color: var(--accent-deep);
+  border-radius: 9px;
+  padding: 7px 14px;
+  font-size: 0.95rem;
+  font-weight: 700;
+  text-decoration: none;
+}
+
+.mm-sec:hover { background: var(--accent); border-color: var(--accent); color: #fff; }
+
+.mm-sec .mm-sec-no { opacity: 0.85; font-weight: 800; }
+
+.mm-leaves {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 10px;
+}
+
+.mm-leaf {
+  background: #fff;
+  border: 1px dashed var(--line);
+  border-radius: 8px;
+  padding: 5px 11px;
+  font-size: 0.88rem;
+  color: var(--ink);
+  text-decoration: none;
+  line-height: 1.6;
+}
+
+.mm-leaf:hover {
+  border-color: var(--accent);
+  border-style: solid;
+  background: #f5f9ff;
+  color: var(--accent);
+}
+
+.mm-leaf.special {
+  border-style: solid;
+  border-color: #b9e3ca;
+  background: var(--green-soft);
+  color: #0c4d2e;
+  font-weight: 600;
+}
+
+.mm-leaf.special:hover { border-color: var(--green); background: #ddf2e6; color: #0c4d2e; }
+
+.mm-leaf.prep {
+  border-style: solid;
+  border-color: #cbbdf0;
+  background: #f4effc;
+  color: var(--purple);
+  font-weight: 600;
+}
+
+.mm-leaf.prep:hover { border-color: var(--purple); background: #ece2fa; color: var(--purple); }
+
+.mm-hint { color: var(--muted); font-size: 0.88rem; margin: 14px 0 0; }
+
+@media (max-width: 860px) {
+  .mindmap { grid-template-columns: 1fr; padding: 16px; gap: 16px; }
+  .mm-branch { padding-left: 20px; }
+  .mm-sec { font-size: 0.92rem; }
+}
+
 /* ---------- quiz ---------- */
 .quiz-toolbar {
   display: flex;

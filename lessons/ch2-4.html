@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>2.4 微分中值定理及其应用 · 工科数学分析自学站</title>
+  <link rel="stylesheet" href="../assets/css/style.css">
+  <link rel="stylesheet" href="../assets/katex/katex.min.css">
+  <script defer src="../assets/katex/katex.min.js"></script>
+  <script defer src="../assets/katex/auto-render.min.js"></script>
+  <script defer src="../assets/js/app.js"></script>
+</head>
+<body>
+  <header class="site-header">
+    <div class="wrap header-inner">
+      <a class="brand" href="../index.html">📘 工科数学分析 · 自学站
+        <small>第三版 · 上册 · 一元函数微积分</small>
+      </a>
+      <nav class="main-nav">
+        <a href="../index.html">首页</a>
+        <a href="../ch1.html">第一章</a>
+        <a href="../ch2.html">第二章</a>
+        <a href="../ch3.html">第三章</a>
+        <a href="../ch4.html">第四章</a>
+      </nav>
+    </div>
+  </header>
+
+  <div class="page-head">
+    <div class="wrap">
+      <p class="crumbs"><a href="../index.html">首页</a> / <a href="../ch2.html">第二章</a> / 第四节</p>
+      <h1>2.4 微分中值定理及其应用</h1>
+      <p class="lead">三个中值定理把“整体”和“局部”连起来：函数在两端的差，由中间某点的导数决定。L'Hospital 法则就是它的直接应用。</p>
+    </div>
+  </div>
+
+  <div class="content">
+    <div class="wrap">
+      <div class="goal-box">
+        <b>本节要解决的问题：</b>导数等于 0 的点有什么用？为什么“两端一样高”就一定存在水平切线？求极限为什么可以用洛必达法则，什么时候会失效？
+      </div>
+
+      <div class="lesson-body">
+        <h2 class="subhead" id="s1">2.4.1 函数的极值及其必要条件</h2>
+        <div class="box thm">
+          <span class="box-tag">定理 · Fermat 引理（极值必要条件）</span>
+          <p>设 $f$ 在 $x_0$ 的某邻域内有定义，$x_0$ 是极值点，且 $f'(x_0)$ 存在，则 $f'(x_0)=0$。</p>
+          <p style="margin-bottom:0;">几何上：曲线在极值点处有水平切线。</p>
+        </div>
+        <p>使 $f'(x)=0$ 的点称为<b>驻点</b>。注意：驻点不一定是极值点（如 $y=x^3$ 在 $0$ 处 $y'=0$ 但单调递增），极值点也不一定可导（如 $y=|x|$ 在 $0$ 处取极小值但不可导）。</p>
+
+        <h2 class="subhead" id="s2">2.4.2 Rolle 定理</h2>
+        <div class="box thm">
+          <span class="box-tag">定理 · Rolle 中值定理</span>
+          <p>若 $f$ 满足：① 在 $[a,b]$ 上连续；② 在 $(a,b)$ 内可导；③ $f(a)=f(b)$，则至少存在一点 $\xi\in(a,b)$，使</p>
+          <p class="formula-line">$$f'(\xi)=0.$$</p>
+        </div>
+        <p>直观：两端等高，曲线中间必然出现水平的切线。三个条件缺一不可——去掉连续性或可导性，结论都可能不成立。</p>
+
+        <h2 class="subhead" id="s3">2.4.3 Lagrange 中值定理</h2>
+        <div class="box thm">
+          <span class="box-tag">定理 · Lagrange 中值定理</span>
+          <p>若 $f$ 在 $[a,b]$ 上连续、在 $(a,b)$ 内可导，则至少存在 $\xi\in(a,b)$，使</p>
+          <p class="formula-line">$$f(b)-f(a)=f'(\xi)(b-a)\qquad\text{或}\qquad f'(\xi)=\frac{f(b)-f(a)}{b-a}.$$</p>
+          <p style="margin-bottom:0;">右端是割线斜率，左端是某点切线斜率——<b>割线斜率必在中间某点处被切线“重现”</b>。Rolle 定理是它的特例（两端等高时割线斜率为 0）。</p>
+        </div>
+        <p>两个常用推论：① $f'(x)\equiv0$ 于区间内部 $\Rightarrow f$ 为常数（这是第三章不定积分的基础）；② $f'(x)>0$ 于区间内部 $\Rightarrow f$ 单调增加（2.6 节会系统使用）。</p>
+
+        <h2 class="subhead" id="s4">2.4.4 Cauchy 中值定理</h2>
+        <div class="box thm">
+          <span class="box-tag">定理 · Cauchy 中值定理</span>
+          <p>设 $f,g$ 在 $[a,b]$ 上连续、在 $(a,b)$ 内可导，且 $g'(x)\ne0$，则存在 $\xi\in(a,b)$，使</p>
+          <p class="formula-line">$$\frac{f(b)-f(a)}{g(b)-g(a)}=\frac{f'(\xi)}{g'(\xi)}.$$</p>
+          <p style="margin-bottom:0;">取 $g(x)=x$ 即退化为 Lagrange 中值定理。它是 L'Hospital 法则的理论依据。</p>
+        </div>
+
+        <h2 class="subhead" id="s5">2.4.5 L'Hospital 法则</h2>
+        <div class="box thm">
+          <span class="box-tag">定理 · L'Hospital 法则</span>
+          <p>对 $\dfrac00$ 型或 $\dfrac{\infty}{\infty}$ 型的极限，若 $\dfrac{f'(x)}{g'(x)}$ 的极限存在（或为 $\infty$），则</p>
+          <p class="formula-line">$$\lim\frac{f(x)}{g(x)}=\lim\frac{f'(x)}{g'(x)}.$$</p>
+          <p style="margin-bottom:0;">使用前提是“确为未定式”：分子分母都趋于 0，或都趋于无穷。</p>
+        </div>
+        <p>其他未定式先转化为这两种：$0\cdot\infty$ 化为 $\dfrac00$ 或 $\dfrac\infty\infty$；$\infty-\infty$ 通分或提取公因子；$1^\infty$、$0^0$、$\infty^0$ 取对数后再处理。</p>
+        <div class="box warn">
+          <span class="box-tag">易错 · 法则会失效</span>
+          <p style="margin-bottom:0;">若 $\lim\dfrac{f'(x)}{g'(x)}$ <b>不存在也不为无穷</b>，不能断言原极限不存在。经典例子：$\lim\limits_{x\to\infty}\dfrac{x+\sin x}{x}$ 用机器求导会得到 $1+\cos x$（无极限），但原极限由夹逼得 $1$。法则失效时换别的方法。</p>
+        </div>
+
+        <div class="example">
+          <div class="ex-head"><h3>例 1　验证 Rolle 定理</h3></div>
+          <p>对 $f(x)=x^2-2x$ 在区间 $[0,2]$ 上验证 Rolle 定理。</p>
+          <details class="solution">
+            <summary>先想再看解答</summary>
+            <div class="sol-body">
+              <p>$f$ 是多项式，在 $[0,2]$ 连续、$(0,2)$ 可导，且 $f(0)=0=f(2)$，条件满足。</p>
+              <p style="margin-bottom:0;">$f'(x)=2x-2=0\Rightarrow \xi=1\in(0,2)$，结论成立。</p>
+            </div>
+          </details>
+        </div>
+
+        <div class="example">
+          <div class="ex-head"><h3>例 2　用 Lagrange 定理证明不等式</h3></div>
+          <p>证明：对一切 $x\ne0$，有 $e^x>1+x$。</p>
+          <details class="solution">
+            <summary>先想再看解答</summary>
+            <div class="sol-body">
+              <p>设 $f(t)=e^t$。当 $x>0$ 时在 $[0,x]$ 上用 Lagrange 中值定理：存在 $\xi\in(0,x)$ 使</p>
+              <p class="formula-line">$$e^x-1=e^{\xi}x>x,$$</p>
+              <p>因为 $e^{\xi}>1$。故 $e^x>1+x$。</p>
+              <p style="margin-bottom:0;">当 $x<0$ 时在 $[x,0]$ 上同理可证（此时 $x\cdot e^\xi>x$ 仍成立），结论对一切 $x\ne0$ 成立。</p>
+            </div>
+          </details>
+        </div>
+
+        <div class="example">
+          <div class="ex-head"><h3>例 3　$\dfrac00$ 型</h3></div>
+          <p>求 $\lim\limits_{x\to0}\dfrac{e^x-1-x}{x^2}$。</p>
+          <details class="solution">
+            <summary>先想再看解答</summary>
+            <div class="sol-body">
+              <p>分子分母都趋于 0，两次使用 L'Hospital 法则：</p>
+              <p class="formula-line">$$\lim_{x\to0}\frac{e^x-1-x}{x^2}=\lim_{x\to0}\frac{e^x-1}{2x}=\lim_{x\to0}\frac{e^x}{2}=\frac12.$$</p>
+              <p style="margin-bottom:0;">每次使用前都要确认仍是未定式，否则会算错。</p>
+            </div>
+          </details>
+        </div>
+
+        <div class="example">
+          <div class="ex-head"><h3>例 4　$\dfrac{\infty}{\infty}$ 型</h3></div>
+          <p>求 $\lim\limits_{x\to+\infty}\dfrac{\ln x}{x}$。</p>
+          <details class="solution">
+            <summary>先想再看解答</summary>
+            <div class="sol-body">
+              <p class="formula-line">$$\lim_{x\to+\infty}\frac{\ln x}{x}=\lim_{x\to+\infty}\frac{\frac1x}{1}=0.$$</p>
+              <p style="margin-bottom:0;">结论要记住：对数增长比任何正幂次都慢。</p>
+            </div>
+          </details>
+        </div>
+
+        <div class="example">
+          <div class="ex-head"><h3>例 5　$0\cdot\infty$ 型</h3></div>
+          <p>求 $\lim\limits_{x\to0^+}x\ln x$。</p>
+          <details class="solution">
+            <summary>先想再看解答</summary>
+            <div class="sol-body">
+              <p>改写为商：$x\ln x=\dfrac{\ln x}{1/x}$，这是 $\dfrac{\infty}{\infty}$ 型，于是</p>
+              <p class="formula-line">$$\lim_{x\to0^+}\frac{\ln x}{1/x}=\lim_{x\to0^+}\frac{1/x}{-1/x^2}=\lim_{x\to0^+}(-x)=0.$$</p>
+            </div>
+          </details>
+        </div>
+
+        <div class="example">
+          <div class="ex-head"><h3>例 6　法则失效的情形</h3></div>
+          <p>求 $\lim\limits_{x\to+\infty}\dfrac{x+\sin x}{x}$（体会不能滥用 L'Hospital）。</p>
+          <details class="solution">
+            <summary>先想再看解答</summary>
+            <div class="sol-body">
+              <p>若硬用 L'Hospital：$(x+\sin x)'=1+\cos x$，而 $\lim(1+\cos x)$ 不存在，法则失效。</p>
+              <p>正确做法是变形或用夹逼：$\dfrac{x+\sin x}{x}=1+\dfrac{\sin x}{x}$，而 $\left|\dfrac{\sin x}{x}\right|\le\dfrac1x\to0$，故原极限为 $1$。</p>
+              <p style="margin-bottom:0;"><b>教训：</b>“导数之比的极限不存在”不等于“原极限不存在”。</p>
+            </div>
+          </details>
+        </div>
+
+        <div class="box warn">
+          <span class="box-tag">易错提醒</span>
+          <p style="margin-bottom:0;">① 用中值定理前先逐条验证条件（连续、可导、端点值）。② 驻点 ≠ 极值点，极值点也未必可导。③ L'Hospital 法则只适用于 $\dfrac00$ 与 $\dfrac\infty\infty$，其他型先转化。④ 每次使用后要重新检查是否仍是未定式。⑤ 导数之比的极限不存在时，原极限可能仍存在（例 6）。</p>
+        </div>
+      </div>
+
+      <div class="pager">
+        <a href="ch2-3.html"><small>上一节</small>← 2.3 微分</a>
+        <a class="next" href="ch2-5.html"><small>下一节</small>2.5 Taylor 定理及其应用 →</a>
+      </div>
+    </div>
+  </div>
+
+  <footer class="site-footer">
+    <div class="wrap footer-inner">
+      <div><b>工科数学分析基础（上册）自学站</b><br>2.4 微分中值定理及其应用</div>
+      <div><a href="../index.html">首页</a> · <a href="../ch2.html">第二章</a> · <a href="../exercises/ch2-exercises.html">章末练习</a></div>
+    </div>
+  </footer>
+</body>
+</html>

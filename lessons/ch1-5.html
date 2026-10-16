@@ -41,7 +41,7 @@
       </div>
 
       <div class="lesson-body">
-        <h2 class="subhead">5.1 函数的连续性概念与间断点的分类</h2>
+        <h2 class="subhead" id="s1">5.1 函数的连续性概念与间断点的分类</h2>
         <div class="box">
           <span class="box-tag">定义 · 连续</span>
           <p>$f$ 在点 $x_0$ <b>连续</b>，指：① $f(x_0)$ 有定义；② $\lim\limits_{x\to x_0}f(x)$ 存在；③ 二者相等。即
@@ -56,7 +56,7 @@
         </ul>
         <p>函数在<b>区间上连续</b>指在区间内每一点都连续；在闭区间 $[a,b]$ 连续还要求 $a$ 处右连续、$b$ 处左连续。</p>
 
-        <h2 class="subhead">5.2 连续函数的运算性质与初等函数的连续性</h2>
+        <h2 class="subhead" id="s2">5.2 连续函数的运算性质与初等函数的连续性</h2>
         <ul>
           <li>连续函数的和、差、积、商（分母非零）仍连续；</li>
           <li>连续函数复合仍连续：$g$ 在 $x_0$ 连续、$f$ 在 $u_0=g(x_0)$ 连续 $\Rightarrow f\circ g$ 在 $x_0$ 连续；</li>
@@ -68,7 +68,7 @@
           <p style="margin-bottom:0;">这解释了为什么“代入法”求极限通常有效：若 $x_0$ 在定义区间内，$\lim\limits_{x\to x_0}f(x)=f(x_0)$ 直接代入即可。函数“不连续”，往往发生在定义域的边界或挖掉的点。</p>
         </div>
 
-        <h2 class="subhead">5.3 闭区间上连续函数的性质</h2>
+        <h2 class="subhead" id="s3">5.3 闭区间上连续函数的性质</h2>
         <div class="box thm">
           <span class="box-tag">定理 · 有界性与最值定理</span>
           <p>$f$ 在闭区间 $[a,b]$ 上连续 $\Rightarrow f$ 在 $[a,b]$ 上有界，且能取到最大值与最小值。</p>
@@ -85,7 +85,7 @@
         </div>
         <p>以上三个结论都依赖“<b>闭区间 + 连续</b>”两个条件：开区间上 $f(x)=\dfrac1x$ 连续但无界，$f(x)=x$ 在 $(0,1)$ 上取不到最值——条件缺一不可。</p>
 
-        <h2 class="subhead">5.4 函数的一致连续性</h2>
+        <h2 class="subhead" id="s4">5.4 函数的一致连续性</h2>
         <p>普通连续性是“逐点”的：$\delta$ 可以随点而变。若对任意 $\varepsilon>0$，能找到一个<b>只与 $\varepsilon$ 有关、与 $x$ 无关</b>的 $\delta>0$，使区间内任意两点只要距离小于 $\delta$，函数值差就小于 $\varepsilon$，则称函数在区间上<b>一致连续</b>。</p>
         <div class="box thm">
           <span class="box-tag">定理 · 一致连续性</span>
@@ -93,7 +93,7 @@
           <p style="margin-bottom:0;">直观：闭区间上的连续函数“步调均匀”，不会在某处突然抖动加速。而 $f(x)=\dfrac1x$ 在 $(0,1]$ 连续但不一致连续——越靠近 0 抖动越剧烈。</p>
         </div>
 
-        <h2 class="subhead">*5.5 压缩映射原理与迭代法（选学）</h2>
+        <h2 class="subhead" id="s5">*5.5 压缩映射原理与迭代法（选学）</h2>
         <span class="badge select" style="margin-bottom:10px;">选学内容</span>
         <div class="box thm">
           <span class="box-tag">定理 · 压缩映射原理（一维）</span>

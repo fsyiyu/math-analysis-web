@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>2.2 求导的基本法则 · 工科数学分析自学站</title>
+  <link rel="stylesheet" href="../assets/css/style.css">
+  <link rel="stylesheet" href="../assets/katex/katex.min.css">
+  <script defer src="../assets/katex/katex.min.js"></script>
+  <script defer src="../assets/katex/auto-render.min.js"></script>
+  <script defer src="../assets/js/app.js"></script>
+</head>
+<body>
+  <header class="site-header">
+    <div class="wrap header-inner">
+      <a class="brand" href="../index.html">📘 工科数学分析 · 自学站
+        <small>第三版 · 上册 · 一元函数微积分</small>
+      </a>
+      <nav class="main-nav">
+        <a href="../index.html">首页</a>
+        <a href="../ch1.html">第一章</a>
+        <a href="../ch2.html">第二章</a>
+        <a href="../ch3.html">第三章</a>
+        <a href="../ch4.html">第四章</a>
+      </nav>
+    </div>
+  </header>
+
+  <div class="page-head">
+    <div class="wrap">
+      <p class="crumbs"><a href="../index.html">首页</a> / <a href="../ch2.html">第二章</a> / 第二节</p>
+      <h1>2.2 求导的基本法则</h1>
+      <p class="lead">不做“每次都套定义”的苦工：四则、复合、反函数三条法则加上一张导数表，就能求出几乎所有初等函数的导数。</p>
+    </div>
+  </div>
+
+  <div class="content">
+    <div class="wrap">
+      <div class="goal-box">
+        <b>本节要解决的问题：</b>怎样又快又准地求导？复合函数为什么要“层层剥离”？隐函数、参数方程给出的函数怎么求导？
+      </div>
+
+      <div class="lesson-body">
+        <h2 class="subhead" id="s1">2.2.1 四则运算法则</h2>
+        <div class="box thm">
+          <span class="box-tag">定理 · 和差积商的导数</span>
+          <p>设 $u=u(x)$、$v=v(x)$ 可导，则</p>
+          <p class="formula-line">$$(u\pm v)'=u'\pm v',\qquad (uv)'=u'v+uv',\qquad \left(\frac uv\right)'=\frac{u'v-uv'}{v^2}\ (v\ne0).$$</p>
+          <p style="margin-bottom:0;">特别地 $(Cu)'=Cu'$（$C$ 为常数）。</p>
+        </div>
+        <div class="box warn">
+          <span class="box-tag">易错</span>
+          <p style="margin-bottom:0;">$(uv)'\ne u'v'$，$\left(\dfrac uv\right)'\ne\dfrac{u'}{v'}$；商的公式分子是“<b>上导下不导，减去上不导下导</b>”，顺序不能反。</p>
+        </div>
+
+        <h2 class="subhead" id="s2">2.2.2 复合函数的求导法则（链式法则）</h2>
+        <div class="box thm">
+          <span class="box-tag">定理 · 链式法则</span>
+          <p>设 $y=f(u)$ 在 $u$ 处可导，$u=g(x)$ 在 $x$ 处可导，则复合函数 $y=f(g(x))$ 在 $x$ 处可导，且</p>
+          <p class="formula-line">$$\frac{\mathrm{d}y}{\mathrm{d}x}=\frac{\mathrm{d}y}{\mathrm{d}u}\cdot\frac{\mathrm{d}u}{\mathrm{d}x}=f'\big(g(x)\big)\,g'(x).$$</p>
+        </div>
+        <p><b>操作口诀：由外向内、逐层求导、层层相乘。</b>例如 $y=\sin(x^2)$：外层是 $\sin$，内层是 $x^2$，故 $y'=\cos(x^2)\cdot 2x$。</p>
+
+        <h2 class="subhead" id="s3">2.2.3 反函数的求导法则</h2>
+        <div class="box thm">
+          <span class="box-tag">定理 · 反函数求导</span>
+          <p>设 $y=f(x)$ 在区间上单调、可导且 $f'(x)\ne0$，则其反函数 $x=\varphi(y)$ 可导，且</p>
+          <p class="formula-line">$$\varphi'(y)=\frac{1}{f'(x)}\qquad\text{即}\qquad \frac{\mathrm{d}x}{\mathrm{d}y}=\frac{1}{\dfrac{\mathrm{d}y}{\mathrm{d}x}}.$$</p>
+        </div>
+        <p>反三角函数的导数就由此得到：若 $y=\arcsin x\ (|x|<1)$，则 $x=\sin y$，$\dfrac{\mathrm{d}y}{\mathrm{d}x}=\dfrac{1}{\cos y}=\dfrac{1}{\sqrt{1-x^2}}$。</p>
+
+        <h2 class="subhead" id="s4">2.2.4 基本初等函数的导数公式</h2>
+        <p>常用公式必须熟记（$x$ 为使各式有意义的自变量）：</p>
+        <ul>
+          <li>$(C)'=0$，$(x^\mu)'=\mu x^{\mu-1}$；</li>
+          <li>$(a^x)'=a^x\ln a$，$(e^x)'=e^x$；$(\log_a x)'=\dfrac{1}{x\ln a}$，$(\ln x)'=\dfrac1x$；</li>
+          <li>$(\sin x)'=\cos x$，$(\cos x)'=-\sin x$，$(\tan x)'=\dfrac{1}{\cos^2x}$；</li>
+          <li>$(\arcsin x)'=\dfrac{1}{\sqrt{1-x^2}}$，$(\arctan x)'=\dfrac{1}{1+x^2}$。</li>
+        </ul>
+        <div class="box warn">
+          <span class="box-tag">易错</span>
+          <p style="margin-bottom:0;">忘掉系数与内层导数是最常见的失分点：$(e^{2x})'=2e^{2x}$，$(\ln 3x)'=\dfrac1x$，$(\sin 2x)'=2\cos2x$。</p>
+        </div>
+
+        <h2 class="subhead" id="s5">2.2.5 高阶导数</h2>
+        <p>若导函数 $f'(x)$ 仍可导，则其导数称为<b>二阶导数</b>，记 $y''$、$f''(x)$ 或 $\dfrac{\mathrm{d}^2y}{\mathrm{d}x^2}$；以此类推得到 $n$ 阶导数 $y^{(n)}$。</p>
+        <p>常用高阶导数：$(x^n)^{(n)}=n!$，$(e^x)^{(n)}=e^x$，$(\sin x)^{(n)}=\sin\!\left(x+\dfrac{n\pi}{2}\right)$。两个函数乘积的 $n$ 阶导数有 Leibniz 公式 $(uv)^{(n)}=\sum\limits_{k=0}^{n}\mathrm{C}_n^k\,u^{(k)}v^{(n-k)}$（形如二项式展开）。</p>
+
+        <h2 class="subhead" id="s6">2.2.6 隐函数求导法</h2>
+        <p>若 $y$ 由方程 $F(x,y)=0$ 确定，可用<b>两边对 $x$ 求导</b>的办法：把 $y$ 看作 $x$ 的函数 $y(x)$，遇到含 $y$ 的项就按链式法则乘上 $y'$，最后解出 $y'$。</p>
+        <p>例如 $x^2+y^2=25$ 两边求导：$2x+2yy'=0\Rightarrow y'=-\dfrac xy$。结果中通常同时含 $x$ 与 $y$，这是正常的。</p>
+
+        <h2 class="subhead" id="s7">2.2.7 由参数方程确定的函数的导数</h2>
+        <div class="box thm">
+          <span class="box-tag">公式 · 参数方程求导</span>
+          <p>设 $x=x(t)$、$y=y(t)$ 可导且 $x'(t)\ne0$，则</p>
+          <p class="formula-line">$$\frac{\mathrm{d}y}{\mathrm{d}x}=\frac{y'(t)}{x'(t)},\qquad \frac{\mathrm{d}^2y}{\mathrm{d}x^2}=\frac{1}{x'(t)}\cdot\frac{\mathrm{d}}{\mathrm{d}t}\!\left(\frac{\mathrm{d}y}{\mathrm{d}x}\right).$$</p>
+          <p style="margin-bottom:0;">注意二阶导数不是 $\dfrac{y''(t)}{x''(t)}$：要先把 $\dfrac{\mathrm{d}y}{\mathrm{d}x}$ 看成 $t$ 的函数，再对 $t$ 求导并除以 $x'(t)$。</p>
+        </div>
+
+        <h2 class="subhead" id="s8">2.2.8 相关变化率</h2>
+        <p>当几个变量都随时间 $t$ 变化且彼此有约束关系时，对该关系式两边对 $t$ 求导，就得到各变化率之间的联系——这就是<b>相关变化率</b>问题。解题三步：① 画出关系式；② 两边对 $t$ 求导；③ 代入已知数值求未知变化率。</p>
+
+        <div class="example">
+          <div class="ex-head"><h3>例 1　乘积法则</h3></div>
+          <p>求 $y=x^3e^x$ 的导数。</p>
+          <details class="solution">
+            <summary>先想再看解答</summary>
+            <div class="sol-body">
+              <p>$y'=(x^3)'e^x+x^3(e^x)'=3x^2e^x+x^3e^x$。</p>
+              <p style="margin-bottom:0;">整理得 $y'=x^2e^x(3+x)$。</p>
+            </div>
+          </details>
+        </div>
+
+        <div class="example">
+          <div class="ex-head"><h3>例 2　链式法则</h3></div>
+          <p>求 $y=\ln(\cos x)$ 的导数。</p>
+          <details class="solution">
+            <summary>先想再看解答</summary>
+            <div class="sol-body">
+              <p>外层 $\ln u$，内层 $u=\cos x$：</p>
+              <p class="formula-line">$$y'=\frac{1}{\cos x}\cdot(-\sin x)=-\tan x.$$</p>
+            </div>
+          </details>
+        </div>
+
+        <div class="example">
+          <div class="ex-head"><h3>例 3　反三角与链式结合</h3></div>
+          <p>求 $y=\arcsin 2x$ 的导数。</p>
+          <details class="solution">
+            <summary>先想再看解答</summary>
+            <div class="sol-body">
+              <p class="formula-line">$$y'=\frac{1}{\sqrt{1-(2x)^2}}\cdot 2=\frac{2}{\sqrt{1-4x^2}}.$$</p>
+              <p style="margin-bottom:0;">注意括号里是 $(2x)^2$，不是 $1-2x^2$。</p>
+            </div>
+          </details>
+        </div>
+
+        <div class="example">
+          <div class="ex-head"><h3>例 4　高阶导数</h3></div>
+          <p>求 $y=xe^x$ 的 $n$ 阶导数。</p>
+          <details class="solution">
+            <summary>先想再看解答</summary>
+            <div class="sol-body">
+              <p>$y'=(x+1)e^x$，$y''=(x+2)e^x$，$y'''=(x+3)e^x$。</p>
+              <p style="margin-bottom:0;">归纳得 $y^{(n)}=(x+n)e^x$（也可用 Leibniz 公式验证）。</p>
+            </div>
+          </details>
+        </div>
+
+        <div class="example">
+          <div class="ex-head"><h3>例 5　隐函数求导与切线</h3></div>
+          <p>已知 $x^2+y^2=25$，求 $y'$，并求该曲线在点 $(3,4)$ 处的切线方程。</p>
+          <details class="solution">
+            <summary>先想再看解答</summary>
+            <div class="sol-body">
+              <p>两边对 $x$ 求导：$2x+2yy'=0$，得 $y'=-\dfrac xy$。</p>
+              <p>在 $(3,4)$ 处 $y'=-\dfrac34$，切线为 $y-4=-\dfrac34(x-3)$，即 $3x+4y=25$。</p>
+              <p style="margin-bottom:0;"><b>检验：</b>$(3,4)$ 满足 $3\times3+4\times4=25$ ✓；该直线斜率 $-3/4$ ✓。</p>
+            </div>
+          </details>
+        </div>
+
+        <div class="example">
+          <div class="ex-head"><h3>例 6　参数方程求导</h3></div>
+          <p>设 $x=t^2$，$y=t^3-t$，求 $\dfrac{\mathrm{d}y}{\mathrm{d}x}$ 及 $t=1$ 处的值。</p>
+          <details class="solution">
+            <summary>先想再看解答</summary>
+            <div class="sol-body">
+              <p>$x'(t)=2t$，$y'(t)=3t^2-1$，故 $\dfrac{\mathrm{d}y}{\mathrm{d}x}=\dfrac{3t^2-1}{2t}$。</p>
+              <p style="margin-bottom:0;">$t=1$ 时（对应点 $(1,0)$）斜率为 $\dfrac{3-1}{2}=1$。</p>
+            </div>
+          </details>
+        </div>
+
+        <div class="example">
+          <div class="ex-head"><h3>例 7　相关变化率</h3></div>
+          <p>圆的半径以 $2\ \mathrm{cm/s}$ 的速度匀速增大，求半径等于 $5\ \mathrm{cm}$ 时面积的增长速度。</p>
+          <details class="solution">
+            <summary>先想再看解答</summary>
+            <div class="sol-body">
+              <p>面积 $A=\pi r^2$，两边对 $t$ 求导：</p>
+              <p class="formula-line">$$\frac{\mathrm{d}A}{\mathrm{d}t}=2\pi r\frac{\mathrm{d}r}{\mathrm{d}t}.$$</p>
+              <p style="margin-bottom:0;">代入 $r=5$，$\dfrac{\mathrm{d}r}{\mathrm{d}t}=2$，得 $\dfrac{\mathrm{d}A}{\mathrm{d}t}=20\pi\ \mathrm{cm^2/s}$。</p>
+            </div>
+          </details>
+        </div>
+
+        <div class="box warn">
+          <span class="box-tag">易错提醒</span>
+          <p style="margin-bottom:0;">① 乘积求导一定“两项相加”，别漏项。② 链式法则要一层层求到底，内层是复合的还要继续剥。③ 商法则分子顺序不能颠倒。④ 隐函数求导结果含 $y$ 属正常现象。⑤ 参数方程的二阶导不是 $y''(t)/x''(t)$。⑥ 相关变化率问题先写关系式再对 $t$ 求导，不要凭空“代入数字”。</p>
+        </div>
+      </div>
+
+      <div class="pager">
+        <a href="ch2-1.html"><small>上一节</small>← 2.1 导数的概念</a>
+        <a class="next" href="ch2-3.html"><small>下一节</small>2.3 微分 →</a>
+      </div>
+    </div>
+  </div>
+
+  <footer class="site-footer">
+    <div class="wrap footer-inner">
+      <div><b>工科数学分析基础（上册）自学站</b><br>2.2 求导的基本法则</div>
+      <div><a href="../index.html">首页</a> · <a href="../ch2.html">第二章</a> · <a href="../exercises/ch2-exercises.html">章末练习</a></div>
+    </div>
+  </footer>
+</body>
+</html>

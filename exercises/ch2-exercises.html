@@ -3,8 +3,13 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>第 2 章 · 章末练习（建设中）· 工科数学分析自学站</title>
+  <title>第 2 章 · 章末练习 · 工科数学分析自学站</title>
   <link rel="stylesheet" href="../assets/css/style.css">
+  <link rel="stylesheet" href="../assets/katex/katex.min.css">
+  <script defer src="../assets/katex/katex.min.js"></script>
+  <script defer src="../assets/katex/auto-render.min.js"></script>
+  <script defer src="../assets/js/app.js"></script>
+  <script defer src="../assets/js/quiz.js"></script>
 </head>
 <body>
   <header class="site-header">
@@ -26,28 +31,262 @@
     <div class="wrap">
       <p class="crumbs"><a href="../index.html">首页</a> / <a href="../ch2.html">第二章</a> / 章末练习</p>
       <h1>第 2 章 · 章末练习</h1>
-      <p class="lead">一元函数微分学及其应用 · 练习页占位</p>
+      <p class="lead">一元函数微分学及其应用 · 共 16 题（选择题 8 + 填空题 8），覆盖 2.1–2.6 六节。选择题点选项即判对错，填空题点“显示答案”，每道题下方紧跟答案与解析。</p>
       <div class="btn-row">
-        <a class="btn" href="../ch2.html">← 返回第二章</a>
+        <a class="btn secondary" href="../ch2.html">← 返回第二章</a>
+        <a class="btn" href="../lessons/ch2-1.html">忘记内容？回看 2.1</a>
       </div>
     </div>
   </div>
 
   <div class="content">
     <div class="wrap">
-      <div class="todo-note">
-        <b>🚧 本章仍在建设中。</b><br>
-        第二章精讲课件上线后，这里将放置 16 题章末练习（选择题 + 填空题，答案隐藏点击显示）。
-        现阶段建议先把第一章学扎实。
+      <div class="goal-box">
+        <b>作答建议：</b>先闭卷完成再对答案；求导、求极限这类计算题建议在草稿纸上写全步骤。全部完成后点右上“重新作答”可再刷一遍。
       </div>
-      <p><a href="../exercises/ch1-exercises.html">→ 去完成第 1 章 · 章末练习（可作答）</a></p>
+
+      <div class="quiz-toolbar">
+        <span>📋 第 2 章 · 一元函数微分学及其应用</span>
+        <button type="button" class="reset-btn" id="resetQuiz">↺ 重新作答</button>
+      </div>
+
+      <div class="quiz-group">
+        <h2>一、选择题 <span style="font-size:0.95rem;font-weight:500;color:var(--muted);">（点击选项立即判对错）</span></h2>
+
+        <div class="quiz-q" data-correct="B">
+          <div class="q-top"><span class="q-no">选择 1</span><span class="q-type mc">选择题</span><span style="font-size:0.85rem;color:var(--muted);">§2.1 可导与连续</span></div>
+          <p class="q-stem">函数 $f(x)=|x|$ 在 $x=0$ 处</p>
+          <div class="options">
+            <button type="button" class="opt" data-key="A">A. 可导且 $f'(0)=0$</button>
+            <button type="button" class="opt" data-key="B">B. 连续但不可导</button>
+            <button type="button" class="opt" data-key="C">C. 不连续</button>
+            <button type="button" class="opt" data-key="D">D. 可导但导函数不连续</button>
+          </div>
+          <p class="fb-result"></p>
+          <div class="explain" hidden>
+            <p><b>解析：</b>左导数 $f'_-(0)=-1$，右导数 $f'_+(0)=1$，左右导数都存在但不相等，故不可导；而 $\lim\limits_{x\to0}|x|=0=f(0)$，函数连续。选 B。</p>
+          </div>
+        </div>
+
+        <div class="quiz-q" data-correct="C">
+          <div class="q-top"><span class="q-no">选择 2</span><span class="q-type mc">选择题</span><span style="font-size:0.85rem;color:var(--muted);">§2.1 导数定义</span></div>
+          <p class="q-stem">设 $f'(x_0)=2$，则 $\lim\limits_{\Delta x\to0}\dfrac{f(x_0+3\Delta x)-f(x_0)}{\Delta x}=$</p>
+          <div class="options">
+            <button type="button" class="opt" data-key="A">A. $2$</button>
+            <button type="button" class="opt" data-key="B">B. $3$</button>
+            <button type="button" class="opt" data-key="C">C. $6$</button>
+            <button type="button" class="opt" data-key="D">D. 不存在</button>
+          </div>
+          <p class="fb-result"></p>
+          <div class="explain" hidden>
+            <p><b>解析：</b>把分子配成导数定义的形式：$\dfrac{f(x_0+3\Delta x)-f(x_0)}{3\Delta x}\cdot 3\to f'(x_0)\cdot 3=6$。选 C。</p>
+          </div>
+        </div>
+
+        <div class="quiz-q" data-correct="A">
+          <div class="q-top"><span class="q-no">选择 3</span><span class="q-type mc">选择题</span><span style="font-size:0.85rem;color:var(--muted);">§2.2 链式法则</span></div>
+          <p class="q-stem">设 $y=\sin 2x$，则 $y'=$</p>
+          <div class="options">
+            <button type="button" class="opt" data-key="A">A. $2\cos 2x$</button>
+            <button type="button" class="opt" data-key="B">B. $\cos 2x$</button>
+            <button type="button" class="opt" data-key="C">C. $-2\cos 2x$</button>
+            <button type="button" class="opt" data-key="D">D. $2\sin 2x$</button>
+          </div>
+          <p class="fb-result"></p>
+          <div class="explain" hidden>
+            <p><b>解析：</b>外层 $\sin u$ 的导数是 $\cos u$，内层 $u=2x$ 的导数是 2，故 $y'=\cos 2x\cdot 2=2\cos 2x$。选 A。</p>
+          </div>
+        </div>
+
+        <div class="quiz-q" data-correct="B">
+          <div class="q-top"><span class="q-no">选择 4</span><span class="q-type mc">选择题</span><span style="font-size:0.85rem;color:var(--muted);">§2.2 乘积法则</span></div>
+          <p class="q-stem">设 $y=x\ln x\ (x>0)$，则 $y'=$</p>
+          <div class="options">
+            <button type="button" class="opt" data-key="A">A. $\ln x$</button>
+            <button type="button" class="opt" data-key="B">B. $1+\ln x$</button>
+            <button type="button" class="opt" data-key="C">C. $1$</button>
+            <button type="button" class="opt" data-key="D">D. $x$</button>
+          </div>
+          <p class="fb-result"></p>
+          <div class="explain" hidden>
+            <p><b>解析：</b>$(x\ln x)'=1\cdot\ln x+x\cdot\dfrac1x=\ln x+1$。选 B。</p>
+          </div>
+        </div>
+
+        <div class="quiz-q" data-correct="A">
+          <div class="q-top"><span class="q-no">选择 5</span><span class="q-type mc">选择题</span><span style="font-size:0.85rem;color:var(--muted);">§2.3 微分</span></div>
+          <p class="q-stem">函数 $y=x^2$ 在 $x=1$ 处、$\Delta x=0.01$ 时的微分 $\mathrm{d}y=$</p>
+          <div class="options">
+            <button type="button" class="opt" data-key="A">A. $0.02$</button>
+            <button type="button" class="opt" data-key="B">B. $0.0201$</button>
+            <button type="button" class="opt" data-key="C">C. $0.01$</button>
+            <button type="button" class="opt" data-key="D">D. $0.2$</button>
+          </div>
+          <p class="fb-result"></p>
+          <div class="explain" hidden>
+            <p><b>解析：</b>$\mathrm{d}y=2x\,\Delta x=2\times1\times0.01=0.02$。选 A。注意 $0.0201$ 是真实增量 $\Delta y=(1.01)^2-1$，它比 $\mathrm{d}y$ 多一个高阶无穷小。</p>
+          </div>
+        </div>
+
+        <div class="quiz-q" data-correct="A">
+          <div class="q-top"><span class="q-no">选择 6</span><span class="q-type mc">选择题</span><span style="font-size:0.85rem;color:var(--muted);">§2.4 中值定理</span></div>
+          <p class="q-stem">下列命题中<b>正确</b>的是</p>
+          <div class="options">
+            <button type="button" class="opt" data-key="A">A. 若 $f$ 在 $[a,b]$ 连续、在 $(a,b)$ 可导且 $f(a)=f(b)$，则存在 $\xi\in(a,b)$ 使 $f'(\xi)=0$</button>
+            <button type="button" class="opt" data-key="B">B. 若 $f'(x_0)=0$，则 $x_0$ 必是极值点</button>
+            <button type="button" class="opt" data-key="C">C. 若 $f$ 在 $(a,b)$ 内可导，则必存在 $\xi\in(a,b)$ 使 $f'(\xi)=0$</button>
+            <button type="button" class="opt" data-key="D">D. 用 L'Hospital 法则时若 $\lim\dfrac{f'}{g'}$ 不存在，则原极限必不存在</button>
+          </div>
+          <p class="fb-result"></p>
+          <div class="explain" hidden>
+            <p><b>解析：</b>A 正是 Rolle 中值定理。反例：$f(x)=x^3$ 在 $0$ 处 $f'=0$ 但不是极值点（B 错）；$f(x)=x$ 在 $(a,b)$ 可导而导数恒为 1（C 错）；$\lim\limits_{x\to\infty}\dfrac{x+\sin x}{x}=1$ 而 $\lim(1+\cos x)$ 不存在（D 错）。选 A。</p>
+          </div>
+        </div>
+
+        <div class="quiz-q" data-correct="A">
+          <div class="q-top"><span class="q-no">选择 7</span><span class="q-type mc">选择题</span><span style="font-size:0.85rem;color:var(--muted);">§2.5 Taylor 公式</span></div>
+          <p class="q-stem">$e^x$ 的 Maclaurin 公式展开到 $x^2$ 项（含 $x^2$）为</p>
+          <div class="options">
+            <button type="button" class="opt" data-key="A">A. $1+x+\dfrac{x^2}{2}$</button>
+            <button type="button" class="opt" data-key="B">B. $1+x+x^2$</button>
+            <button type="button" class="opt" data-key="C">C. $1+x-\dfrac{x^2}{2}$</button>
+            <button type="button" class="opt" data-key="D">D. $x+\dfrac{x^2}{2}$</button>
+          </div>
+          <p class="fb-result"></p>
+          <div class="explain" hidden>
+            <p><b>解析：</b>$(e^x)^{(k)}=e^x$ 在 $0$ 处都等于 1，故 $e^x=1+x+\dfrac{x^2}{2!}+o(x^2)$。选 A。</p>
+          </div>
+        </div>
+
+        <div class="quiz-q" data-correct="A">
+          <div class="q-top"><span class="q-no">选择 8</span><span class="q-type mc">选择题</span><span style="font-size:0.85rem;color:var(--muted);">§2.6 极值判定</span></div>
+          <p class="q-stem">设 $f'(x_0)=0$ 且 $f''(x_0)<0$，则 $x_0$ 是 $f$ 的</p>
+          <div class="options">
+            <button type="button" class="opt" data-key="A">A. 极大值点</button>
+            <button type="button" class="opt" data-key="B">B. 极小值点</button>
+            <button type="button" class="opt" data-key="C">C. 拐点</button>
+            <button type="button" class="opt" data-key="D">D. 不能判定</button>
+          </div>
+          <p class="fb-result"></p>
+          <div class="explain" hidden>
+            <p><b>解析：</b>极值第二充分条件：$f'(x_0)=0$ 且 $f''(x_0)<0$ 时为极大值点。选 A。</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="quiz-group">
+        <h2>二、填空题 <span style="font-size:0.95rem;font-weight:500;color:var(--muted);">（先自己算，再点“显示答案”）</span></h2>
+
+        <div class="quiz-q">
+          <div class="q-top"><span class="q-no">填空 1</span><span class="q-type fill">填空题</span><span style="font-size:0.85rem;color:var(--muted);">§2.1 导数的几何意义</span></div>
+          <p class="q-stem">曲线 $y=x^3$ 在点 $(1,1)$ 处的切线斜率 $k=$ ______ 。</p>
+          <button type="button" class="reveal-btn">显示答案</button>
+          <div class="answer-box" hidden>
+            <p><span class="ans-label">答案：</span>$k=3$</p>
+            <div class="explain">
+              <p><b>解析：</b>$y'=3x^2$，代入 $x=1$ 得 $k=3$，切线方程 $y-1=3(x-1)$，即 $3x-y-2=0$。</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="quiz-q">
+          <div class="q-top"><span class="q-no">填空 2</span><span class="q-type fill">填空题</span><span style="font-size:0.85rem;color:var(--muted);">§2.2 导数公式</span></div>
+          <p class="q-stem">设 $y=\arcsin x\ (|x|<1)$，则 $y'=$ ______ 。</p>
+          <button type="button" class="reveal-btn">显示答案</button>
+          <div class="answer-box" hidden>
+            <p><span class="ans-label">答案：</span>$y'=\dfrac{1}{\sqrt{1-x^2}}$</p>
+            <div class="explain">
+              <p><b>解析：</b>由反函数求导法则：$x=\sin y$，$\dfrac{\mathrm{d}y}{\mathrm{d}x}=\dfrac{1}{\cos y}=\dfrac{1}{\sqrt{1-\sin^2y}}=\dfrac{1}{\sqrt{1-x^2}}$。</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="quiz-q">
+          <div class="q-top"><span class="q-no">填空 3</span><span class="q-type fill">填空题</span><span style="font-size:0.85rem;color:var(--muted);">§2.3 基本微分</span></div>
+          <p class="q-stem">$\mathrm{d}(\ln x)=$ ______ $\mathrm{d}x$。</p>
+          <button type="button" class="reveal-btn">显示答案</button>
+          <div class="answer-box" hidden>
+            <p><span class="ans-label">答案：</span>$\dfrac1x$</p>
+            <div class="explain">
+              <p><b>解析：</b>$\mathrm{d}y=y'\,\mathrm{d}x$，而 $(\ln x)'=\dfrac1x$，故 $\mathrm{d}(\ln x)=\dfrac{\mathrm{d}x}{x}$。</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="quiz-q">
+          <div class="q-top"><span class="q-no">填空 4</span><span class="q-type fill">填空题</span><span style="font-size:0.85rem;color:var(--muted);">§2.4 L'Hospital 法则</span></div>
+          <p class="q-stem">$\lim\limits_{x\to0}\dfrac{e^x-1}{x}=$ ______ 。</p>
+          <button type="button" class="reveal-btn">显示答案</button>
+          <div class="answer-box" hidden>
+            <p><span class="ans-label">答案：</span>$1$</p>
+            <div class="explain">
+              <p><b>解析：</b>$\dfrac00$ 型，用 L'Hospital 法则：$\lim\limits_{x\to0}\dfrac{e^x}{1}=1$；也可用等价无穷小 $e^x-1\sim x$。</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="quiz-q">
+          <div class="q-top"><span class="q-no">填空 5</span><span class="q-type fill">填空题</span><span style="font-size:0.85rem;color:var(--muted);">§2.4 L'Hospital 法则</span></div>
+          <p class="q-stem">$\lim\limits_{x\to+\infty}\dfrac{\ln x}{x}=$ ______ 。</p>
+          <button type="button" class="reveal-btn">显示答案</button>
+          <div class="answer-box" hidden>
+            <p><span class="ans-label">答案：</span>$0$</p>
+            <div class="explain">
+              <p><b>解析：</b>$\dfrac{\infty}{\infty}$ 型，用 L'Hospital 法则得 $\lim\limits_{x\to+\infty}\dfrac{1/x}{1}=0$。结论：对数增长慢于任何正幂次。</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="quiz-q">
+          <div class="q-top"><span class="q-no">填空 6</span><span class="q-type fill">填空题</span><span style="font-size:0.85rem;color:var(--muted);">§2.5 Maclaurin 公式</span></div>
+          <p class="q-stem">$\sin x\approx$ ______ （用 Maclaurin 公式展开到 $x^3$ 项，含 $x^3$）。</p>
+          <button type="button" class="reveal-btn">显示答案</button>
+          <div class="answer-box" hidden>
+            <p><span class="ans-label">答案：</span>$x-\dfrac{x^3}{6}$</p>
+            <div class="explain">
+              <p><b>解析：</b>$\sin x=x-\dfrac{x^3}{3!}+o(x^3)=x-\dfrac{x^3}{6}+o(x^3)$。</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="quiz-q">
+          <div class="q-top"><span class="q-no">填空 7</span><span class="q-type fill">填空题</span><span style="font-size:0.85rem;color:var(--muted);">§2.6 极值</span></div>
+          <p class="q-stem">函数 $f(x)=x^3-3x$ 的极大值为 ______ 。</p>
+          <button type="button" class="reveal-btn">显示答案</button>
+          <div class="answer-box" hidden>
+            <p><span class="ans-label">答案：</span>$2$</p>
+            <div class="explain">
+              <p><b>解析：</b>$f'(x)=3x^2-3=0\Rightarrow x=\pm1$。$f'$ 在 $x=-1$ 处由正变负，是极大值点，$f(-1)=-1+3=2$；$x=1$ 为极小值点，$f(1)=-2$。</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="quiz-q">
+          <div class="q-top"><span class="q-no">填空 8</span><span class="q-type fill">填空题</span><span style="font-size:0.85rem;color:var(--muted);">§2.6 拐点</span></div>
+          <p class="q-stem">曲线 $y=x^3$ 的拐点为 ______ 。</p>
+          <button type="button" class="reveal-btn">显示答案</button>
+          <div class="answer-box" hidden>
+            <p><span class="ans-label">答案：</span>$(0,0)$</p>
+            <div class="explain">
+              <p><b>解析：</b>$y''=6x$，在 $x=0$ 两侧由负变正，凹凸性改变，故 $(0,0)$ 是拐点。</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div style="margin-top:26px;">
+        <a class="ch-card" href="../ch2.html" style="background:var(--accent-soft);border-color:#b9cef0;">
+          <div class="ch-title"><h3>📚 练习完成？回看章末思维导图</h3><span class="badge ok">继续加油</span></div>
+          <p class="ch-desc">用思维导图把 2.1–2.6 串一遍；第三章（一元函数积分学）正在建设中。</p>
+        </a>
+      </div>
     </div>
   </div>
 
   <footer class="site-footer">
     <div class="wrap footer-inner">
-      <div><b>工科数学分析基础（上册）自学站</b><br>第 2 章 · 章末练习（建设中）</div>
-      <div><a href="../index.html">首页</a> · <a href="../ch2.html">第二章</a></div>
+      <div><b>工科数学分析基础（上册）自学站</b><br>第 2 章 · 章末练习（原创题目）</div>
+      <div><a href="../index.html">首页</a> · <a href="../ch2.html">第二章</a> · <a href="../lessons/ch2-6.html">回到 2.6</a></div>
     </div>
   </footer>
 </body>

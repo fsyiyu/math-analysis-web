@@ -41,7 +41,7 @@
       </div>
 
       <div class="lesson-body">
-        <h2 class="subhead">4.1 无穷小量的概念与性质</h2>
+        <h2 class="subhead" id="s1">4.1 无穷小量的概念与性质</h2>
         <div class="box">
           <span class="box-tag">定义 · 无穷小量</span>
           <p>在某个极限过程中以 0 为极限的<b>变量</b>称为无穷小量。例如 $x\to0$ 时，$x,\ x^2,\ \sin x,\ 1-\cos x$ 都是无穷小。</p>
@@ -54,7 +54,7 @@
         </div>
         <p>无穷小的运算性质：<b>有限个</b>无穷小之和、差、积仍是无穷小；<b>有界函数与无穷小的乘积仍是无穷小</b>（这是上一节“$x\sin\dfrac1x\to0$”的一般原理）。</p>
 
-        <h2 class="subhead">4.2 无穷小的比较</h2>
+        <h2 class="subhead" id="s2">4.2 无穷小的比较</h2>
         <p>设 $\alpha,\beta$ 是 $x\to x_0$ 时的无穷小，$\alpha\ne0$：</p>
         <ul>
           <li>若 $\lim\dfrac{\beta}{\alpha}=0$，称 $\beta$ 是 $\alpha$ 的<b>高阶无穷小</b>，记 $\beta=o(\alpha)$（$\beta$ 归零更快）；</li>
@@ -64,7 +64,7 @@
         </ul>
         <p>直觉：无穷小不是“都能忽略”，要看它相对谁、快多少。$x^2$ 相对 $x$ 是二阶——所以“丢掉高阶项”才有依据。</p>
 
-        <h2 class="subhead">4.3 无穷小的等价代换</h2>
+        <h2 class="subhead" id="s3">4.3 无穷小的等价代换</h2>
         <div class="box thm">
           <span class="box-tag">定理 · 等价代换</span>
           <p>若 $\alpha\sim\alpha_1$，$\beta\sim\beta_1$，则 $\lim\dfrac{\beta}{\alpha}=\lim\dfrac{\beta_1}{\alpha_1}$，即<b>乘除因子</b>可以放心替换。</p>
@@ -78,7 +78,7 @@
           <p>等价代换只对<b>乘除因子</b>保证正确。<b>加减中的替换可能丢掉真正起决定作用的高阶项。</b>例如 $\tan x-\sin x$ 不能换成 $x-x=0$——它实际是 $\dfrac{x^3}{2}$ 量级（见例 5）。</p>
         </div>
 
-        <h2 class="subhead">4.4 无穷大量</h2>
+        <h2 class="subhead" id="s4">4.4 无穷大量</h2>
         <div class="box">
           <span class="box-tag">定义 · 无穷大量</span>
           <p>在某个极限过程中 $|f(x)|$ 无限增大（对任意 $M>0$，总存在邻域使 $|f(x)|>M$），称 $f$ 为无穷大量，记 $f(x)\to\infty$；按符号还可分 $+\infty$ 与 $-\infty$。</p>

@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>2.3 微分 · 工科数学分析自学站</title>
+  <link rel="stylesheet" href="../assets/css/style.css">
+  <link rel="stylesheet" href="../assets/katex/katex.min.css">
+  <script defer src="../assets/katex/katex.min.js"></script>
+  <script defer src="../assets/katex/auto-render.min.js"></script>
+  <script defer src="../assets/js/app.js"></script>
+</head>
+<body>
+  <header class="site-header">
+    <div class="wrap header-inner">
+      <a class="brand" href="../index.html">📘 工科数学分析 · 自学站
+        <small>第三版 · 上册 · 一元函数微积分</small>
+      </a>
+      <nav class="main-nav">
+        <a href="../index.html">首页</a>
+        <a href="../ch1.html">第一章</a>
+        <a href="../ch2.html">第二章</a>
+        <a href="../ch3.html">第三章</a>
+        <a href="../ch4.html">第四章</a>
+      </nav>
+    </div>
+  </header>
+
+  <div class="page-head">
+    <div class="wrap">
+      <p class="crumbs"><a href="../index.html">首页</a> / <a href="../ch2.html">第二章</a> / 第三节</p>
+      <h1>2.3 微分</h1>
+      <p class="lead">导数回答“变化多快”，微分回答“变化了多少”。它把复杂的增量换成简单的线性部分——这就是“以直代曲”。</p>
+    </div>
+  </div>
+
+  <div class="content">
+    <div class="wrap">
+      <div class="goal-box">
+        <b>本节要解决的问题：</b>函数值到底改变了多少？为什么可以在小范围内“以直代曲”做近似计算？记号 $\mathrm{d}y$ 到底是什么意思？
+      </div>
+
+      <div class="lesson-body">
+        <h2 class="subhead" id="s1">2.3.1 微分的概念</h2>
+        <p>设函数 $y=f(x)$ 在 $x_0$ 处有增量 $\Delta x$，函数增量为 $\Delta y=f(x_0+\Delta x)-f(x_0)$。如果能把它写成</p>
+        <p class="formula-line">$$\Delta y=A\,\Delta x+o(\Delta x)\quad(\Delta x\to0),$$</p>
+        <p>其中 $A$ 与 $\Delta x$ 无关，则称 $f$ 在 $x_0$ <b>可微</b>，并称 $A\,\Delta x$ 为 $f$ 在 $x_0$ 处相应于 $\Delta x$ 的<b>微分</b>，记作 $\mathrm{d}y=A\,\Delta x$。</p>
+        <div class="box thm">
+          <span class="box-tag">定理 · 可微 $\iff$ 可导</span>
+          <p>函数 $f$ 在 $x_0$ 可微的充要条件是 $f$ 在 $x_0$ 可导，且此时</p>
+          <p class="formula-line">$$\mathrm{d}y=f'(x_0)\,\Delta x=f'(x_0)\,\mathrm{d}x\qquad(\text{规定 } \mathrm{d}x=\Delta x).$$</p>
+          <p style="margin-bottom:0;">所以导数也叫“微商”：$\dfrac{\mathrm{d}y}{\mathrm{d}x}=f'(x)$，这里 $\mathrm{d}y$ 与 $\mathrm{d}x$ 都是实实在在的微分。</p>
+        </div>
+        <p>记号上的区别要分清：$\Delta y$ 是函数值的<b>真实</b>增量，$\mathrm{d}y$ 是它的<b>线性主部</b>（近似增量），二者相差一个比 $\Delta x$ 高阶的无穷小。</p>
+
+        <h2 class="subhead" id="s2">2.3.2 微分的几何意义</h2>
+        <p>在图像上，$\mathrm{d}y=f'(x_0)\Delta x$ 恰好是<b>切线</b>上纵坐标的增量，而 $\Delta y$ 是曲线上纵坐标的增量。因此“以直代曲”的含义是：</p>
+        <div class="box idea">
+          <span class="box-tag">核心思想</span>
+          <p style="margin-bottom:0;">在一点附近，用切线（线性函数）近似代替曲线（一般函数），误差是比 $\Delta x$ 高阶的无穷小。这正是微分在近似计算中的价值来源。</p>
+        </div>
+
+        <h2 class="subhead" id="s3">2.3.3 微分的形式不变性</h2>
+        <div class="box thm">
+          <span class="box-tag">性质 · 形式不变性</span>
+          <p>无论 $x$ 是自变量还是中间变量 $u=g(x)$，微分形式都写成 $\mathrm{d}y=f'(u)\,\mathrm{d}u$。</p>
+          <p style="margin-bottom:0;">这使微分运算可以“整块搬运”，也是日后积分换元法（第三章）的根据。注意：<b>高阶</b>微分不具这样的不变性（见 2.3.5）。</p>
+        </div>
+
+        <h2 class="subhead" id="s4">2.3.4 微分法则与基本微分公式</h2>
+        <p>由导数法则可得相应的微分法则：</p>
+        <p class="formula-line">$$\mathrm{d}(u\pm v)=\mathrm{d}u\pm \mathrm{d}v,\quad \mathrm{d}(uv)=v\,\mathrm{d}u+u\,\mathrm{d}v,\quad \mathrm{d}\!\left(\frac uv\right)=\frac{v\,\mathrm{d}u-u\,\mathrm{d}v}{v^2}.$$</p>
+        <p>基本微分公式与导数公式一一对应，例如 $\mathrm{d}(x^\mu)=\mu x^{\mu-1}\mathrm{d}x$，$\mathrm{d}(e^x)=e^x\mathrm{d}x$，$\mathrm{d}(\ln x)=\dfrac{\mathrm{d}x}{x}$，$\mathrm{d}(\sin x)=\cos x\,\mathrm{d}x$。</p>
+
+        <h2 class="subhead" id="s5">2.3.5 高阶微分</h2>
+        <p>把 $\mathrm{d}y=f'(x)\mathrm{d}x$ 中的 $\mathrm{d}x$ 视为固定量，再取微分得二阶微分</p>
+        <p class="formula-line">$$\mathrm{d}^2y=f''(x)\,\mathrm{d}x^2,$$</p>
+        <p>一般地 $\mathrm{d}^ny=f^{(n)}(x)\,\mathrm{d}x^n$。高阶微分不再具有形式不变性：当 $x$ 不是自变量时，$\mathrm{d}^2y\ne f''(u)\mathrm{d}u^2$（会多出含 $\mathrm{d}^2u$ 的项）。</p>
+
+        <h2 class="subhead" id="s6">2.3.6 微分在近似计算中的应用</h2>
+        <div class="box thm">
+          <span class="box-tag">近似公式</span>
+          <p class="formula-line">$$f(x_0+\Delta x)\approx f(x_0)+f'(x_0)\,\Delta x\qquad(|\Delta x|\ \text{很小}).$$</p>
+          <p style="margin-bottom:0;">取 $x_0=0$ 并用 $x$ 代替 $\Delta x$，得常用近似：$\sqrt[n]{1+x}\approx 1+\dfrac xn$，$\sin x\approx x$，$\tan x\approx x$，$e^x\approx 1+x$，$\ln(1+x)\approx x$（$|x|$ 很小）。</p>
+        </div>
+
+        <div class="example">
+          <div class="ex-head"><h3>例 1　求微分</h3></div>
+          <p>求 $y=x^2+\ln x$ 的微分。</p>
+          <details class="solution">
+            <summary>先想再看解答</summary>
+            <div class="sol-body">
+              <p>$y'=2x+\dfrac1x$，所以</p>
+              <p style="margin-bottom:0;">$$\mathrm{d}y=\left(2x+\frac1x\right)\mathrm{d}x.$$</p>
+            </div>
+          </details>
+        </div>
+
+        <div class="example">
+          <div class="ex-head"><h3>例 2　复合函数的微分</h3></div>
+          <p>求 $y=e^{2x}\sin 3x$ 的微分。</p>
+          <details class="solution">
+            <summary>先想再看解答</summary>
+            <div class="sol-body">
+              <p>先求导：$y'=2e^{2x}\sin 3x+3e^{2x}\cos 3x=e^{2x}(2\sin 3x+3\cos 3x)$。</p>
+              <p style="margin-bottom:0;">故 $\mathrm{d}y=e^{2x}\bigl(2\sin 3x+3\cos 3x\bigr)\mathrm{d}x$。</p>
+            </div>
+          </details>
+        </div>
+
+        <div class="example">
+          <div class="ex-head"><h3>例 3　近似计算（根式）</h3></div>
+          <p>用微分近似计算 $\sqrt{1.02}$。</p>
+          <details class="solution">
+            <summary>先想再看解答</summary>
+            <div class="sol-body">
+              <p>取 $f(x)=\sqrt x$，$x_0=1$，$\Delta x=0.02$，$f'(1)=\dfrac12$：</p>
+              <p class="formula-line">$$\sqrt{1.02}\approx 1+\frac12\times0.02=1.01.$$</p>
+              <p style="margin-bottom:0;">实际值约 $1.00995$，误差量级约 $5\times10^{-6}$，说明一次线性近似已经足够精确。</p>
+            </div>
+          </details>
+        </div>
+
+        <div class="example">
+          <div class="ex-head"><h3>例 4　近似计算（幂）</h3></div>
+          <p>用微分近似计算 $(1.02)^{10}$。</p>
+          <details class="solution">
+            <summary>先想再看解答</summary>
+            <div class="sol-body">
+              <p>取 $f(x)=x^{10}$，$x_0=1$，$\Delta x=0.02$，$f'(1)=10$：</p>
+              <p class="formula-line">$$(1.02)^{10}\approx 1+10\times0.02=1.2.$$</p>
+              <p style="margin-bottom:0;">实际值约 $1.2190$，相对误差约 $1.6\%$——$\Delta x$ 越小越准，这正是微分的适用条件。</p>
+            </div>
+          </details>
+        </div>
+
+        <div class="example">
+          <div class="ex-head"><h3>例 5　用微分做误差估计</h3></div>
+          <p>测得圆的半径为 $10\ \mathrm{cm}$，测量误差不超过 $0.1\ \mathrm{cm}$，估计圆面积的绝对误差与相对误差。</p>
+          <details class="solution">
+            <summary>先想再看解答</summary>
+            <div class="sol-body">
+              <p>$A=\pi r^2$，$\mathrm{d}A=2\pi r\,\mathrm{d}r$。取 $r=10$，$|\mathrm{d}r|\le0.1$：</p>
+              <p class="formula-line">$$|\mathrm{d}A|\le 2\pi\times10\times0.1=2\pi\approx6.28\ \mathrm{cm^2}.$$</p>
+              <p style="margin-bottom:0;">相对误差 $\dfrac{|\mathrm{d}A|}{A}=\dfrac{2\,\mathrm{d}r}{r}=\dfrac{0.2}{10}=2\%$。可见相对误差约是半径相对误差的两倍。</p>
+            </div>
+          </details>
+        </div>
+
+        <div class="box warn">
+          <span class="box-tag">易错提醒</span>
+          <p style="margin-bottom:0;">① 区分 $\Delta y$（真实增量）与 $\mathrm{d}y$（线性主部），二者只有在 $\Delta x\to0$ 时同阶无穷小。② 近似公式只在 $|\Delta x|$ 很小时有效，$\Delta x$ 偏大时误差迅速变大（如例 4）。③ 高阶微分没有形式不变性。④ 求微分时不要漏掉 $\mathrm{d}x$。</p>
+        </div>
+      </div>
+
+      <div class="pager">
+        <a href="ch2-2.html"><small>上一节</small>← 2.2 求导的基本法则</a>
+        <a class="next" href="ch2-4.html"><small>下一节</small>2.4 微分中值定理及其应用 →</a>
+      </div>
+    </div>
+  </div>
+
+  <footer class="site-footer">
+    <div class="wrap footer-inner">
+      <div><b>工科数学分析基础（上册）自学站</b><br>2.3 微分</div>
+      <div><a href="../index.html">首页</a> · <a href="../ch2.html">第二章</a> · <a href="../exercises/ch2-exercises.html">章末练习</a></div>
+    </div>
+  </footer>
+</body>
+</html>
